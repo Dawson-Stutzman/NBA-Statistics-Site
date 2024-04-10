@@ -20,3 +20,35 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.horizontal-align {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+}
+
+.vertical-align {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: start;
+}
+
+.checkbox {
+    margin: 0.3rem;
+}
+
+.submit {
+    margin: 0.3rem;
+    align-self: end;
+}
+
+.nav-link:hover {
+background-color: lightgray;
+border-radius: 4px;
+}
+
+.nav-link {
+    color: black;
+}
