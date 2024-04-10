@@ -1,0 +1,14 @@
+﻿@page
+@model CIS560FinalProject.Pages.MetricsByCollegeFormModel
+@{
+    ViewData["Title"] = "Metrics By College";
+}
+<h1>@ViewData["Title"]</h1>
+<form>
+    <label for="colleges">Enter all college names to be compared via a comma seperated list:</label>
+    <input type="text" id="colleges" name="colleges"><br><br>
+    <div>
+        <label for="allColleges">Compare all colleges.</label>
+        <input type="checkbox" id="allColleges" name="colleges"><br><br>
+    </div>
+</form>
