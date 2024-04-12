@@ -1,0 +1,14 @@
+IF OBJECT_ID(N'Game') IS NULL
+BEGIN
+   CREATE TABLE NBA.Game
+   (
+      GameID INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
+	  HomeTeamID INT NOT NULL,
+	  AwayTeamID INT NOT NULL,
+	  [Year] INT NOT NULL,
+	  [Date] NVARCHAR(32) NOT NULL,
+
+	  CONSTRAINT FK_HomeTeam_Year FOREIGN KEY (HomeTeamID, [Year]) REFERENCES NBA.TeamSeason(TeamID, [Year]),
+	  CONSTRAINT FK_AwayTeam_Year FOREIGN KEY (HomeTeamID, [Year]) REFERENCES NBA.TeamSeason(TeamID, [Year])
+   );
+END
