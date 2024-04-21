@@ -1,7 +1,7 @@
 ﻿@page
-@model CIS560FinalProject.Pages.HomeAwayFormModel
+@model CIS560FinalProject.Pages.PlayerComparisonFormModel
 @{
-    ViewData["Title"] = "Home VS Away Scores";
+    ViewData["Title"] = "Player Comparison";
 }
 <h1>@ViewData["Title"]</h1>
 <form>
@@ -9,10 +9,16 @@
     <div class="horizontal-align">
         <input type="text" id="players" name="players">
         <input class="checkbox" type="checkbox" checked="checked" id="allPlayers" name="allPlayers"><br /><br />
-        <label for="allPlayers">Compare All Players</label><br /> 
+        <label for="allPlayers">Compare All Players</label><br />
     </div>
     <div class="horizontal-align">
-        <input class="checkbox" type="checkbox" id="desc" name="descending", checked="checked">
+        <label for="startDate">From&ensp;</label>
+        <input type="date" id="startDate" name="startDate">
+        <label for="endDate">&ensp;to&ensp;</label>
+        <input type="date" id="endDate" name="endDate">
+    </div>
+    <div class="horizontal-align">
+        <input class="checkbox" type="checkbox" id="desc" name="descending" , checked="checked">
 
         <label for="descending">Descending</label><br /><br />
     </div>

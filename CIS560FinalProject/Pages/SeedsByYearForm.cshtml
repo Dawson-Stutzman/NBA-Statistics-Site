@@ -1,0 +1,36 @@
+﻿@page
+@model CIS560FinalProject.Pages.SeedsByYearFormModel
+@{
+    ViewData["Title"] = "Team Stats by Year";
+}
+<h1>@ViewData["Title"]</h1>
+<form>
+    <label for="players">Team seeds to be compared via a comma seperated list:</label>
+    <div class="horizontal-align">
+        <input type="text" id="seeds" name="seeds">
+        <input class="checkbox" type="checkbox" checked="checked" id="allSeeds" name="allSeeds"><br /><br />
+        <label for="allSeeds">Compare All Seeds</label><br />
+    </div>
+    <div class="horizontal-align">
+        <input class="checkbox" type="checkbox" id="desc" name="descending" , checked="checked">
+
+        <label for="descending">Descending</label><br /><br />
+    </div>
+    <div>
+        <label for="conference">Select Conference for Comparison</label><br />
+        <input type="radio" name="conference" value="east" /><label for="conference">&ensp;East</label><br />
+        <input type="radio" name="conference" value="west" /><label for="conference">&ensp;West</label><br />
+        <input type="radio" name="conference" value="both" /><label for="conference">&ensp;East &amp; West</label><br />
+    </div>
+
+    <label for="colleges">Metric to rank teams by:</label>
+    <div>
+        <input class="" type="radio" name="metric" value="points" /><label for="metric">&ensp;Points</label><br />
+        <input type="radio" name="metric" value="assists" /><label for="metric">&ensp;Assists</label><br />
+        <input type="radio" name="metric" value="rebounds" /><label for="metric">&ensp;Rebounds</label><br />
+        <input type="radio" name="metric" value="blocks" /><label for="metric">&ensp;Blocks</label><br />
+        <input type="radio" name="metric" value="minutes" /><label for="metric">&ensp;Steals</label><br />
+        <input type="radio" name="metric" value="steals" /><label for="metric">&ensp;Minutes</label><br />
+    </div>
+    <input class="submit" type="submit" value="Submit">
+</form>
