@@ -32,10 +32,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQW5hbHl0aWNzXFRlYW1CeVllYXJGb3JtLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/dawso/Source/Repos/NBA-Statistics-Site/CIS560FinalProject/Pages/CoachComparisonForm.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29hY2hDb21wYXJpc29uRm9ybS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/dawso/Source/Repos/NBA-Statistics-Site/CIS560FinalProject/Pages/CustomDataTools.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3VzdG9tRGF0YVRvb2xzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -48,20 +44,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/dawso/Source/Repos/NBA-Statistics-Site/CIS560FinalProject/Pages/HomeAwayForm.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG9tZUF3YXlGb3JtLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/dawso/Source/Repos/NBA-Statistics-Site/CIS560FinalProject/Pages/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/dawso/Source/Repos/NBA-Statistics-Site/CIS560FinalProject/Pages/MetricsByCollegeForm.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWV0cmljc0J5Q29sbGVnZUZvcm0uY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/dawso/Source/Repos/NBA-Statistics-Site/CIS560FinalProject/Pages/PlayerComparisonForm.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGxheWVyQ29tcGFyaXNvbkZvcm0uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/dawso/Source/Repos/NBA-Statistics-Site/CIS560FinalProject/Pages/Privacy.cshtml]
@@ -70,10 +54,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/dawso/Source/Repos/NBA-Statistics-Site/CIS560FinalProject/Pages/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/dawso/Source/Repos/NBA-Statistics-Site/CIS560FinalProject/Pages/TeamByYearForm.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGVhbUJ5WWVhckZvcm0uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/dawso/Source/Repos/NBA-Statistics-Site/CIS560FinalProject/Pages/Tools.cshtml]
