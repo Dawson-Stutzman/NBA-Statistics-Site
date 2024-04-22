@@ -2,13 +2,13 @@
 @model CIS560FinalProject.Pages.PlayerComparisonFormModel
 @{
     ViewData["Title"] = "Player Comparison";
-}
+    }
 <h1>@ViewData["Title"]</h1>
 <form>
     <label for="players">Players to be compared via a comma seperated list:</label>
     <div class="horizontal-align">
-        <input type="text" id="players" name="players">
-        <input class="checkbox" type="checkbox" checked="checked" id="allPlayers" name="allPlayers"><br /><br />
+        <input type="text" id="players" name="players" multiple>
+        <input class="checkbox" type="checkbox" checked="" id="allPlayers" name="allPlayers"><br /><br />
         <label for="allPlayers">Compare All Players</label><br />
     </div>
     <div class="horizontal-align">

@@ -52,3 +52,19 @@ border-radius: 4px;
 .nav-link {
     color: black;
 }
+
+.custom-horizontal-align{
+    align-content: start;
+    flex-flow: wrap;
+    justify-content: start;
+    vertical-align: top;
+    align-items: start;
+    display: flex;
+    flex-direction: row;
+}
+
+.left-border {
+    border-left: solid black 2px;
+    padding-left: 2rem;
+    margin-left: 2rem;
+}
