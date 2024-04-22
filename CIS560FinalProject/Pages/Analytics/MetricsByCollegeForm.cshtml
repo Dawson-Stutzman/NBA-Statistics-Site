@@ -1,0 +1,19 @@
+﻿@page
+@model MetricsByCollegeFormModel
+@{
+    ViewData["Title"] = "Metrics By College";
+}
+<h1>@ViewData["Title"]</h1>
+<form>
+    <label for="colleges">College names to be compared via a comma seperated list:</label>
+    <div class="horizontal-align">
+    <input type="text" id="colleges" name="colleges"><br /><br />
+        <input class="checkbox" type="checkbox" id="allColleges" name="colleges">
+        <label for="allColleges">Compare All Colleges.</label><br /><br />
+    </div>
+    <div class="horizontal-align">
+    <input class="checkbox" type="checkbox" id="desc" name="descending">
+    <label for="descending">Descending</label><br /><br />
+    </div>
+    <input class="submit" type="submit" value="Submit">
+</form>

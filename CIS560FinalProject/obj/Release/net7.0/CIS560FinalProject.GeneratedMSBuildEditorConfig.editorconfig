@@ -1,0 +1,77 @@
+is_global = true
+build_property.TargetFramework = net7.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = CIS560FinalProject
+build_property.RootNamespace = CIS560FinalProject
+build_property.ProjectDir = C:\Users\dawso\source\repos\CIS560-Team3-push-to-main\CIS560FinalProject\
+build_property.RazorLangVersion = 7.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\dawso\source\repos\CIS560-Team3-push-to-main\CIS560FinalProject
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/dawso/source/repos/CIS560-Team3-push-to-main/CIS560FinalProject/Pages/Analytics/CoachComparisonForm.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQW5hbHl0aWNzXENvYWNoQ29tcGFyaXNvbkZvcm0uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/dawso/source/repos/CIS560-Team3-push-to-main/CIS560FinalProject/Pages/Analytics/HomeAwayForm.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQW5hbHl0aWNzXEhvbWVBd2F5Rm9ybS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/dawso/source/repos/CIS560-Team3-push-to-main/CIS560FinalProject/Pages/Analytics/MetricsByCollegeForm.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQW5hbHl0aWNzXE1ldHJpY3NCeUNvbGxlZ2VGb3JtLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/dawso/source/repos/CIS560-Team3-push-to-main/CIS560FinalProject/Pages/Analytics/PlayerComparisonForm.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQW5hbHl0aWNzXFBsYXllckNvbXBhcmlzb25Gb3JtLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/dawso/source/repos/CIS560-Team3-push-to-main/CIS560FinalProject/Pages/Analytics/TeamByYearForm.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQW5hbHl0aWNzXFRlYW1CeVllYXJGb3JtLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/dawso/source/repos/CIS560-Team3-push-to-main/CIS560FinalProject/Pages/CustomDataTools.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3VzdG9tRGF0YVRvb2xzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/dawso/source/repos/CIS560-Team3-push-to-main/CIS560FinalProject/Pages/CustomData/AddTeamForm.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3VzdG9tRGF0YVxBZGRUZWFtRm9ybS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/dawso/source/repos/CIS560-Team3-push-to-main/CIS560FinalProject/Pages/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/dawso/source/repos/CIS560-Team3-push-to-main/CIS560FinalProject/Pages/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/dawso/source/repos/CIS560-Team3-push-to-main/CIS560FinalProject/Pages/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpdmFjeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/dawso/source/repos/CIS560-Team3-push-to-main/CIS560FinalProject/Pages/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/dawso/source/repos/CIS560-Team3-push-to-main/CIS560FinalProject/Pages/Tools.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVG9vbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/dawso/source/repos/CIS560-Team3-push-to-main/CIS560FinalProject/Pages/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/dawso/source/repos/CIS560-Team3-push-to-main/CIS560FinalProject/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/dawso/source/repos/CIS560-Team3-push-to-main/CIS560FinalProject/Pages/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-wom2gdyw1s

@@ -1,0 +1,36 @@
+﻿@page
+@model AddTeamFormModel
+@{
+    ViewData["Title"] = "Add New Team for Comparison";
+}
+<div class="custom-horizontal-align">
+    <div class="vertical-align">
+        <h1>@ViewData["Title"]</h1>
+        <form>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Team Name</th>
+                        <th>Team Conference</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+
+                            <input type="text" id="teamName" name="teamName"/>
+                        </td>
+                        <td>
+                            <div class="horizontal-align">
+                                <input type="radio" name="conference" value="eastern" /><label for="conference">&ensp;Eastern&ensp;</label><br />
+                                <input type="radio" name="conference" value="western" /><label for="conference">&ensp;Western&ensp;</label><br />
+                                <input type="radio" name="conference" value="both" /><label for="conference">&ensp;Both&ensp;</label><br />
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <input class="submit" type="submit" value="Submit">
+        </form>
+    </div>
+</div>

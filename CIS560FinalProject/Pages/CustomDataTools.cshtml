@@ -1,0 +1,34 @@
+﻿@page
+@model CIS560FinalProject.Pages.CustomDataToolsModel
+@{
+    ViewData["Title"] = "Custom Data Entry";
+}
+<h1>@ViewData["Title"]</h1>
+<br />
+<body>
+    <div class="vertical-align">
+        <a class="nav-link text-dark link-custom" asp-area="" asp-page="/CustomData/AddTeamForm">
+            <div class="link-div">
+                <h3 class="link-text">&#9654 Insert Custom Teams</h3>
+            </div>
+        </a>
+
+        <a class="nav-link text-dark link-custom" asp-area="" asp-page="/CustomData/AddPlayerForm">
+            <div class="link-div">
+                <h3 class="link-text">&#9654 Insert Custom Season Stats for a Player</h3>
+            </div>
+        </a>
+
+        <a class="nav-link text-dark link-custom" asp-area="" asp-page="/CustomData/AddTeamSeasonForm">
+            <div class="link-div">
+                <h3 class="link-text">&#9654 Insert Custom Season Stats for a Team</h3>
+            </div>
+        </a>
+
+        <a class="nav-link text-dark link-custom" asp-area="" asp-page="/CustomData/AddGameForm">
+            <div class="link-div">
+                <h3 class="link-text">&#9654 Insert a Custom Season Game</h3>
+            </div>
+        </a>
+    </div>
+</body>
