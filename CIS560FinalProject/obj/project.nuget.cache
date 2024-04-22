@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "T0cGY5/yQK+fcCOdunodK/b0hFwVN120oZTimqfFIX4oE3aW47cg31XJdO2BcJ8Xx5aqjrS1UqxkGJ+nuZxVQw==",
+  "dgSpecHash": "HOvrKOBYCSgIqWSr2/SayiB8Jh/kga3T76CuXMEej4/v67ZRqxqZQbsbF7ae7CA3+KZtDPQATJMiuB3Jm8OuZw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\dawso\\source\\repos\\CIS560-Team3-push-to-main\\CIS560FinalProject\\CIS560FinalProject.csproj",
+  "projectFilePath": "C:\\Users\\dawso\\Source\\Repos\\NBA-Statistics-Site\\CIS560FinalProject\\CIS560FinalProject.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\dawso\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\dawso\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
