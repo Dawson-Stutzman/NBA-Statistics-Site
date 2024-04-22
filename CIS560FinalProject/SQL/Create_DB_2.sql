@@ -24,10 +24,8 @@ BEGIN
 		TeamID INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
 		[Name] NVARCHAR(32) NOT NULL,
 		ConferenceName NVARCHAR(32) NOT NULL,
-
 		UNIQUE([Name])
 	);
-END
 
 INSERT INTO [Statistics].Team ([Name], ConferenceName) VALUES ('Atlanta Hawks', 'Eastern');
 INSERT INTO [Statistics].Team ([Name], ConferenceName) VALUES ('Boston Celtics', 'Eastern');
@@ -59,25 +57,193 @@ INSERT INTO [Statistics].Team ([Name], ConferenceName) VALUES ('San Antonio Spur
 INSERT INTO [Statistics].Team ([Name], ConferenceName) VALUES ('Toronto Raptors', 'Eastern');
 INSERT INTO [Statistics].Team ([Name], ConferenceName) VALUES ('Utah Jazz', 'Western');
 INSERT INTO [Statistics].Team ([Name], ConferenceName) VALUES ('Washington Wizards', 'Western');
-
-
-/*
-IF OBJECT_ID(N'TeamSeason') IS NULL
-BEGIN 
-	CREATE TABLE NBA.TeamSeason
-	(
-		TeamSeasonID INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
-		TeamID INT NOT NULL,
-		CoachName NVARCHAR(32)NOT NULL,
-		[Year] INT NOT NULL,
-		TeamSeed INT NOT NULL,
-
-		UNIQUE(TeamID, [Year])
-	);
 END
 
 
 
+
+
+IF OBJECT_ID(N'Statistics.TeamSeason') IS NULL
+BEGIN 
+	CREATE TABLE [Statistics].TeamSeason
+	(
+		TeamSeasonID INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
+		TeamID INT NOT NULL FOREIGN KEY REFERENCES [Statistics].Team (TeamID),
+		[Year] NVARCHAR(16) NOT NULL,
+		Verified INT NOT NULL DEFAULT 0
+
+
+		UNIQUE(TeamID, [Year])
+	);
+
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Atlanta Hawks' = T.[Name]), N'2022-23', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Atlanta Hawks' = T.[Name]), N'2021-22', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Atlanta Hawks' = T.[Name]), N'2020-21', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Atlanta Hawks' = T.[Name]), N'2016-17', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Atlanta Hawks' = T.[Name]), N'2015-16', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Atlanta Hawks' = T.[Name]), N'2014-15', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Atlanta Hawks' = T.[Name]), N'2013-14', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Boston Celtics' = T.[Name]), N'2022-23', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Boston Celtics' = T.[Name]), N'2021-22', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Boston Celtics' = T.[Name]), N'2020-21', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Boston Celtics' = T.[Name]), N'2019-20', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Boston Celtics' = T.[Name]), N'2018-19', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Boston Celtics' = T.[Name]), N'2017-18', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Boston Celtics' = T.[Name]), N'2016-17', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Boston Celtics' = T.[Name]), N'2015-16', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Boston Celtics' = T.[Name]), N'2014-15', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Brooklyn Nets' = T.[Name]), N'2022-23', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Brooklyn Nets' = T.[Name]), N'2021-22', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Brooklyn Nets' = T.[Name]), N'2020-21', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Brooklyn Nets' = T.[Name]), N'2019-20', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Brooklyn Nets' = T.[Name]), N'2018-19', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Brooklyn Nets' = T.[Name]), N'2014-15', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Brooklyn Nets' = T.[Name]), N'2013-14', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Charlotte Hornets' = T.[Name]), N'2015-16', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Charlotte Hornets' = T.[Name]), N'2013-14', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Chicago Bulls' = T.[Name]), N'2021-22', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Chicago Bulls' = T.[Name]), N'2016-17', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Chicago Bulls' = T.[Name]), N'2014-15', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Chicago Bulls' = T.[Name]), N'2013-14', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Cleveland Cavaliers' = T.[Name]), N'2022-23', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Cleveland Cavaliers' = T.[Name]), N'2017-18', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Cleveland Cavaliers' = T.[Name]), N'2016-17', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Cleveland Cavaliers' = T.[Name]), N'2015-16', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Cleveland Cavaliers' = T.[Name]), N'2014-15', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Dallas Mavericks' = T.[Name]), N'2021-22', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Dallas Mavericks' = T.[Name]), N'2020-21', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Dallas Mavericks' = T.[Name]), N'2019-20', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Dallas Mavericks' = T.[Name]), N'2015-16', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Dallas Mavericks' = T.[Name]), N'2014-15', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Dallas Mavericks' = T.[Name]), N'2013-14', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Denver Nuggets' = T.[Name]), N'2022-23', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Denver Nuggets' = T.[Name]), N'2021-22', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Denver Nuggets' = T.[Name]), N'2020-21', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Denver Nuggets' = T.[Name]), N'2019-20', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Denver Nuggets' = T.[Name]), N'2018-19', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Detroit Pistons' = T.[Name]), N'2018-19', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Detroit Pistons' = T.[Name]), N'2015-16', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Golden State Warriors' = T.[Name]), N'2022-23', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Golden State Warriors' = T.[Name]), N'2021-22', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Golden State Warriors' = T.[Name]), N'2018-19', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Golden State Warriors' = T.[Name]), N'2017-18', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Golden State Warriors' = T.[Name]), N'2016-17', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Golden State Warriors' = T.[Name]), N'2015-16', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Golden State Warriors' = T.[Name]), N'2014-15', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Golden State Warriors' = T.[Name]), N'2013-14', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Houston Rockets' = T.[Name]), N'2019-20', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Houston Rockets' = T.[Name]), N'2018-19', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Houston Rockets' = T.[Name]), N'2017-18', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Houston Rockets' = T.[Name]), N'2016-17', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Houston Rockets' = T.[Name]), N'2015-16', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Houston Rockets' = T.[Name]), N'2014-15', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Houston Rockets' = T.[Name]), N'2013-14', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Indiana Pacers' = T.[Name]), N'2019-20', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Indiana Pacers' = T.[Name]), N'2018-19', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Indiana Pacers' = T.[Name]), N'2017-18', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Indiana Pacers' = T.[Name]), N'2016-17', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Indiana Pacers' = T.[Name]), N'2015-16', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Indiana Pacers' = T.[Name]), N'2013-14', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Los Angeles Clippers' = T.[Name]), N'2022-23', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Los Angeles Clippers' = T.[Name]), N'2020-21', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Los Angeles Clippers' = T.[Name]), N'2019-20', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Los Angeles Clippers' = T.[Name]), N'2018-19', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Los Angeles Clippers' = T.[Name]), N'2016-17', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Los Angeles Clippers' = T.[Name]), N'2015-16', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Los Angeles Clippers' = T.[Name]), N'2014-15', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Los Angeles Clippers' = T.[Name]), N'2013-14', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Los Angeles Lakers' = T.[Name]), N'2022-23', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Los Angeles Lakers' = T.[Name]), N'2020-21', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Los Angeles Lakers' = T.[Name]), N'2019-20', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Memphis Grizzlies' = T.[Name]), N'2022-23', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Memphis Grizzlies' = T.[Name]), N'2021-22', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Memphis Grizzlies' = T.[Name]), N'2020-21', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Memphis Grizzlies' = T.[Name]), N'2016-17', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Memphis Grizzlies' = T.[Name]), N'2015-16', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Memphis Grizzlies' = T.[Name]), N'2014-15', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Memphis Grizzlies' = T.[Name]), N'2013-14', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Miami Heat' = T.[Name]), N'2022-23', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Miami Heat' = T.[Name]), N'2021-22', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Miami Heat' = T.[Name]), N'2020-21', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Miami Heat' = T.[Name]), N'2019-20', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Miami Heat' = T.[Name]), N'2017-18', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Miami Heat' = T.[Name]), N'2015-16', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Miami Heat' = T.[Name]), N'2013-14', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Milwaukee Bucks' = T.[Name]), N'2022-23', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Milwaukee Bucks' = T.[Name]), N'2021-22', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Milwaukee Bucks' = T.[Name]), N'2020-21', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Milwaukee Bucks' = T.[Name]), N'2019-20', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Milwaukee Bucks' = T.[Name]), N'2018-19', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Milwaukee Bucks' = T.[Name]), N'2017-18', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Milwaukee Bucks' = T.[Name]), N'2016-17', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Milwaukee Bucks' = T.[Name]), N'2014-15', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Minnesota Timberwolves' = T.[Name]), N'2022-23', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Minnesota Timberwolves' = T.[Name]), N'2021-22', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Minnesota Timberwolves' = T.[Name]), N'2017-18', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'New Orleans Pelicans' = T.[Name]), N'2021-22', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'New Orleans Pelicans' = T.[Name]), N'2017-18', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'New Orleans Pelicans' = T.[Name]), N'2014-15', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'New York Knicks' = T.[Name]), N'2022-23', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'New York Knicks' = T.[Name]), N'2020-21', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Oklahoma City Thunder' = T.[Name]), N'2019-20', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Oklahoma City Thunder' = T.[Name]), N'2018-19', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Oklahoma City Thunder' = T.[Name]), N'2017-18', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Oklahoma City Thunder' = T.[Name]), N'2016-17', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Oklahoma City Thunder' = T.[Name]), N'2015-16', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Oklahoma City Thunder' = T.[Name]), N'2014-15', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Oklahoma City Thunder' = T.[Name]), N'2013-14', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Orlando Magic' = T.[Name]), N'2019-20', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Orlando Magic' = T.[Name]), N'2018-19', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Philadelphia 76Ers' = T.[Name]), N'2022-23', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Philadelphia 76Ers' = T.[Name]), N'2021-22', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Philadelphia 76Ers' = T.[Name]), N'2020-21', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Philadelphia 76Ers' = T.[Name]), N'2019-20', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Philadelphia 76Ers' = T.[Name]), N'2018-19', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Philadelphia 76Ers' = T.[Name]), N'2017-18', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Phoenix Suns' = T.[Name]), N'2022-23', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Phoenix Suns' = T.[Name]), N'2021-22', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Phoenix Suns' = T.[Name]), N'2020-21', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Portland Trail Blazers' = T.[Name]), N'2020-21', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Portland Trail Blazers' = T.[Name]), N'2019-20', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Portland Trail Blazers' = T.[Name]), N'2018-19', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Portland Trail Blazers' = T.[Name]), N'2017-18', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Portland Trail Blazers' = T.[Name]), N'2016-17', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Portland Trail Blazers' = T.[Name]), N'2015-16', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Portland Trail Blazers' = T.[Name]), N'2014-15', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Portland Trail Blazers' = T.[Name]), N'2013-14', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Sacramento Kings' = T.[Name]), N'2022-23', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'San Antonio Spurs' = T.[Name]), N'2018-19', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'San Antonio Spurs' = T.[Name]), N'2017-18', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'San Antonio Spurs' = T.[Name]), N'2016-17', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'San Antonio Spurs' = T.[Name]), N'2015-16', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'San Antonio Spurs' = T.[Name]), N'2014-15', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'San Antonio Spurs' = T.[Name]), N'2013-14', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Toronto Raptors' = T.[Name]), N'2021-22', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Toronto Raptors' = T.[Name]), N'2019-20', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Toronto Raptors' = T.[Name]), N'2018-19', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Toronto Raptors' = T.[Name]), N'2017-18', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Toronto Raptors' = T.[Name]), N'2016-17', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Toronto Raptors' = T.[Name]), N'2015-16', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Toronto Raptors' = T.[Name]), N'2014-15', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Toronto Raptors' = T.[Name]), N'2013-14', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Utah Jazz' = T.[Name]), N'2021-22', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Utah Jazz' = T.[Name]), N'2020-21', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Utah Jazz' = T.[Name]), N'2019-20', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Utah Jazz' = T.[Name]), N'2018-19', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Utah Jazz' = T.[Name]), N'2017-18', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Utah Jazz' = T.[Name]), N'2016-17', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Washington Wizards' = T.[Name]), N'2020-21', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Washington Wizards' = T.[Name]), N'2017-18', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Washington Wizards' = T.[Name]), N'2016-17', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Washington Wizards' = T.[Name]), N'2014-15', 1);
+INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Washington Wizards' = T.[Name]), N'2013-14', 1);
+
+
+END
+
+SELECT *
+FROM [Statistics].TeamSeason
+/*
 IF OBJECT_ID(N'PlayerSeason')IS NULL
 BEGIN
 	CREATE TABLE NBA.PlayerSeason
