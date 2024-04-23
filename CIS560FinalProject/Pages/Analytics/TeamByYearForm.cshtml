@@ -1,7 +1,7 @@
 ﻿@page
 @model TeamByYearFormModel
 @{
-    ViewData["Title"] = "Team Stats by Year";
+    ViewData["Title"] = "Team Stats By Time";
 }
 <div class="custom-horizontal-align">
     <div class="vertical-align">
@@ -13,12 +13,20 @@
                 <input class="checkbox" type="checkbox" id="allTeams" name="allTeams" @(Model.allTeams)><br /><br />
                 <label for="allTeams">Compare All Teams</label><br />
             </div>
+            <!--
             <div>
                 <label for="conferences">Conference:</label><br />
-                <input class="checkbox" type="checkbox" id="eastConf" name="eastConf" @(Model.eastConf)>
+                <input class="checkbox" type="checkbox" id="eastConf" name="eastConf" at(Model.eastConf)>
                 <label for="eastConf">East</label>
-                <input class="checkbox" type="checkbox" id="westConf" name="westConf" @(Model.westConf)>
+                <input class="checkbox" type="checkbox" id="westConf" name="westConf" at(Model.westConf)>
                 <label for="eastConf">West</label>
+            </div><br />
+            -->
+            <div class="horizontal-align">
+                <label for="startDate">From&ensp;</label>
+                <input type="number" step="1" placeholder="2019" id="startDate" name="startDate">
+                <label for="endDate">&ensp;to&ensp;</label>
+                <input type="number" step="1" placeholder="2024" id="endDate" name="endDate">
             </div><br />
 
             <label for="colleges">Metric to rank teams by:</label>
@@ -41,7 +49,7 @@
             <input class="submit" type="submit" value="Submit">
         </form>
     </div>
-    <br />
+    <br /><br />
     <div class="flex-row horizontal-align left-border">
         <div class="vertical-align">
             <table class="table">
@@ -50,19 +58,27 @@
                         <th>TeamID</th>
                         <th>Team Name</th>
                         <th>Team Conference</th>
+                        <th>Wins</th>
+                        <th>Losses</th>
+                        <th>Points</th>
+                        <th>Assists</th>
+                        <th>Rebounds</th>
+                        <th>Blocks</th>
+                        <th>Steals</th>
+                        <th>Turnovers</th>
                         <th>Verified</th>
                     </tr>
                 </thead>
                 <tbody>
             @foreach (var row in Model.TeamList)
             {
-                        @if (row.Verified == 1)
+                        @if (row.Verified > 0)
                         {
                             <tr class="verified-row">
                                 <td>@row.TeamID</td>
                                 <td>@row.Name</td>
                                 <td>@row.ConferenceName</td>
-                                <td>@((row.Verified == 1))</td>
+                                <td>@((row.Verified > 0))</td>
                             </tr>
                         }
                         @if (row.Verified == 0)
@@ -71,7 +87,7 @@
                                 <td>@row.TeamID</td>
                                 <td>@row.Name</td>
                                 <td>@row.ConferenceName</td>
-                                <td>@((row.Verified == 1))</td>
+                                <td>@((row.Verified > 0))</td>
                             </tr>
                         }
 

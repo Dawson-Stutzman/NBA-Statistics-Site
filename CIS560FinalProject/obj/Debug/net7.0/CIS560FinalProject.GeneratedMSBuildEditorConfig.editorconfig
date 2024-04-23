@@ -18,12 +18,12 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\dawso\source\repos\NBA-Statistics-Site\CIS560FinalProject
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/dawso/source/repos/NBA-Statistics-Site/CIS560FinalProject/Pages/Analytics/HomeAwayForm.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQW5hbHl0aWNzXEhvbWVBd2F5Rm9ybS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/dawso/source/repos/NBA-Statistics-Site/CIS560FinalProject/Pages/Analytics/MetricsByCollegeForm.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQW5hbHl0aWNzXE1ldHJpY3NCeUNvbGxlZ2VGb3JtLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/dawso/source/repos/NBA-Statistics-Site/CIS560FinalProject/Pages/Analytics/PlayerByAttributeForm.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQW5hbHl0aWNzXFBsYXllckJ5QXR0cmlidXRlRm9ybS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/dawso/source/repos/NBA-Statistics-Site/CIS560FinalProject/Pages/Analytics/PlayerComparisonForm.cshtml]

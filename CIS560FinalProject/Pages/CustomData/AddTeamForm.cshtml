@@ -1,7 +1,7 @@
 ﻿@page
 @model AddTeamFormModel
 @{
-    ViewData["Title"] = "Add New Team for Comparison";
+    ViewData["Title"] = "Add New Team";
 }
 <div class="custom-horizontal-align">
     <div class="vertical-align">
@@ -12,6 +12,7 @@
                     <tr>
                         <th>Team Name</th>
                         <th>Team Conference</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -24,13 +25,14 @@
                             <div class="horizontal-align">
                                 <input type="radio" name="conference" value="Eastern" /><label for="conference">&ensp;Eastern&ensp;</label><br />
                                 <input type="radio" name="conference" value="Western" /><label for="conference">&ensp;Western&ensp;</label><br />
-                                <input type="radio" name="conference" value="Test" /><label for="conference">&ensp;Western&ensp;</label><br />
                             </div>
+                        </td>
+                        <td>
+                            <input class="submit add-button" type="submit" value="Add Team">
                         </td>
                     </tr>
                 </tbody>
             </table>
-            <input class="submit" type="submit" value="Submit">
         </form>
     </div>
 </div>

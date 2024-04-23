@@ -8,18 +8,17 @@ namespace CIS560FinalProject.Pages.Analytics
     public class TeamByYearFormModel : PageModel
     {
         public List<TeamInfo> TeamList = new();
-        public string eastConf;
-        public string westConf;
+        //public string eastConf;
+        //public string westConf;
         public string allTeams;
         public void OnGet()
         {
             int whereCount = 0;
             string selectString = "SELECT * FROM NBA.[Statistics].[Team] T";
             string teamInput = HttpContext.Request.Query["teams"].ToString();
-            eastConf = (HttpContext.Request.Query["eastConf"].ToString() == "on") ? "checked" : "unchecked";
-            westConf = (HttpContext.Request.Query["westConf"].ToString() == "on") ? "checked" : "unchecked";
+            //eastConf = (HttpContext.Request.Query["eastConf"].ToString() == "on") ? "checked" : "unchecked";
+            //westConf = (HttpContext.Request.Query["westConf"].ToString() == "on") ? "checked" : "unchecked";
             allTeams = (HttpContext.Request.Query["allTeams"].ToString() == "on") ? "checked" : "unchecked";
-            Console.WriteLine(eastConf);
             if (HttpContext.Request.Query["allTeams"].Count == 1 || teamInput.Length == 0)
             {
 
@@ -37,7 +36,7 @@ namespace CIS560FinalProject.Pages.Analytics
                 whereCount += 1;
             }
             string conf = HttpContext.Request.Query["eastConf"].ToString();
-            if ((eastConf == "checked" && westConf == "checked") || (eastConf != "checked" && westConf != "checked")) { }
+            /*if ((eastConf == "checked" && westConf == "checked") || (eastConf != "checked" && westConf != "checked")) { }
             else if (eastConf == "checked")
             {
                 if (whereCount > 0) selectString += " AND T.ConferenceName = N'Eastern'";
@@ -49,7 +48,7 @@ namespace CIS560FinalProject.Pages.Analytics
                 if (whereCount > 0) selectString += " AND T.ConferenceName = N'Western'";
                 else selectString += " WHERE T.ConferenceName = N'Western'";
                 whereCount += 1;
-            }
+            }*/
             SqlConnection connection = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=NBA;Integrated Security=True");
 
             connection.Open();

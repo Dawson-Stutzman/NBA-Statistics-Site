@@ -7,15 +7,15 @@
 <form>
     <label for="players">Players to be compared via a comma seperated list:</label>
     <div class="horizontal-align">
-        <input type="text" id="players" name="players" multiple>
-        <input class="checkbox" type="checkbox" checked="" id="allPlayers" name="allPlayers"><br /><br />
+        <input type="text" id="players" name="players" placeholder="Shaquille Oneal, Kobe Bryant" multiple>
+        <input class="checkbox" type="checkbox" id="allPlayers" name="allPlayers"><br /><br />
         <label for="allPlayers">Compare All Players</label><br />
     </div>
     <div class="horizontal-align">
         <label for="startDate">From&ensp;</label>
-        <input type="number" step="1" placeholder="2012" id="startDate" name="startDate">
+        <input type="number" step="1" placeholder="2019" id="startDate" name="startDate">
         <label for="endDate">&ensp;to&ensp;</label>
-        <input type="number" step="1" placeholder="2022" id="endDate" name="endDate">
+        <input type="number" step="1" placeholder="2024" id="endDate" name="endDate">
     </div>
     <div class="horizontal-align">
         <input class="checkbox" type="checkbox" id="desc" name="descending" , checked="checked">
@@ -33,3 +33,44 @@
     </div>
     <input class="submit" type="submit" value="Submit">
 </form>
+<br />
+<br />
+<div class="flex-row horizontal-align left-border">
+    <div class="vertical-align">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Wins</th>
+                    <th>Losses</th>
+                    <th>Points</th>
+                    <th>Assists</th>
+                    <th>Rebounds</th>
+                    <th>Blocks</th>
+                    <th>Steals</th>
+                    <th>Turnovers</th>
+                    <th>Verified</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var row in Model.Dummy)
+                {
+                <tr class="verified-row">
+                        <td>@row</td>
+                        <td>@row</td>
+                        <td>@row</td>
+                        <td>@row</td>
+                        <td>@row</td>
+                        <td>@row</td>
+                        <td>@row</td>
+                        <td>@row</td>
+                        <td>@row</td>
+                        <td>@row</td>
+                        <td>@row</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

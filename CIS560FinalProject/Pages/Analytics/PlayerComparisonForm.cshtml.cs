@@ -5,8 +5,10 @@ using System.Runtime.InteropServices;
 
 namespace CIS560FinalProject.Pages.Analytics
 {
+
     public class PlayerComparisonFormModel : PageModel
     {
+        public List<string> Dummy;
         public void OnGet()
         {
             SqlConnection connection = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=NBA;Integrated Security=True");
@@ -15,7 +17,11 @@ namespace CIS560FinalProject.Pages.Analytics
             connection.Open();
             SqlCommand comm = new SqlCommand("SELECT * FROM NBA.[Statistics].[Team]", connection);
             SqlDataReader reader = comm.ExecuteReader();
+            Dummy = new();
+            Dummy.Add("Dummy1");
+            Dummy.Add("Dummy2");
 
+            /*
             while (reader.Read())
             {
                 TeamInfo team = new TeamInfo();
@@ -25,19 +31,8 @@ namespace CIS560FinalProject.Pages.Analytics
                 Console.WriteLine(team.Name.ToString());
             }
             connection.Close();
+            */
 
-            if (HttpContext.Request.Query["allPlayers"].Count == 1 || HttpContext.Request.Query["players"].ToString().Length == 0)
-            {
-                Console.WriteLine("All Selected: " + HttpContext.Request.Query["allPlayers"].Count.ToString());
-                Console.WriteLine("Players: " + HttpContext.Request.Query["players"].Count.ToString());
-            }
-            else
-            {
-                selectString += " WHERE P.Name EXISTS (VALUES " + HttpContext.Request.Query["players"].ToString() + ")";
-                Console.WriteLine(selectString);
-                Console.WriteLine("All Selected: " + HttpContext.Request.Query["allPlayers"].Count.ToString());
-                Console.WriteLine("Players: " + HttpContext.Request.Query["players"].ToString());
-            }
         }
 
         public class TeamInfo
