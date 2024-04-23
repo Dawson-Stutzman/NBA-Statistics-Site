@@ -62,8 +62,8 @@
               "Title": "Create_DB_2.sql ",
               "DocumentMoniker": "C:\\Users\\dawso\\source\\repos\\NBA-Statistics-Site\\CIS560FinalProject\\SQL\\Create_DB_2.sql",
               "RelativeDocumentMoniker": "CIS560FinalProject\\SQL\\Create_DB_2.sql",
-              "ToolTip": "C:\\Users\\dawso\\source\\repos\\NBA-Statistics-Site\\CIS560FinalProject\\SQL\\Create_DB_2.sql*",
-              "RelativeToolTip": "CIS560FinalProject\\SQL\\Create_DB_2.sql*",
+              "ToolTip": "C:\\Users\\dawso\\source\\repos\\NBA-Statistics-Site\\CIS560FinalProject\\SQL\\Create_DB_2.sql",
+              "RelativeToolTip": "CIS560FinalProject\\SQL\\Create_DB_2.sql",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
               "WhenOpened": "2024-04-23T21:44:31.327Z",
               "EditorCaption": ""
@@ -77,8 +77,7 @@
               "ToolTip": "C:\\Users\\dawso\\source\\repos\\NBA-Statistics-Site\\CIS560FinalProject\\SQL\\CreateSchema\\CreateSchema.sql",
               "RelativeToolTip": "CIS560FinalProject\\SQL\\CreateSchema\\CreateSchema.sql",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2024-04-23T21:43:25.668Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-23T21:43:25.668Z"
             },
             {
               "$type": "Document",
@@ -90,8 +89,7 @@
               "RelativeToolTip": "CIS560FinalProject\\Pages\\AdminTools.cshtml",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-04-23T21:42:07.478Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-23T21:42:07.478Z"
             },
             {
               "$type": "Document",
@@ -103,8 +101,7 @@
               "RelativeToolTip": "CIS560FinalProject\\Pages\\CustomData\\AddTeamForm.cshtml",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAXAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-04-23T03:57:58.634Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-23T03:57:58.634Z"
             },
             {
               "$type": "Document",
@@ -116,8 +113,7 @@
               "RelativeToolTip": "CIS560FinalProject\\Pages\\Analytics\\MetricsByCollegeForm.cshtml",
               "ViewState": "AQIAADAAAAAAAAAAAAAAADMAAAAlAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-04-23T03:56:59.951Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-23T03:56:59.951Z"
             },
             {
               "$type": "Document",
@@ -129,8 +125,7 @@
               "RelativeToolTip": "CIS560FinalProject\\Pages\\Analytics\\PlayerComparisonForm.cshtml",
               "ViewState": "AQIAADYAAAAAAAAAAAAmwD4AAAAlAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-04-23T03:42:25.511Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-23T03:42:25.511Z"
             },
             {
               "$type": "Document",
@@ -142,8 +137,7 @@
               "RelativeToolTip": "CIS560FinalProject\\Pages\\Analytics\\PlayerByAttributeForm.cshtml.cs",
               "ViewState": "AQIAAAMAAAAAAAAAAAAuwBAAAABPAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-23T03:36:20.057Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-23T03:36:20.057Z"
             },
             {
               "$type": "Document",
@@ -155,8 +149,7 @@
               "RelativeToolTip": "CIS560FinalProject\\Pages\\Analytics\\PlayerByAttributeForm.cshtml",
               "ViewState": "AQIAACkAAAAAAAAAAAAmwDYAAAAlAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-04-23T03:30:39.135Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-23T03:30:39.135Z"
             }
           ]
         }
