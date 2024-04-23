@@ -1,9 +1,11 @@
+DROP DATABASE NBA_Statistics
+
 IF DB_ID('NBA_Statistics') IS NULL
 BEGIN
     CREATE DATABASE NBA_Statistics;
 END
 
-USE NBA
+USE NBA_Statistics
 
 IF NOT EXISTS
    (
@@ -14,7 +16,6 @@ IF NOT EXISTS
 BEGIN
    EXEC(N'CREATE SCHEMA [Statistics] AUTHORIZATION [dbo]');
 END;
-
 
 
 IF OBJECT_ID(N'[Statistics].Team') IS NULL

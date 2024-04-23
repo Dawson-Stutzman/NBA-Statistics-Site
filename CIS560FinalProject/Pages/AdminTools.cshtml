@@ -1,0 +1,36 @@
+﻿@page
+@model AdminToolsModel
+@{
+    ViewData["Title"] = "Comparison Tools";
+}
+<h1>@ViewData["Title"]</h1>
+<br />
+<body>
+    <div class="vertical-align">
+
+        <a class="nav-link text-dark link-custom" asp-area="" asp-page="/Analytics/PlayerByAttributeForm">
+            <div class="link-div">
+                <h3 class="link-text">&#9654 Compare Player Statistics by Physical Attributes</h3>
+            </div>
+        </a>
+
+        <a class="nav-link text-dark link-custom" asp-area="" asp-page="/Analytics/PlayerComparisonForm">
+            <div class="link-div">
+                <h3 class="link-text">&#9654 Compare Player Stats Over Time Frame</h3>
+            </div>
+        </a>
+
+        <a class="nav-link text-dark link-custom" asp-area="" asp-page="/Analytics/TeamByYearForm">
+            <div class="link-div">
+                <h3 class="link-text">&#9654 Compare Team Stats Over Time Frame</h3>
+            </div>
+        </a>
+
+        <a class="nav-link text-dark link-custom" asp-area="" asp-page="/Analytics/MetricsByCollegeForm">
+            <div class="link-div">
+                <h3 class="link-text">&#9654 Compare Stats By College </h3>
+            </div>
+        </a>
+
+    </div>
+</body>

@@ -18,6 +18,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\dawso\source\repos\NBA-Statistics-Site\CIS560FinalProject
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/dawso/source/repos/NBA-Statistics-Site/CIS560FinalProject/Pages/AdminTools.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5Ub29scy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/dawso/source/repos/NBA-Statistics-Site/CIS560FinalProject/Pages/Analytics/MetricsByCollegeForm.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQW5hbHl0aWNzXE1ldHJpY3NCeUNvbGxlZ2VGb3JtLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
