@@ -24,7 +24,7 @@ namespace CIS560FinalProject.Pages.Analytics
             string rankMetric = HttpContext.Request.Query["metric"].ToString();
 
 
-            string selectString = "SELECT TS.TeamSeasonID,\r\nT.TeamName\r\nFROM [Statistics].TeamSeason TS\r\n\tINNER JOIN [Statistics].Team T ON T.TeamID = TS.TeamID\r\nGROUP BY TeamName\r\nORDER BY TeamSeasonID ASC\r\n"
+            string selectString = "SELECT TS.TeamSeasonID,\r\nT.TeamName\r\nFROM [Statistics].TeamSeason TS\r\n\tINNER JOIN [Statistics].Team T ON T.TeamID = TS.TeamID\r\nGROUP BY TeamName\r\nORDER BY TeamSeasonID ASC\r\n";
 
 
             SqlConnection connection = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=NBA;Integrated Security=True");
