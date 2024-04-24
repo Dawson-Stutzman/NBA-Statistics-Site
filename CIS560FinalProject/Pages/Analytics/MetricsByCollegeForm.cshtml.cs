@@ -58,7 +58,7 @@ namespace CIS560FinalProject.Pages.Analytics
             }
             filterString += String.Format("GROUP BY P.SCHOOL ORDER BY [{0}] {1}", rankMetric, (Descending == "checked") ? "DESC" : "ASC");
             
-            SqlConnection connection = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=NBA_Statistics;Integrated Security=True");
+            SqlConnection connection = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=NBA;Integrated Security=True");
             string selectString = String.Format("SELECT P.School AS School, " + 
                                                 "SUM(PS.Points) AS Points, " + 
                                                 "SUM(PS.Assists) AS Assists, " + 

@@ -51,7 +51,7 @@ namespace CIS560FinalProject.Pages.Analytics
                 whereCount += 1;
             }*/
 
-            SqlConnection connection = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=NBA_Statistics;Integrated Security=True");
+            SqlConnection connection = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=NBA;Integrated Security=True");
             connection.Open();
             SqlCommand comm = new SqlCommand(selectString, connection);
             SqlDataReader reader = comm.ExecuteReader();

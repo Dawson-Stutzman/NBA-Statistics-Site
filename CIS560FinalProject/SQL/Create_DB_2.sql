@@ -1,40 +1,22 @@
 
-DROP TABLE [Statistics].Team
-DROP TABLE [Statistics].TeamSeason
-DROP TABLE [Statistics].Player
-DROP TABLE [Statistics].PlayerSeason
-DROP TABLE [Statistics]
-DROP DATABASE NBA_Statistics
+--DROP TABLE [Statistics].Team
+--DROP TABLE [Statistics].Player
+--DROP TABLE [Statistics].PlayerSeason
+--DROP TABLE [Statistics].TeamSeason
+--DROP TABLE [Statistics]
+--DROP DATABASE NBA
 
 
 
---ALTER TABLE NBA_Statistics.[Statistics].PlayerSeason
---ADD Verified INT NOT NULL DEFAULT 0
---UPDATE NBA_Statistics.[Statistics].PlayerSeason
---SET Verified=0
-
---ALTER TABLE NBA_Statistics.[Statistics].Player
---ADD Verified INT NOT NULL DEFAULT 0
---UPDATE NBA_Statistics.[Statistics].Player
---SET Verified=0
-
---ALTER TABLE NBA_Statistics.[Statistics].TeamSeason
---ADD Verified INT NOT NULL DEFAULT 0
---UPDATE NBA_Statistics.[Statistics].TeamSeason
---SET Verified=0
-
---ALTER TABLE NBA_Statistics.[Statistics].Team
---ADD Verified INT NOT NULL DEFAULT 0
---UPDATE NBA_Statistics.[Statistics].Team
---SET Verified=0
 
 
-IF DB_ID('NBA_Statistics') IS NULL
+
+IF DB_ID('NBA') IS NULL
 BEGIN
-    CREATE DATABASE NBA_Statistics;
+    CREATE DATABASE NBA;
 END
 
-USE NBA_Statistics
+USE NBA
 
 IF NOT EXISTS
    (
@@ -55,6 +37,7 @@ BEGIN
 		TeamID INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
 		[TeamName] NVARCHAR(32) NOT NULL,
 		ConferenceName NVARCHAR(32) NOT NULL,
+		[Verified] INT NOT NULL DEFAULT 1
 		UNIQUE([TeamName])
 	);
 
@@ -100,7 +83,7 @@ BEGIN
 		TeamSeasonID INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
 		TeamID INT NOT NULL FOREIGN KEY REFERENCES [Statistics].Team (TeamID),
 		[Year] NVARCHAR(16) NOT NULL,
-		Verified INT NOT NULL DEFAULT 0
+		Verified INT NOT NULL DEFAULT 1
 
 
 		UNIQUE(TeamID, [Year])
@@ -267,7 +250,8 @@ BEGIN
 	INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Washington Wizards' = T.[TeamName]), N'2016-17', 1);
 	INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Washington Wizards' = T.[TeamName]), N'2014-15', 1);
 	INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Washington Wizards' = T.[TeamName]), N'2013-14', 1);
-
+	UPDATE NBA.[Statistics].TeamSeason
+	SET Verified=0
 
 END
 
@@ -284,7 +268,7 @@ BEGIN
 		[Birthdate] NVARCHAR(32) NOT NULL,
 		[School] NVARCHAR(64) NOT NULL,
 		[Age] DECIMAL(3,1) NOT NULL,
-		[Verified] INT NOT NULL DEFAULT 0,
+		[Verified] INT NOT NULL DEFAULT 1,
 
 		UNIQUE([PlayerName])
 	);
@@ -1329,6 +1313,9 @@ BEGIN
 	INSERT [Statistics].Player ([PlayerName], [Position], [Height], [Weight], [Birthdate], [School], [Age], [Verified]) VALUES (N'Chris Singleton', N'F', N'6-9', N'228 lbs', N'NOV 21, 1989', N'Florida State', 24.0, 1);
 	INSERT [Statistics].Player ([PlayerName], [Position], [Height], [Weight], [Birthdate], [School], [Age], [Verified]) VALUES (N'Drew Gooden', N'F', N'6-10', N'250 lbs', N'SEP 24, 1981', N'Kansas', 32.0, 1);
 
+	UPDATE NBA.[Statistics].Player
+	SET [Verified]=0
+
 END
 
 
@@ -1354,7 +1341,7 @@ BEGIN
 		Steals DECIMAL(4,1) NOT NULL,
 		Turnovers DECIMAL(4,1) NOT NULL,
 		PlusMinus DECIMAL(4,1) NOT NULL,
-
+		[Verified] INT NOT NULL DEFAULT 1,
 		UNIQUE(PlayerID, TeamSeasonID)
 	);
 
@@ -4265,6 +4252,8 @@ BEGIN
 	INSERT [Statistics].PlayerSeason (PlayerID, TeamSeasonID, GamesPlayed, [Minutes], Points, FieldGoalMade, FieldGoalAttempts, ThreePointMade, ThreePointAttempts, Rebounds, Assists, Blocks, Steals, Turnovers, PlusMinus) VALUES ((SELECT P.PlayerID FROM [Statistics].Player P WHERE N'Otto Porter Jr.' = P.[PlayerName]), (SELECT TS.TeamSeasonID FROM [Statistics].TeamSeason TS INNER JOIN [Statistics].Team T ON T.TeamID = TS.TeamID WHERE TS.[Year] = N'2013-14' AND T.[TeamName] = N'Washington Wizards'), 3, 2.0, 0.7, 0.3, 1.0, 0.0, 0.3, 0.0, 0.0, 0.0, 0.0, 0.0, -2.3);
 	INSERT [Statistics].PlayerSeason (PlayerID, TeamSeasonID, GamesPlayed, [Minutes], Points, FieldGoalMade, FieldGoalAttempts, ThreePointMade, ThreePointAttempts, Rebounds, Assists, Blocks, Steals, Turnovers, PlusMinus) VALUES ((SELECT P.PlayerID FROM [Statistics].Player P WHERE N'Trevor Ariza' = P.[PlayerName]), (SELECT TS.TeamSeasonID FROM [Statistics].TeamSeason TS INNER JOIN [Statistics].Team T ON T.TeamID = TS.TeamID WHERE TS.[Year] = N'2013-14' AND T.[TeamName] = N'Washington Wizards'), 11, 37.0, 13.6, 4.7, 9.8, 2.3, 5.1, 8.9, 1.7, 0.4, 1.5, 1.3, 2.2);
 	INSERT [Statistics].PlayerSeason (PlayerID, TeamSeasonID, GamesPlayed, [Minutes], Points, FieldGoalMade, FieldGoalAttempts, ThreePointMade, ThreePointAttempts, Rebounds, Assists, Blocks, Steals, Turnovers, PlusMinus) VALUES ((SELECT P.PlayerID FROM [Statistics].Player P WHERE N'Trevor Booker' = P.[PlayerName]), (SELECT TS.TeamSeasonID FROM [Statistics].TeamSeason TS INNER JOIN [Statistics].Team T ON T.TeamID = TS.TeamID WHERE TS.[Year] = N'2013-14' AND T.[TeamName] = N'Washington Wizards'), 9, 16.2, 3.3, 1.4, 3.2, 0.0, 0.2, 4.3, 0.9, 1.0, 0.2, 0.3, -1.7);
+	UPDATE NBA.[Statistics].PlayerSeason
+	SET Verified=0
 
 END
 

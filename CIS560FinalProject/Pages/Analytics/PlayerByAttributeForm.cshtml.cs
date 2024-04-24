@@ -24,7 +24,7 @@ namespace CIS560FinalProject.Pages.Analytics
             CustomVals = (HttpContext.Request.Query["customVals"].ToString() == "on") ? "checked" : "unchecked";
             rankMetric = HttpContext.Request.Query["rank"].ToString();
             if (rankMetric == "Metric" || rankMetric == "") rankMetric = ChosenAttribute;
-            SqlConnection connection = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=NBA_Statistics;Integrated Security=True");
+            SqlConnection connection = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=NBA;Integrated Security=True");
                 connection.Open();
                 string selectString = String.Format("SELECT DISTINCT P.[{0}] AS [{0}], " +
                                         "CAST(AVG(PS.Points) AS DECIMAL(10,2)) AS Points, " +
@@ -35,7 +35,7 @@ namespace CIS560FinalProject.Pages.Analytics
                                         "CAST(AVG(PS.Turnovers) AS DECIMAL(10,2)) AS Turnovers, " +
                                         "CAST(AVG(PS.[Minutes]) AS DECIMAL(10,2)) AS [Minutes], " +
                                         "SUM(PS.Verified + P.Verified) AS Verified2 " +
-                                        "FROM NBA_Statistics.[Statistics].PlayerSeason PS " +
+                                        "FROM NBA.[Statistics].PlayerSeason PS " +
                                             "INNER JOIN [Statistics].Player P ON P.PlayerID = PS.PlayerID {1}" +
                                         "GROUP BY [{0}] " +
                                         "ORDER BY [{2}] {3}", ChosenAttribute, (CustomVals == "checked") ? "WHERE PS.Verified + P.Verified >= 0" : "WHERE PS.Verified + P.Verified = 0", rankMetric,  Descending == "checked" ? "DESC" : "ASC");

@@ -10,7 +10,7 @@ public class PlayerComparisonFormModel : PageModel
     {
         AllPlayers = (HttpContext.Request.Query["allPlayers"].ToString() == "on") ? "checked" : "unchecked";
         Descending = (HttpContext.Request.Query["descending"].ToString() == "on") ? "checked" : "unchecked";
-        SqlConnection connection = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=NBA_Statistics;Integrated Security=True");
+        SqlConnection connection = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=NBA;Integrated Security=True");
         string checkbox = (HttpContext.Request.Query["allPlayers"].ToString());
         connection.Open();
 
