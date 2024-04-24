@@ -2,75 +2,103 @@
 @model PlayerComparisonFormModel
 @{
     ViewData["Title"] = "Player Comparison";
-    }
+}
 <h1>@ViewData["Title"]</h1>
-<form>
-    <label for="players">Players to be compared via a comma seperated list:</label>
-    <div class="horizontal-align">
-        <input type="text" id="players" name="players" placeholder="Shaquille Oneal, Kobe Bryant" multiple>
-        <input class="checkbox" type="checkbox" id="allPlayers" name="allPlayers"><br /><br />
-        <label for="allPlayers">Compare All Players</label><br />
-    </div>
-    <div class="horizontal-align">
-        <label for="startDate">From&ensp;</label>
-        <input type="number" step="1" placeholder="2019" id="startDate" name="startDate">
-        <label for="endDate">&ensp;to&ensp;</label>
-        <input type="number" step="1" placeholder="2024" id="endDate" name="endDate">
-    </div>
-    <div class="horizontal-align">
-        <input class="checkbox" type="checkbox" id="desc" name="descending" , checked="checked">
+<body>
+    <div class="outer-container">
+    <form>
+        <label for="players">Players to be compared via a comma seperated list:</label>
+        <div class="horizontal-align">
+            <input type="text" id="players" name="players" placeholder="Shaquille Oneal, Kobe Bryant" multiple>
+            <input @Model.AllPlayers class="checkbox" type="checkbox" id="allPlayers" name="allPlayers"><br /><br />
+            <label for="allPlayers">Compare All Players</label><br />
+        </div>
+        <div class="horizontal-align">
+            <label for="startDate">From&ensp;</label>
+            <input type="number" step="1" placeholder="2019" id="startDate" name="startDate">
+            <label for="endDate">&ensp;to&ensp;</label>
+            <input type="number" step="1" placeholder="2024" id="endDate" name="endDate">
+        </div>
+        <div class="horizontal-align">
+            <input @Model.Descending class="checkbox" type="checkbox" id="desc" name="descending">
 
-        <label for="descending">Descending</label><br /><br />
+            <label for="descending">Descending</label><br /><br />
+        </div>
+        <label for="metric">Metric to rank players by:</label>
+        <div>
+            <input checked class="" type="radio" name="metric" value="points" /><label for="metric">&ensp;Points</label><br />
+            <input type="radio" name="metric" value="assists" /><label for="metric">&ensp;Assists</label><br />
+            <input type="radio" name="metric" value="rebounds" /><label for="metric">&ensp;Rebounds</label><br />
+            <input type="radio" name="metric" value="blocks" /><label for="metric">&ensp;Blocks</label><br />
+            <input type="radio" name="metric" value="steals" /><label for="metric">&ensp;Steals</label><br />
+            <input type="radio" name="metric" value="minutes" /><label for="metric">&ensp;Minutes</label><br />
+            <input type="radio" name="metric" value="turnovers" /><label for="metric">&ensp;Turnovers</label>
+        </div>
+        <input class="submit" type="submit" value="Submit">
+    </form>
+    <br />
+    <br />
+    <div class="flex-row horizontal-align left-border">
+        <div class="vertical-align">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Name</th>
+                        <th>Points</th>
+                        <th>Assists</th>
+                        <th>Rebounds</th>
+                        <th>Blocks</th>
+                        <th>Steals</th>
+                        <th>Minutes</th>
+                        <th>Turnovers</th>
+                        <th>Verified</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.Players != null)
+                    {
+                        foreach (var row in Model.Players)
+                        {
+                                @if (row.Verified > 0)
+                                {
+                            <tr class="non-verified-row">
+                                <td>@row.Rank</td>
+                                <td>@row.Name</td>
+                                <td>@row.Points</td>
+                                <td>@row.Assists</td>
+                                <td>@row.Rebounds</td>
+                                <td>@row.Blocks</td>
+                                <td>@row.Steals</td>
+                                <td>@row.Minutes</td>
+                                <td>@row.Turnovers</td>
+                                <td>@row.Verified</td>
+                            </tr>
+                            }
+
+                                @if (row.Verified == 0)
+                                {
+                                    <tr class="verified-row">
+                                        <td>@row.Rank</td>
+                                        <td>@row.Name</td>
+                                        <td>@row.Points</td>
+                                        <td>@row.Assists</td>
+                                        <td>@row.Rebounds</td>
+                                        <td>@row.Blocks</td>
+                                        <td>@row.Steals</td>
+                                        <td>@row.Minutes</td>
+                                        <td>@row.Turnovers</td>
+                                        <td>@row.Verified</td>
+                                    </tr>
+                                }
+                        }
+                    }
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
-    <label for="metric">Metric to rank players by:</label>
-    <div>
-        <input class="" type="radio" name="metric" value="points" /><label for="metric">&ensp;Points</label><br />
-        <input type="radio" name="metric" value="assists" /><label for="metric">&ensp;Assists</label><br />
-        <input type="radio" name="metric" value="rebounds" /><label for="metric">&ensp;Rebounds</label><br />
-        <input type="radio" name="metric" value="blocks" /><label for="metric">&ensp;Blocks</label><br />
-        <input type="radio" name="metric" value="minutes" /><label for="metric">&ensp;Steals</label><br />
-        <input type="radio" name="metric" value="steals" /><label for="metric">&ensp;Minutes</label><br />
-    </div>
-    <input class="submit" type="submit" value="Submit">
-</form>
-<br />
-<br />
-<div class="flex-row horizontal-align left-border">
-    <div class="vertical-align">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Wins</th>
-                    <th>Losses</th>
-                    <th>Points</th>
-                    <th>Assists</th>
-                    <th>Rebounds</th>
-                    <th>Blocks</th>
-                    <th>Steals</th>
-                    <th>Turnovers</th>
-                    <th>Verified</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var row in Model.Dummy)
-                {
-                <tr class="verified-row">
-                        <td>@row</td>
-                        <td>@row</td>
-                        <td>@row</td>
-                        <td>@row</td>
-                        <td>@row</td>
-                        <td>@row</td>
-                        <td>@row</td>
-                        <td>@row</td>
-                        <td>@row</td>
-                        <td>@row</td>
-                        <td>@row</td>
-                </tr>
-                }
-            </tbody>
-        </table>
-    </div>
-</div>
+</body>
