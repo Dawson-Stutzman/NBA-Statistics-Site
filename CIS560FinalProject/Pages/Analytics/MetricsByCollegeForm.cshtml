@@ -4,80 +4,86 @@
     ViewData["Title"] = "Metrics By College";
 }
 <h1>@ViewData["Title"]</h1>
-<form>
-    <label for="collegeList">College names to be compared via a comma seperated list:</label>
-    <div class="horizontal-align">
-    <input type="text" id="colleges" name="colleges" placeholder="UCLA, Kentucky, Duke" ><br /><br />
-        <input class="checkbox" type="checkbox" id="allColleges" name="allColleges" @Model.AllColleges>
-        <label for="allColleges">Compare All Colleges.</label><br /><br />
-    </div>
-    <label for="metric">Metric to rank players by:</label>
-    <div>
-        <input type="radio" name="metric" value="Assists" /><label for="metric">&ensp;Assists</label><br />
-        <input type="radio" name="metric" value="Rebounds" /><label for="metric">&ensp;Rebounds</label><br />
-        <input type="radio" name="metric" value="Blocks" /><label for="metric">&ensp;Blocks</label><br />
-        <input type="radio" name="metric" value="Steals" /><label for="metric">&ensp;Steals</label><br />
-        <input type="radio" name="metric" value="Turnovers" /><label for="metric">&ensp;Turnovers</label><br />
-        <input type="radio" name="metric" value="Minutes" /><label for="metric">&ensp;Minutes</label><br />
-    </div>
-    <div class="horizontal-align">
-    <input class="checkbox" type="checkbox" id="desc" name="descending" @Model.Descending>
-    <label for="descending" @Model.Descending>Descending</label><br /><br />
-    </div>
-    <div class="horizontal-align">
-        <input class="checkbox" type="checkbox" id="desc" name="customVals" @Model.UserValues>
-        <label for="customVals">Allow User-Entered Teams</label>
-    </div>
-    <input class="submit" type="submit" value="Submit">
-</form>
-<br />
-<br />
-<div class="flex-row horizontal-align left-border">
-    <div class="vertical-align">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>College Name</th>
-                    <th>Assists</th>
-                    <th>Rebounds</th>
-                    <th>Blocks</th>
-                    <th>Steals</th>
-                    <th>Turnovers</th>
-                    <th>Minutes</th>
-                    <th>Verified</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var row in Model.CollegeInfoList)
-                {
-                    @if (Model.UserValues == "")
-                    {
-                    <tr class="verified-row">
-                        <td>@row.CollegeName</td>
-                        <td>@row.Assists</td>
-                        <td>@row.Rebounds</td>
-                        <td>@row.Blocks</td>
-                        <td>@row.Steals</td>
-                        <td>@row.Turnovers</td>
-                        <td>@row.Minutes</td>
-                        <td>Yes</td>
+<div class="outer-container">
+    <form>
+        <label for="collegeList">College names to be compared via a comma seperated list:</label>
+        <div class="horizontal-align">
+        <input type="text" id="colleges" name="colleges" placeholder="UCLA, Kentucky, Duke" ><br /><br />
+            <input class="checkbox" type="checkbox" id="allColleges" name="allColleges" @Model.AllColleges>
+            <label for="allColleges">Compare All Colleges.</label><br /><br />
+        </div>
+        <label for="metric">Metric to rank players by:</label>
+        <div>
+            <input checked type="radio" name="metric" value="Points" /><label for="metric">&ensp;Points</label><br />
+            <input type="radio" name="metric" value="Assists" /><label for="metric">&ensp;Assists</label><br />
+            <input type="radio" name="metric" value="Rebounds" /><label for="metric">&ensp;Rebounds</label><br />
+            <input type="radio" name="metric" value="Blocks" /><label for="metric">&ensp;Blocks</label><br />
+            <input type="radio" name="metric" value="Steals" /><label for="metric">&ensp;Steals</label><br />
+            <input type="radio" name="metric" value="Turnovers" /><label for="metric">&ensp;Turnovers</label><br />
+            <input type="radio" name="metric" value="Minutes" /><label for="metric">&ensp;Minutes</label><br />
+        </div>
+        <div class="horizontal-align">
+        <input class="checkbox" type="checkbox" id="desc" name="descending" @Model.Descending>
+        <label for="descending" @Model.Descending>Descending</label><br /><br />
+        </div>
+        <div class="horizontal-align">
+            <input class="checkbox" type="checkbox" id="desc" name="customVals" @Model.CustomVals>
+            <label for="customVals">Allow User-Entered Teams</label>
+        </div>
+        <input class="submit" type="submit" value="Submit">
+    </form>
+    <br />
+    <br />
+    <div class="flex-row horizontal-align left-border">
+        <div class="vertical-align">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>School</th>
+                        <th>Points</th>
+                        <th>Assists</th>
+                        <th>Rebounds</th>
+                        <th>Blocks</th>
+                        <th>Steals</th>
+                        <th>Turnovers</th>
+                        <th>Minutes</th>
+                        <th>Verified</th>
                     </tr>
-                    }
-                    @if (Model.UserValues == "checked")
+                </thead>
+                <tbody>
+                    @foreach (var col in Model.CollegeInfoList)
                     {
+                        @if (col.Verified > 0)
+                        {
                         <tr class="non-verified-row">
-                            <td>@row.CollegeName</td>
-                            <td>@row.Assists</td>
-                            <td>@row.Rebounds</td>
-                            <td>@row.Blocks</td>
-                            <td>@row.Steals</td>
-                            <td>@row.Turnovers</td>
-                            <td>@row.Minutes</td>
+                            <td>@col.CollegeName</td>
+                            <td>@col.Points</td>
+                            <td>@col.Assists</td>
+                            <td>@col.Rebounds</td>
+                            <td>@col.Blocks</td>
+                            <td>@col.Steals</td>
+                            <td>@col.Turnovers</td>
+                            <td>@col.Minutes</td>
                             <td>No</td>
                         </tr>
+                        }
+                        @if (col.Verified == 0)
+                        {
+                            <tr class="verified-row">
+                                <td>@col.CollegeName</td>
+                                <td>@col.Points</td>
+                                <td>@col.Assists</td>
+                                <td>@col.Rebounds</td>
+                                <td>@col.Blocks</td>
+                                <td>@col.Steals</td>
+                                <td>@col.Turnovers</td>
+                                <td>@col.Minutes</td>
+                                <td> Yes</td>
+                            </tr>
+                        }
                     }
-                }
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
