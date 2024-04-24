@@ -5,15 +5,28 @@
 }
 <h1>@ViewData["Title"]</h1>
 <form>
-    <label for="colleges">College names to be compared via a comma seperated list:</label>
+    <label for="collegeList">College names to be compared via a comma seperated list:</label>
     <div class="horizontal-align">
-    <input type="text" id="colleges" name="colleges"><br /><br />
-        <input class="checkbox" type="checkbox" id="allColleges" name="colleges">
+    <input type="text" id="colleges" name="colleges" placeholder="UCLA, Kentucky, Duke" ><br /><br />
+        <input class="checkbox" type="checkbox" id="allColleges" name="allColleges" @Model.AllColleges>
         <label for="allColleges">Compare All Colleges.</label><br /><br />
     </div>
+    <label for="metric">Metric to rank players by:</label>
+    <div>
+        <input type="radio" name="metric" value="Assists" /><label for="metric">&ensp;Assists</label><br />
+        <input type="radio" name="metric" value="Rebounds" /><label for="metric">&ensp;Rebounds</label><br />
+        <input type="radio" name="metric" value="Blocks" /><label for="metric">&ensp;Blocks</label><br />
+        <input type="radio" name="metric" value="Steals" /><label for="metric">&ensp;Steals</label><br />
+        <input type="radio" name="metric" value="Turnovers" /><label for="metric">&ensp;Turnovers</label><br />
+        <input type="radio" name="metric" value="Minutes" /><label for="metric">&ensp;Minutes</label><br />
+    </div>
     <div class="horizontal-align">
-    <input class="checkbox" type="checkbox" id="desc" name="descending">
-    <label for="descending">Descending</label><br /><br />
+    <input class="checkbox" type="checkbox" id="desc" name="descending" @Model.Descending>
+    <label for="descending" @Model.Descending>Descending</label><br /><br />
+    </div>
+    <div class="horizontal-align">
+        <input class="checkbox" type="checkbox" id="desc" name="customVals" @Model.UserValues>
+        <label for="customVals">Allow User-Entered Teams</label>
     </div>
     <input class="submit" type="submit" value="Submit">
 </form>
@@ -25,32 +38,44 @@
             <thead>
                 <tr>
                     <th>College Name</th>
-                    <th>Wins</th>
-                    <th>Losses</th>
-                    <th>Points</th>
                     <th>Assists</th>
                     <th>Rebounds</th>
                     <th>Blocks</th>
                     <th>Steals</th>
                     <th>Turnovers</th>
+                    <th>Minutes</th>
                     <th>Verified</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach (var row in Model.Dummy)
+                @foreach (var row in Model.CollegeInfoList)
                 {
+                    @if (Model.UserValues == "")
+                    {
                     <tr class="verified-row">
-                        <td>@row</td>
-                        <td>@row</td>
-                        <td>@row</td>
-                        <td>@row</td>
-                        <td>@row</td>
-                        <td>@row</td>
-                        <td>@row</td>
-                        <td>@row</td>
-                        <td>@row</td>
-                        <td>@row</td>
+                        <td>@row.CollegeName</td>
+                        <td>@row.Assists</td>
+                        <td>@row.Rebounds</td>
+                        <td>@row.Blocks</td>
+                        <td>@row.Steals</td>
+                        <td>@row.Turnovers</td>
+                        <td>@row.Minutes</td>
+                        <td>Yes</td>
                     </tr>
+                    }
+                    @if (Model.UserValues == "checked")
+                    {
+                        <tr class="non-verified-row">
+                            <td>@row.CollegeName</td>
+                            <td>@row.Assists</td>
+                            <td>@row.Rebounds</td>
+                            <td>@row.Blocks</td>
+                            <td>@row.Steals</td>
+                            <td>@row.Turnovers</td>
+                            <td>@row.Minutes</td>
+                            <td>No</td>
+                        </tr>
+                    }
                 }
             </tbody>
         </table>

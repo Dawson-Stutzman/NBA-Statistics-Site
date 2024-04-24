@@ -16,6 +16,7 @@ namespace CIS560FinalProject.Pages.Analytics
             int whereCount = 0;
             string selectString = "SELECT * FROM NBA.[Statistics].[Team] T";
             string teamInput = HttpContext.Request.Query["teams"].ToString();
+            teamInput = string.Join(",", teamInput.Split(',').Select(x => $"'{x.Trim()}'"));
             //eastConf = (HttpContext.Request.Query["eastConf"].ToString() == "on") ? "checked" : "unchecked";
             //westConf = (HttpContext.Request.Query["westConf"].ToString() == "on") ? "checked" : "unchecked";
             allTeams = (HttpContext.Request.Query["allTeams"].ToString() == "on") ? "checked" : "unchecked";
@@ -26,7 +27,7 @@ namespace CIS560FinalProject.Pages.Analytics
             else
             {
                 //Used to convert "a, b, c" into "'a', 'b', 'c'" so that sql will accept it
-                teamInput = string.Join(",", teamInput.Split(',').Select(x => $"'{x.Trim()}'"));
+
                 if (whereCount > 0) { }
                 else
                 {
@@ -49,10 +50,9 @@ namespace CIS560FinalProject.Pages.Analytics
                 else selectString += " WHERE T.ConferenceName = N'Western'";
                 whereCount += 1;
             }*/
-            SqlConnection connection = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=NBA;Integrated Security=True");
 
+            SqlConnection connection = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=NBA_Statistics;Integrated Security=True");
             connection.Open();
-
             SqlCommand comm = new SqlCommand(selectString, connection);
             SqlDataReader reader = comm.ExecuteReader();
 
@@ -64,7 +64,6 @@ namespace CIS560FinalProject.Pages.Analytics
                 team.ConferenceName = reader.GetString(2);
                 team.Verified = reader.GetInt32(3);
                 TeamList.Add(team);
-
             }
             connection.Close();
         }

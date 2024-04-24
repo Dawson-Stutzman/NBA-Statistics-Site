@@ -1,9 +1,33 @@
+
 DROP TABLE [Statistics].Team
 DROP TABLE [Statistics].TeamSeason
 DROP TABLE [Statistics].Player
 DROP TABLE [Statistics].PlayerSeason
 DROP TABLE [Statistics]
 DROP DATABASE NBA_Statistics
+
+
+
+--ALTER TABLE NBA_Statistics.[Statistics].PlayerSeason
+--ADD Verified INT NOT NULL DEFAULT 0
+--UPDATE NBA_Statistics.[Statistics].PlayerSeason
+--SET Verified=1
+
+--ALTER TABLE NBA_Statistics.[Statistics].Player
+--ADD Verified INT NOT NULL DEFAULT 0
+--UPDATE NBA_Statistics.[Statistics].Player
+--SET Verified=1
+
+--ALTER TABLE NBA_Statistics.[Statistics].TeamSeason
+--ADD Verified INT NOT NULL DEFAULT 0
+--UPDATE NBA_Statistics.[Statistics].TeamSeason
+--SET Verified=1
+
+--ALTER TABLE NBA_Statistics.[Statistics].Team
+--ADD Verified INT NOT NULL DEFAULT 0
+--UPDATE NBA_Statistics.[Statistics].Team
+--SET Verified=1
+
 
 IF DB_ID('NBA_Statistics') IS NULL
 BEGIN
