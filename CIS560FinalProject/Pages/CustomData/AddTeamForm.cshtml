@@ -34,5 +34,41 @@
                 </tbody>
             </table>
         </form>
+        <br />
+        <br />
+        <div class="flex-row horizontal-align left-border">
+            <div class="vertical-align">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Conference</th>
+                            <th>Verified</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.Teams != null)
+                        {
+                            foreach (var row in Model.Teams)
+                            {
+                                
+                                    <tr class="non-verified-row">
+                                        <td>@row.TeamID</td>
+                                        <td>@row.Name</td>
+                                        <td>@row.ConferenceName</td>
+                                        <td>@row.Verified</td>
+                                    </tr>    
+                            }
+                        }
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
     </div>
 </div>
