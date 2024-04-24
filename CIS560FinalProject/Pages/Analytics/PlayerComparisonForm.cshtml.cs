@@ -10,6 +10,7 @@ public class PlayerComparisonFormModel : PageModel
     {
         AllPlayers = (HttpContext.Request.Query["allPlayers"].ToString() == "on") ? "checked" : "unchecked";
         Descending = (HttpContext.Request.Query["descending"].ToString() == "on") ? "checked" : "unchecked";
+        string Desc = (Descending == "checked") ? "DESC" : "ASC";
         SqlConnection connection = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=NBA;Integrated Security=True");
         string checkbox = (HttpContext.Request.Query["allPlayers"].ToString());
         connection.Open();
@@ -32,35 +33,35 @@ public class PlayerComparisonFormModel : PageModel
         switch (HttpContext.Request.Query["metric"].ToString())
         {
             case "points":
-                orderBy = " ORDER BY Points DESC";
+                orderBy = " ORDER BY Points " + Desc;
                 rankString = "PS.Points";
                 break;
             case "assists":
-                orderBy = " ORDER BY Assists DESC";
+                orderBy = " ORDER BY Assists " + Desc;
                 rankString = "PS.Assists";
                 break;
             case "rebounds":
-                orderBy = " ORDER BY Rebounds DESC";
+                orderBy = " ORDER BY Rebounds " + Desc;
                 rankString = "PS.Rebounds";
                 break;
             case "blocks":
-                orderBy = " ORDER BY Blocks DESC";
+                orderBy = " ORDER BY Blocks " + Desc;
                 rankString = "PS.Blocks";
                 break;
             case "steals":
-                orderBy = " ORDER BY Steals DESC";
+                orderBy = " ORDER BY Steals " + Desc;
                 rankString = "PS.Steals";
                 break;
             case "minutes":
-                orderBy = " ORDER BY Minutes DESC";
+                orderBy = " ORDER BY Minutes " + Desc;
                 rankString = "PS.Minutes";
                 break;
             case "turnovers":
-                orderBy = " ORDER BY Turnovers DESC";
+                orderBy = " ORDER BY Turnovers " + Desc;
                 rankString = "PS.Turnovers";
                 break;
             default:
-                orderBy = " ORDER BY Points DESC";
+                orderBy = " ORDER BY Points " + Desc;
                 rankString = "PS.Points";
                 break;
         }
@@ -73,11 +74,11 @@ public class PlayerComparisonFormModel : PageModel
             "   CAST(AVG(PS.Steals) AS DECIMAL(10,2)) AS Steals," +
             "   CAST(AVG(PS.Minutes) AS DECIMAL(10,2)) AS [Minutes]," +
             "   CAST(AVG(PS.Turnovers) AS DECIMAL(10,2)) AS Turnovers," +
-            "   P.Verified," +
-            "   ROW_NUMBER() OVER (ORDER BY AVG(" + rankString + ") DESC) AS [Rank]" +
+            "   SUM(P.[Verified]) AS [Verified]," +
+            "   ROW_NUMBER() OVER (ORDER BY AVG(" + rankString + ")" + Desc + ") AS [Rank]" +
             "       FROM [Statistics].Player P" +
             "           INNER JOIN [Statistics].PlayerSeason PS ON PS.PlayerID = P.PlayerID" +
-            "       GROUP BY P.PlayerID, P.PlayerName, P.Verified)" +
+            "       GROUP BY P.PlayerID, P.PlayerName) " +
             "SELECT [Rank], [Name], Points, Assists, Rebounds, Blocks, Steals, [Minutes], Turnovers, Verified " +
             "FROM RankedPlayers " + orderBy;
 
@@ -93,11 +94,11 @@ public class PlayerComparisonFormModel : PageModel
             "   CAST(AVG(PS.Steals) AS DECIMAL(10,2)) AS Steals," +
             "   CAST(AVG(PS.Minutes) AS DECIMAL(10,2)) AS [Minutes]," +
             "   CAST(AVG(PS.Turnovers) AS DECIMAL(10,2)) AS Turnovers," +
-            "   P.Verified," +
-            "   ROW_NUMBER() OVER (ORDER BY AVG(" + rankString + ") DESC) AS [Rank]" +
+            "   SUM(P.[Verified]) AS [Verified]," +
+            "   ROW_NUMBER() OVER (ORDER BY AVG(" + rankString + ")"+ Desc + ") AS [Rank]" +
             "       FROM [Statistics].Player P" +
             "           INNER JOIN [Statistics].PlayerSeason PS ON PS.PlayerID = P.PlayerID" +
-            "       GROUP BY P.PlayerID, P.PlayerName, P.Verified)" +
+            "       GROUP BY P.PlayerID, P.PlayerName) " +
             "SELECT [Rank], [Name], Points, Assists, Rebounds, Blocks, Steals, [Minutes], Turnovers, Verified " +
             "FROM RankedPlayers " + where + orderBy;
 
@@ -107,6 +108,7 @@ public class PlayerComparisonFormModel : PageModel
 
         if (players != "" || checkbox != "")
         {
+            Console.WriteLine(defaultQuery);
             SqlCommand comm = new SqlCommand(defaultQuery, connection);
             SqlDataReader reader = comm.ExecuteReader();
             Players = new();

@@ -3,97 +3,100 @@
 @{
     ViewData["Title"] = "Team Stats By Time";
 }
-<div class="custom-horizontal-align">
-    <div class="vertical-align">
-        <h1>@ViewData["Title"]</h1>
-        <form>
-            <label for="players">Teams to be compared via a comma seperated list:</label>
-            <div class="horizontal-align">
-                <input type="text" id="teams" name="teams" placeholder="Utah Jazz, Miami Heat">
-                <input class="checkbox" type="checkbox" id="allTeams" name="allTeams" @(Model.allTeams)><br /><br />
-                <label for="allTeams">Compare All Teams</label><br />
-            </div>
-            <!--
-            <div>
-                <label for="conferences">Conference:</label><br />
-                <input class="checkbox" type="checkbox" id="eastConf" name="eastConf" at(Model.eastConf)>
-                <label for="eastConf">East</label>
-                <input class="checkbox" type="checkbox" id="westConf" name="westConf" at(Model.westConf)>
-                <label for="eastConf">West</label>
-            </div><br />
-            -->
-            <div class="horizontal-align">
-                <label for="startDate">From&ensp;</label>
-                <input type="number" step="1" placeholder="2019" id="startDate" name="startDate">
-                <label for="endDate">&ensp;to&ensp;</label>
-                <input type="number" step="1" placeholder="2024" id="endDate" name="endDate">
-            </div><br />
+<h1>@ViewData["Title"]</h1>
+<div class="outer-container">
+    <form>
+        <label class="fw-bold" for="players">Enter comma separated list of Teams:</label>
+        <div class="horizontal-align">
 
-            <label for="colleges">Metric to rank teams by:</label>
-            <div>
-                <input type="radio" name="metric" value="points" /><label for="metric">&ensp;Points</label><br />
-                <input type="radio" name="metric" value="assists" /><label for="metric">&ensp;Assists</label><br />
-                <input type="radio" name="metric" value="rebounds" /><label for="metric">&ensp;Rebounds</label><br />
-                <input type="radio" name="metric" value="blocks" /><label for="metric">&ensp;Blocks</label><br />
-                <input type="radio" name="metric" value="minutes" /><label for="metric">&ensp;Steals</label><br />
-                <input type="radio" name="metric" value="steals" /><label for="metric">&ensp;Minutes</label><br />
-            </div><br />
-            <div class="horizontal-align">
-                <input class="checkbox" type="checkbox" id="desc" name="descending" checked="checked">
-                <label for="descending">Descending</label>
-            </div><br />
-            <div class="horizontal-align">
-                <input class="checkbox" type="checkbox" id="desc" name="customVals" checked="checked">
-                <label for="customVals">Allow User-Entered Teams</label>
-            </div>
-            <input class="submit" type="submit" value="Submit">
-        </form>
-    </div>
-    <br /><br />
+            <input type="text" id="teams" name="teams" placeholder="Utah Jazz, Miami Heat">
+            <input class="checkbox" type="checkbox" id="allTeams" name="allTeams" @(Model.AllTeams)><br /><br />
+            <label for="allTeams">Compare All Teams</label><br />
+        </div>
+        <!--
+        <div>
+            <label for="conferences">Conference:</label><br />
+            <input class="checkbox" type="checkbox" id="eastConf" name="eastConf" at(Model.eastConf)>
+            <label for="eastConf">East</label>
+            <input class="checkbox" type="checkbox" id="westConf" name="westConf" at(Model.westConf)>
+            <label for="eastConf">West</label>
+        </div><br />
+        -->
+        <div>
+            <label class="fw-bold" for="startDate">From&ensp;</label>
+            <input type="number" step="1" placeholder="2019" id="startDate" name="startDate">
+        </div>
+        <div>
+            <label class="fw-bold" for="endDate">to&ensp;</label>
+            <input type="number" step="1" placeholder="2024" id="endDate" name="endDate">
+        </div>
+        <br />
+        <label for="colleges">Metric to rank teams by:</label>
+        <div>
+            <input checked type="radio" name="metric" value="points" /><label for="metric">&ensp;Points</label><br />
+            <input type="radio" name="metric" value="assists" /><label for="metric">&ensp;Assists</label><br />
+            <input type="radio" name="metric" value="rebounds" /><label for="metric">&ensp;Rebounds</label><br />
+            <input type="radio" name="metric" value="blocks" /><label for="metric">&ensp;Blocks</label><br />
+            <input type="radio" name="metric" value="minutes" /><label for="metric">&ensp;Steals</label><br />
+            <input type="radio" name="metric" value="steals" /><label for="metric">&ensp;Minutes</label><br />
+        </div><br />
+        <div class="horizontal-align">
+            <input @Model.Descending class="checkbox" type="checkbox" id="desc" name="descending" checked="checked">
+            <label for="descending">Descending</label>
+        </div><br />
+        <div class="horizontal-align">
+            <input @Model.CustomVals class="checkbox" type="checkbox" id="desc" name="customVals" checked="checked">
+            <label for="customVals">Allow User-Entered Teams</label>
+        </div>
+        <input class="submit" type="submit" value="Submit">
+    </form><br />
+    <br />
+    <br />
     <div class="flex-row horizontal-align left-border">
         <div class="vertical-align">
             <table class="table">
                 <thead>
                     <tr>
-                        <th>TeamID</th>
-                        <th>Team Name</th>
-                        <th>Team Conference</th>
+                        <th>Team</th>
                         <th>Wins</th>
                         <th>Losses</th>
                         <th>Points</th>
                         <th>Assists</th>
                         <th>Rebounds</th>
-                        <th>Blocks</th>
-                        <th>Steals</th>
-                        <th>Turnovers</th>
                         <th>Verified</th>
                     </tr>
                 </thead>
                 <tbody>
-            @foreach (var row in Model.TeamList)
-            {
-                        @if (row.Verified > 0)
-                        {
-                            <tr class="verified-row">
-                                <td>@row.TeamID</td>
-                                <td>@row.Name</td>
-                                <td>@row.ConferenceName</td>
-                                <td>@((row.Verified > 0))</td>
-                            </tr>
-                        }
-                        @if (row.Verified == 0)
+                    @foreach (var col in Model.TeamList)
+                    {
+                        @if (col.Verified > 0)
                         {
                             <tr class="non-verified-row">
-                                <td>@row.TeamID</td>
-                                <td>@row.Name</td>
-                                <td>@row.ConferenceName</td>
-                                <td>@((row.Verified > 0))</td>
+                                <td>@col.TeamName</td>
+                                <td>@col.Wins</td>
+                                <td>@col.Losses</td>
+                                <td>@col.Points</td>
+                                <td>@col.Assists</td>
+                                <td>@col.Rebounds</td>
+                                <td>No</td>
                             </tr>
                         }
-
+                        @if (col.Verified == 0)
+                        {
+                            <tr class="verified-row">
+                                <td>@col.TeamName</td>
+                                <td>@col.Wins</td>
+                                <td>@col.Losses</td>
+                                <td>@col.Points</td>
+                                <td>@col.Assists</td>
+                                <td>@col.Rebounds</td>
+                                <td>No</td>
+                            </tr>
+                        }
                     }
                 </tbody>
             </table>
         </div>
     </div>
+</div>
 </div>

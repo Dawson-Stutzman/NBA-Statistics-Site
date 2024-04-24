@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Diagnostics.Eventing.Reader;
+using static CIS560FinalProject.Pages.Analytics.MetricsByCollegeFormModel;
 
 namespace CIS560FinalProject.Pages.Analytics
 {
@@ -10,46 +11,21 @@ namespace CIS560FinalProject.Pages.Analytics
         public List<TeamInfo> TeamList = new();
         //public string eastConf;
         //public string westConf;
-        public string allTeams;
+        public string AllTeams;
+        public string Descending;
+        public string CustomVals;
         public void OnGet()
         {
-            int whereCount = 0;
-            string selectString = "SELECT * FROM NBA.[Statistics].[Team] T";
-            string teamInput = HttpContext.Request.Query["teams"].ToString();
-            teamInput = string.Join(",", teamInput.Split(',').Select(x => $"'{x.Trim()}'"));
-            //eastConf = (HttpContext.Request.Query["eastConf"].ToString() == "on") ? "checked" : "unchecked";
-            //westConf = (HttpContext.Request.Query["westConf"].ToString() == "on") ? "checked" : "unchecked";
-            allTeams = (HttpContext.Request.Query["allTeams"].ToString() == "on") ? "checked" : "unchecked";
-            if (HttpContext.Request.Query["allTeams"].Count == 1 || teamInput.Length == 0)
-            {
+            AllTeams = (HttpContext.Request.Query["allColleges"].ToString() == "on") ? "checked" : "";
+            Descending = (HttpContext.Request.Query["descending"].ToString() == "on") ? "checked" : "";
+            CustomVals = (HttpContext.Request.Query["customVals"].ToString() == "on") ? "checked" : "";
+            string lowerYear = HttpContext.Request.Query["startDate"].ToString();
+            string higherYear = HttpContext.Request.Query["endDate"].ToString();
+            string rankMetric = HttpContext.Request.Query["metric"].ToString();
 
-            }
-            else
-            {
-                //Used to convert "a, b, c" into "'a', 'b', 'c'" so that sql will accept it
 
-                if (whereCount > 0) { }
-                else
-                {
-                    selectString += " WHERE T.Name IN (" + teamInput + ")";
-                }
-                Console.WriteLine(HttpContext.Request.Query["teams"].ToString());
-                whereCount += 1;
-            }
-            string conf = HttpContext.Request.Query["eastConf"].ToString();
-            /*if ((eastConf == "checked" && westConf == "checked") || (eastConf != "checked" && westConf != "checked")) { }
-            else if (eastConf == "checked")
-            {
-                if (whereCount > 0) selectString += " AND T.ConferenceName = N'Eastern'";
-                else selectString += " WHERE T.ConferenceName = N'Eastern'";
-                whereCount += 1;
-            }
-            else if (westConf == "checked") 
-            {
-                if (whereCount > 0) selectString += " AND T.ConferenceName = N'Western'";
-                else selectString += " WHERE T.ConferenceName = N'Western'";
-                whereCount += 1;
-            }*/
+            string selectString = "SELECT TS.TeamSeasonID,\r\nT.TeamName\r\nFROM [Statistics].TeamSeason TS\r\n\tINNER JOIN [Statistics].Team T ON T.TeamID = TS.TeamID\r\nGROUP BY TeamName\r\nORDER BY TeamSeasonID ASC\r\n"
+
 
             SqlConnection connection = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=NBA;Integrated Security=True");
             connection.Open();
@@ -58,22 +34,32 @@ namespace CIS560FinalProject.Pages.Analytics
 
             while (reader.Read())
             {
-                TeamInfo team = new TeamInfo();
-                team.TeamID = reader.GetInt32(0);
-                team.Name = reader.GetString(1);
-                team.ConferenceName = reader.GetString(2);
-                team.Verified = reader.GetInt32(3);
-                TeamList.Add(team);
+                TeamInfo t = new()
+                {
+                    TeamName = reader.GetString(0),
+                    Wins = reader.GetInt32(1),
+                    Losses = reader.GetInt32(2),
+                    Points = reader.GetInt32(3),
+                    Assists = reader.GetInt32(4),
+                    Rebounds = reader.GetInt32(5),
+                    Verified = reader.GetInt32(6),
+
+                };
+                TeamList.Add(t);
             }
             connection.Close();
+
+
         }
-        public class TeamInfo
+        public class TeamInfo 
         {
-            public int TeamID;
-            public string Name;
-            public string ConferenceName;
+            public string TeamName;
+            public int Wins;
+            public int Losses;
+            public int Points;
+            public int Assists;
+            public int Rebounds;
             public int Verified;
         }
-
     }
 }

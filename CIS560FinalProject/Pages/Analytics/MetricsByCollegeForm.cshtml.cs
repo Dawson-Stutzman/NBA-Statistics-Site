@@ -34,6 +34,7 @@ namespace CIS560FinalProject.Pages.Analytics
             CustomVals = (HttpContext.Request.Query["customVals"].ToString() == "on") ? "checked" : "";
             string rankMetric = HttpContext.Request.Query["metric"].ToString();
             if (rankMetric == "") rankMetric = "School";
+
             //================================Parse Data into Appropriate SQL filters================================
             string filterString = "";
             int filters = 0;
@@ -58,7 +59,7 @@ namespace CIS560FinalProject.Pages.Analytics
             }
             filterString += String.Format("GROUP BY P.SCHOOL ORDER BY [{0}] {1}", rankMetric, (Descending == "checked") ? "DESC" : "ASC");
             
-            SqlConnection connection = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=NBA;Integrated Security=True");
+
             string selectString = String.Format("SELECT P.School AS School, " + 
                                                 "SUM(PS.Points) AS Points, " + 
                                                 "SUM(PS.Assists) AS Assists, " + 
@@ -70,6 +71,9 @@ namespace CIS560FinalProject.Pages.Analytics
                                                 "FROM [Statistics].PlayerSeason PS " +
                                                 "INNER JOIN [Statistics].Player P ON P.PlayerID = PS.PlayerID " +
                                                     "{0}", filterString);
+
+            //================================Run SQL SELECT Statement================================
+            SqlConnection connection = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=NBA;Integrated Security=True");
             connection.Open();
             SqlCommand comm = new SqlCommand(selectString, connection);
             SqlDataReader reader = comm.ExecuteReader();

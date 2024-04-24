@@ -6,13 +6,13 @@
 <h1>@ViewData["Title"]</h1>
 <div class="outer-container">
     <form>
-        <label for="collegeList">College names to be compared via a comma seperated list:</label>
+        <label class="fw-bold" for="collegeList">Enter comma separated list of Schools:</label>
         <div class="horizontal-align">
-        <input type="text" id="colleges" name="colleges" placeholder="UCLA, Kentucky, Duke" ><br /><br />
+            <input type="text" id="colleges" name="colleges" placeholder="UCLA, Kentucky, Duke" ><br /><br />
             <input class="checkbox" type="checkbox" id="allColleges" name="allColleges" @Model.AllColleges>
-            <label for="allColleges">Compare All Colleges.</label><br /><br />
+            <label class="fw-bold" for="allColleges">Compare All Colleges.</label><br /><br />
         </div>
-        <label for="metric">Metric to rank players by:</label>
+        <label class="fw-bold" for="metric">Ranking Metric:</label>
         <div>
             <input checked type="radio" name="metric" value="Points" /><label for="metric">&ensp;Points</label><br />
             <input type="radio" name="metric" value="Assists" /><label for="metric">&ensp;Assists</label><br />
@@ -24,11 +24,11 @@
         </div>
         <div class="horizontal-align">
         <input class="checkbox" type="checkbox" id="desc" name="descending" @Model.Descending>
-        <label for="descending" @Model.Descending>Descending</label><br /><br />
+            <label class="fw-bold" for="descending" @Model.Descending>Descending</label><br /><br />
         </div>
         <div class="horizontal-align">
             <input class="checkbox" type="checkbox" id="desc" name="customVals" @Model.CustomVals>
-            <label for="customVals">Allow User-Entered Teams</label>
+            <label class="fw-bold" for="customVals">Allow User-Entered Teams</label>
         </div>
         <input class="submit" type="submit" value="Submit">
     </form>

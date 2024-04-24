@@ -7,18 +7,13 @@
 <body>
     <div class="outer-container">
     <form>
-        <label for="players">Players to be compared via a comma seperated list:</label>
+            <label class="fw-bold" for="players">Enter comma separated list of players:</label>
         <div class="horizontal-align">
             <input type="text" id="players" name="players" placeholder="Shaquille Oneal, Kobe Bryant" multiple>
             <input @Model.AllPlayers class="checkbox" type="checkbox" id="allPlayers" name="allPlayers"><br /><br />
-            <label for="allPlayers">Compare All Players</label><br />
+                <label class="fw-bold"  for="allPlayers">Compare All Players</label><br />
         </div>
-        <div class="horizontal-align">
-            <input @Model.Descending class="checkbox" type="checkbox" id="desc" name="descending">
-
-            <label for="descending">Descending</label><br /><br />
-        </div>
-        <label for="metric">Metric to rank players by:</label>
+            <label class="fw-bold" for="metric">Ranking Metric:</label>
         <div>
             <input checked class="" type="radio" name="metric" value="points" /><label for="metric">&ensp;Points</label><br />
             <input type="radio" name="metric" value="assists" /><label for="metric">&ensp;Assists</label><br />
@@ -27,6 +22,14 @@
             <input type="radio" name="metric" value="steals" /><label for="metric">&ensp;Steals</label><br />
             <input type="radio" name="metric" value="minutes" /><label for="metric">&ensp;Minutes</label><br />
             <input type="radio" name="metric" value="turnovers" /><label for="metric">&ensp;Turnovers</label>
+        </div>
+        <div class="horizontal-align">
+            <input @Model.Descending class="checkbox" type="checkbox" id="desc" name="descending">
+            <label class="fw-bold" for="descending">Descending</label><br /><br />
+        </div>
+        <div class="horizontal-align">
+            <input class="checkbox" type="checkbox" id="desc" name="customVals">
+            <label class="fw-bold" for="customVals">Allow User-Entered Teams</label>
         </div>
         <input class="submit" type="submit" value="Submit">
     </form>
@@ -53,43 +56,40 @@
                 <tbody>
                     @if (Model.Players != null)
                     {
-                        foreach (var row in Model.Players)
+                        foreach (var col in Model.Players)
                         {
-                                @if (row.Verified > 0)
+                                @if (col.Verified > 0)
                                 {
                             <tr class="non-verified-row">
-                                <td>@row.Rank</td>
-                                <td>@row.Name</td>
-                                <td>@row.Points</td>
-                                <td>@row.Assists</td>
-                                <td>@row.Rebounds</td>
-                                <td>@row.Blocks</td>
-                                <td>@row.Steals</td>
-                                <td>@row.Minutes</td>
-                                <td>@row.Turnovers</td>
-                                <td>@row.Verified</td>
+                                <td>@col.Rank</td>
+                                <td>@col.Name</td>
+                                <td>@col.Points</td>
+                                <td>@col.Assists</td>
+                                <td>@col.Rebounds</td>
+                                <td>@col.Blocks</td>
+                                <td>@col.Steals</td>
+                                <td>@col.Minutes</td>
+                                <td>@col.Turnovers</td>
+                                <td>No</td>
                             </tr>
                             }
-
-                                @if (row.Verified == 0)
-                                {
-                                    <tr class="verified-row">
-                                        <td>@row.Rank</td>
-                                        <td>@row.Name</td>
-                                        <td>@row.Points</td>
-                                        <td>@row.Assists</td>
-                                        <td>@row.Rebounds</td>
-                                        <td>@row.Blocks</td>
-                                        <td>@row.Steals</td>
-                                        <td>@row.Minutes</td>
-                                        <td>@row.Turnovers</td>
-                                        <td>@row.Verified</td>
-                                    </tr>
-                                }
+                            @if (col.Verified == 0)
+                            {
+                                <tr class="verified-row">
+                                    <td>@col.Rank</td>
+                                    <td>@col.Name</td>
+                                    <td>@col.Points</td>
+                                    <td>@col.Assists</td>
+                                    <td>@col.Rebounds</td>
+                                    <td>@col.Blocks</td>
+                                    <td>@col.Steals</td>
+                                    <td>@col.Minutes</td>
+                                    <td>@col.Turnovers</td>
+                                    <td>Yes</td>
+                                </tr>
+                            }
                         }
                     }
-
-
                     </tbody>
                 </table>
             </div>
