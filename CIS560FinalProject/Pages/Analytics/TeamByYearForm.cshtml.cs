@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Diagnostics.Eventing.Reader;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace CIS560FinalProject.Pages.Analytics
 {
@@ -14,7 +15,7 @@ namespace CIS560FinalProject.Pages.Analytics
         public void OnGet()
         {
             int whereCount = 0;
-            string selectString = "SELECT * FROM NBA.[Statistics].[Team] T";
+            string selectString = "SELECT * FROM NBA_Statistics.[Statistics].[Team] T";
             string teamInput = HttpContext.Request.Query["teams"].ToString();
             //eastConf = (HttpContext.Request.Query["eastConf"].ToString() == "on") ? "checked" : "unchecked";
             //westConf = (HttpContext.Request.Query["westConf"].ToString() == "on") ? "checked" : "unchecked";
@@ -49,7 +50,9 @@ namespace CIS560FinalProject.Pages.Analytics
                 else selectString += " WHERE T.ConferenceName = N'Western'";
                 whereCount += 1;
             }*/
-            SqlConnection connection = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=NBA;Integrated Security=True");
+
+            //Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=NBA_Statistics;Integrated Security=True
+            SqlConnection connection = new SqlConnection("Data Source = (localdb)\\MSSQLLocalDB; Initial Catalog = NBA_Statistics; Integrated Security = True");
 
             connection.Open();
 

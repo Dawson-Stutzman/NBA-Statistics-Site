@@ -3,14 +3,13 @@ DROP TABLE [Statistics].TeamSeason
 DROP TABLE [Statistics].Player
 DROP TABLE [Statistics].PlayerSeason
 DROP TABLE [Statistics]
-DROP DATABASE NBA_Statistics
+
 
 IF DB_ID('NBA_Statistics') IS NULL
 BEGIN
     CREATE DATABASE NBA_Statistics;
 END
 
-USE NBA_Statistics
 
 IF NOT EXISTS
    (
@@ -33,7 +32,7 @@ BEGIN
 		ConferenceName NVARCHAR(32) NOT NULL,
 		UNIQUE([TeamName])
 	);
-
+	/*insert values are below */
 	INSERT INTO [Statistics].Team ([TeamName], ConferenceName) VALUES ('Atlanta Hawks', 'Eastern');
 	INSERT INTO [Statistics].Team ([TeamName], ConferenceName) VALUES ('Boston Celtics', 'Eastern');
 	INSERT INTO [Statistics].Team ([TeamName], ConferenceName) VALUES ('Brooklyn Nets', 'Eastern');
@@ -82,6 +81,7 @@ BEGIN
 		UNIQUE(TeamID, [Year])
 	);
 
+	/*insert values are below*/
 	INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Atlanta Hawks' = T.[TeamName]), N'2022-23', 1);
 	INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Atlanta Hawks' = T.[TeamName]), N'2021-22', 1);
 	INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Atlanta Hawks' = T.[TeamName]), N'2020-21', 1);
@@ -264,7 +264,7 @@ BEGIN
 
 		UNIQUE([PlayerName])
 	);
-
+	/*inserts are below*/
 	INSERT [Statistics].Player ([PlayerName], [Position], [Height], [Weight], [Birthdate], [School], [Age], [Verified]) VALUES (N'Donovan Williams', N'G', N'6-6', N'190 lbs', N'SEP 06, 2001', N'UNLV', 21.0, 1);
 	INSERT [Statistics].Player ([PlayerName], [Position], [Height], [Weight], [Birthdate], [School], [Age], [Verified]) VALUES (N'Bruno Fernando', N'F-C', N'6-10', N'240 lbs', N'AUG 15, 1998', N'Maryland', 24.0, 1);
 	INSERT [Statistics].Player ([PlayerName], [Position], [Height], [Weight], [Birthdate], [School], [Age], [Verified]) VALUES (N'Jalen Johnson', N'F', N'6-8', N'219 lbs', N'DEC 18, 2001', N'Duke', 21.0, 1);
@@ -1333,7 +1333,7 @@ BEGIN
 
 		UNIQUE(PlayerID, TeamSeasonID)
 	);
-
+	/*inserts below*/
 	INSERT [Statistics].PlayerSeason (PlayerID, TeamSeasonID, GamesPlayed, [Minutes], Points, FieldGoalMade, FieldGoalAttempts, ThreePointMade, ThreePointAttempts, Rebounds, Assists, Blocks, Steals, Turnovers, PlusMinus) VALUES ((SELECT P.PlayerID FROM [Statistics].Player P WHERE N'Aaron Holiday' = P.[PlayerName]), (SELECT TS.TeamSeasonID FROM [Statistics].TeamSeason TS INNER JOIN [Statistics].Team T ON T.TeamID = TS.TeamID WHERE TS.[Year] = N'2022-23' AND T.[TeamName] = N'Atlanta Hawks'), 1, 3.9, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, -3.0);
 	INSERT [Statistics].PlayerSeason (PlayerID, TeamSeasonID, GamesPlayed, [Minutes], Points, FieldGoalMade, FieldGoalAttempts, ThreePointMade, ThreePointAttempts, Rebounds, Assists, Blocks, Steals, Turnovers, PlusMinus) VALUES ((SELECT P.PlayerID FROM [Statistics].Player P WHERE N'Bogdan Bogdanovic' = P.[PlayerName]), (SELECT TS.TeamSeasonID FROM [Statistics].TeamSeason TS INNER JOIN [Statistics].Team T ON T.TeamID = TS.TeamID WHERE TS.[Year] = N'2022-23' AND T.[TeamName] = N'Atlanta Hawks'), 6, 26.1, 13.3, 5.0, 9.0, 2.5, 5.5, 3.0, 2.5, 0.8, 1.0, 0.5, 2.7);
 	INSERT [Statistics].PlayerSeason (PlayerID, TeamSeasonID, GamesPlayed, [Minutes], Points, FieldGoalMade, FieldGoalAttempts, ThreePointMade, ThreePointAttempts, Rebounds, Assists, Blocks, Steals, Turnovers, PlusMinus) VALUES ((SELECT P.PlayerID FROM [Statistics].Player P WHERE N'Clint Capela' = P.[PlayerName]), (SELECT TS.TeamSeasonID FROM [Statistics].TeamSeason TS INNER JOIN [Statistics].Team T ON T.TeamID = TS.TeamID WHERE TS.[Year] = N'2022-23' AND T.[TeamName] = N'Atlanta Hawks'), 6, 25.2, 8.3, 3.8, 6.3, 0.0, 0.0, 8.3, 0.5, 0.5, 1.0, 0.7, -4.7);
