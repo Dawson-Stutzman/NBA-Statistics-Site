@@ -1,7 +1,7 @@
 ﻿@page
-@model AddTeamFormModel
+@model AddGameFormModel
 @{
-    ViewData["Title"] = "Add New Team";
+    ViewData["Title"] = "Add New Game";
 }
 <div class="custom-horizontal-align">
     <div class="vertical-align">
@@ -10,9 +10,10 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th>Team Name</th>
-                        <th>Team Conference</th>
-                        <th></th>
+                        <th>Year</th>
+                        <th>Home Team</th>
+                        <th>Away Team</th>
+                        <th>Winning Team</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -23,7 +24,7 @@
                         </td>
                         <td>
                             <div class="horizontal-align">
-                                <input checked type="radio" name="conference" value="Eastern" /><label for="conference">&ensp;Eastern&ensp;</label><br />
+                                <input type="radio" name="conference" value="Eastern" /><label for="conference">&ensp;Eastern&ensp;</label><br />
                                 <input type="radio" name="conference" value="Western" /><label for="conference">&ensp;Western&ensp;</label><br />
                             </div>
                         </td>
