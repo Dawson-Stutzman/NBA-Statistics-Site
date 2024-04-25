@@ -16,7 +16,7 @@ namespace CIS560FinalProject.Pages.Analytics
         public string CustomVals;
         public void OnGet()
         {
-            AllTeams = (HttpContext.Request.Query["allColleges"].ToString() == "on") ? "checked" : "";
+            AllTeams = (HttpContext.Request.Query["allTeams"].ToString() == "on") ? "checked" : "";
             Descending = (HttpContext.Request.Query["descending"].ToString() == "on") ? "checked" : "";
             CustomVals = (HttpContext.Request.Query["customVals"].ToString() == "on") ? "checked" : "";
             string lowerYear = HttpContext.Request.Query["startDate"].ToString();
