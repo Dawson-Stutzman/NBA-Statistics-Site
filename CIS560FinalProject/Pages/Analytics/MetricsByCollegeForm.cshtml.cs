@@ -60,14 +60,15 @@ namespace CIS560FinalProject.Pages.Analytics
             filterString += String.Format("GROUP BY P.SCHOOL ORDER BY [{0}] {1}", rankMetric, (Descending == "checked") ? "DESC" : "ASC");
             
 
-            string selectString = String.Format("SELECT P.School AS School, " + 
-                                                "SUM(PS.Points) AS Points, " + 
-                                                "SUM(PS.Assists) AS Assists, " + 
-                                                "SUM(PS.Rebounds) AS Rebounds, " + 
-                                                "SUM(PS.Blocks) AS Blocks, " + 
-                                                "SUM(PS.Steals) AS Steals, " + 
-                                                "SUM(PS.Turnovers) AS Turnovers, " + 
-                                                "SUM(PS.[Minutes]) AS [Minutes] " +
+            string selectString = String.Format("SELECT P.School AS School, " +
+                                                "CAST(AVG(PS.Points) AS DECIMAL(10,2)) AS Points, " +
+                                                "CAST(AVG(PS.Assists) AS DECIMAL(10,2)) AS Assists, " +
+                                                "CAST(AVG(PS.Rebounds) AS DECIMAL(10,2)) AS Rebounds, " +
+                                                "CAST(AVG(PS.Blocks) AS DECIMAL(10,2)) AS Blocks, " +
+                                                "CAST(AVG(PS.Steals) AS DECIMAL(10,2)) AS Steals, " +
+                                                "CAST(AVG(PS.Turnovers) AS DECIMAL(10,2)) AS Turnovers, " +
+                                                "CAST(AVG(PS.[Minutes]) AS DECIMAL(10,2)) AS [Minutes], " +
+                                                "SUM(PS.[Verified])  AS [Verified]" +
                                                 "FROM [Statistics].PlayerSeason PS " +
                                                 "INNER JOIN [Statistics].Player P ON P.PlayerID = PS.PlayerID " +
                                                     "{0}", filterString);
@@ -90,6 +91,7 @@ namespace CIS560FinalProject.Pages.Analytics
                                                     Steals = reader.GetDecimal(5),
                                                     Turnovers = reader.GetDecimal(6),
                                                     Minutes = reader.GetDecimal(7),
+                                                    Verified = reader.GetInt32(8)
                                                     };
                 CollegeInfoList.Add(c);
             }

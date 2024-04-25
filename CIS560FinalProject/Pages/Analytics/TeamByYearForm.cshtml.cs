@@ -24,7 +24,15 @@ namespace CIS560FinalProject.Pages.Analytics
             string rankMetric = HttpContext.Request.Query["metric"].ToString();
 
 
-            string selectString = "SELECT TS.TeamSeasonID,\r\nT.TeamName\r\nFROM [Statistics].TeamSeason TS\r\n\tINNER JOIN [Statistics].Team T ON T.TeamID = TS.TeamID\r\nGROUP BY TeamName\r\nORDER BY TeamSeasonID ASC\r\n";
+            string selectString = "SELECT T.TeamName," +
+                "\r\n    SUM(COALESCE(G.HomePoints, 0) + COALESCE(G.AwayPoints, 0)) AS TotalPoints," +
+                "\r\n    SUM(COALESCE(G.HomeRebounds, 0) + COALESCE(G.AwayRebounds, 0)) AS TotalRebounds," +
+                "\r\n\tSUM(COALESCE(G.HomeAssists, 0) + COALESCE(G.AwayAssists, 0)) AS TotalAssists," +
+                "\r\n\tSUM(CASE WHEN G.WinnerTeamSeasonID = TS.TeamSeasonID THEN 1 ELSE 0 END) AS TotalWins," +
+                "\r\n\tSUM(COALESCE(G.Verified, 0)) AS Verified" +
+                "\r\nFROM [Statistics].Team T\r\nLEFT JOIN [Statistics].TeamSeason TS ON T.TeamID = TS.TeamID" +
+                "\r\nLEFT JOIN [Statistics].Game G ON TS.TeamSeasonID = G.HomeTeamSeasonID OR TS.TeamSeasonID = G.AwayTeamSeasonID" +
+                "\r\nGROUP BY T.TeamName";
 
 
             SqlConnection connection = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=NBA;Integrated Security=True");
@@ -37,12 +45,11 @@ namespace CIS560FinalProject.Pages.Analytics
                 TeamInfo t = new()
                 {
                     TeamName = reader.GetString(0),
-                    Wins = reader.GetInt32(1),
-                    Losses = reader.GetInt32(2),
-                    Points = reader.GetInt32(3),
-                    Assists = reader.GetInt32(4),
-                    Rebounds = reader.GetInt32(5),
-                    Verified = reader.GetInt32(6),
+                    Points = reader.GetInt32(1),
+                    Rebounds = reader.GetInt32(2),
+                    Assists = reader.GetInt32(3),
+                    Wins = reader.GetInt32(4),
+                    Verified = reader.GetInt32(5),
 
                 };
                 TeamList.Add(t);
@@ -51,11 +58,10 @@ namespace CIS560FinalProject.Pages.Analytics
 
 
         }
-        public class TeamInfo 
+        public class TeamInfo
         {
             public string TeamName;
             public int Wins;
-            public int Losses;
             public int Points;
             public int Assists;
             public int Rebounds;

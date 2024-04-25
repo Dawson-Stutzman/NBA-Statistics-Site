@@ -21,8 +21,6 @@ namespace CIS560FinalProject.Pages.CustomData
             {
                 string insertString = "INSERT INTO [Statistics].Team ([TeamName], ConferenceName) VALUES ('" + TeamName + "', '" + ConferenceName + "')";
                 SqlCommand comm = new SqlCommand(insertString, connection);
-                comm.Parameters.AddWithValue("@TeamName", TeamName);
-                comm.Parameters.AddWithValue("@ConferenceName", ConferenceName);
                 comm.ExecuteNonQuery();
 
                 string summarizeString = "SELECT * FROM [Statistics].Team";

@@ -13,20 +13,53 @@
                         <th>Year</th>
                         <th>Home Team</th>
                         <th>Away Team</th>
-                        <th>Winning Team</th>
+                        <th>Home Points</th>
+                        <th>Away Points</th>
+                        <th>Home Assists</th>
+                        <th>Away Assists</th>
+                        <th>Home Rebounds</th>
+                        <th>Away Rebounds</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>
-
-                            <input type="text" id="teamName" name="teamName"/>
+                            <input type="number" step="1" placeholder="2019" id="year" name="year">
                         </td>
                         <td>
-                            <div class="horizontal-align">
-                                <input type="radio" name="conference" value="Eastern" /><label for="conference">&ensp;Eastern&ensp;</label><br />
-                                <input type="radio" name="conference" value="Western" /><label for="conference">&ensp;Western&ensp;</label><br />
-                            </div>
+                            <select name="homeTeam" id="homeTeam">
+                                @foreach (var T in Model.Teams)
+                                { 
+                                <option class="@(T.Verified == 0 ? "verified-row" : "non-verified-row") " value="@T.TeamID">@T.Name</option>
+                                }
+                            </select>
+                        </td>
+                        <td>
+                            <select name="awayTeam" id="homeTeam">
+                                @foreach (var T in Model.Teams)
+                                {
+                                    <option class="@(T.Verified == 0 ? "verified-row" : "non-verified-row") " value="@T.TeamID">@T.Name</option>
+                                }
+                            </select>
+                        </td>
+                        <td>
+                            <input class="small-textbox" type="number" step="1" placeholder="100" id="homePoints" name="homePoints">
+                        </td>
+                        <td>
+                            <input class="small-textbox" type="number" step="1" placeholder="99" id="awayPoints" name="awayPoints">
+                        </td>
+                        <td>
+                            <input class="small-textbox" type="number" step="1" placeholder="5" id="homeAssists" name="homeAssists">
+                        </td>
+                        <td>
+                            <input class="small-textbox" type="number" step="1" placeholder="4" id="awayAssists" name="awayAssists">
+                        </td>
+                        <td>
+                            <input class="small-textbox" type="number" step="1" placeholder="10" id="homeRebounds" name="homeRebounds">
+                        </td>
+                        <td>
+                            <input class="small-textbox" type="number" step="1" placeholder="9" id="awayRebounds" name="awayRebounds">
                         </td>
                         <td>
                             <input class="submit add-button" type="submit" value="Add Team">
@@ -44,7 +77,6 @@
                         <tr>
                             <th>ID</th>
                             <th>Name</th>
-                            <th>Conference</th>
                             <th>Verified</th>
                         </tr>
                     </thead>
@@ -57,7 +89,6 @@
                                     <tr class="non-verified-row">
                                         <td>@row.TeamID</td>
                                         <td>@row.Name</td>
-                                        <td>@row.ConferenceName</td>
                                         <td>@row.Verified</td>
                                     </tr>    
                             }
