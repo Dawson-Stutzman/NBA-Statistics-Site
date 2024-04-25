@@ -1,7 +1,7 @@
 ﻿@page
 @model PlayerByAttributeFormModel
 @{
-    ViewData["Title"] = "Stats per Physical Attributes";
+    ViewData["Title"] = "Average Stats by Physical Attributes";
 }
 <h1>@ViewData["Title"]</h1>
 <body>
@@ -20,7 +20,7 @@
             <div>
                 <label for="metric" class="fw-bold">Metric to rank players by:</label>
                 <br />
-                <input checked type="radio" name="rank" value="Metric" /><label for="rank">&ensp;Metric</label><br />
+                <input checked type="radio" name="rank" value="Metric" /><label for="rank">&ensp;Chosen Attribute</label><br />
                 <input type="radio" name="rank" value="Points" /><label for="rank">&ensp;Points</label><br />
                 <input type="radio" name="rank" value="Assists" /><label for="rank">&ensp;Assists</label><br />
                 <input type="radio" name="rank" value="Rebounds" /><label for="rank">&ensp;Rebounds</label><br />

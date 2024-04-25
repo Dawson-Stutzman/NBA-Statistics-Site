@@ -91,10 +91,12 @@ form {
 
 input {
     width: contain;
-    background-color: lavender
 }
 
 .outer-container {
    display: flex;
    flex-direction: row;
+}
+.small-textbox {
+    width: 4em;
 }

@@ -1,0 +1,106 @@
+﻿@page
+@model AddPlayerFormModel
+@{
+    ViewData["Title"] = "Add New Player";
+}
+
+<div class="custom-horizonal-align">
+    <div class="vertical-align">
+        <h1>
+            @ViewData["Title"]
+        </h1>
+
+        <form class="player-form">
+            <div class="form-group">
+                <label for="playerName">Player Name:</label>
+                <input placeholder="Devin Booker" type="text" id="playerName" name="PlayerName" class="right-align" />
+            </div>
+            <div class="form-group">
+                <label for="position">Position:</label>
+                <input placeholder="F-C" type="text" id="position" name="Position" class="right-align" />
+            </div>
+            <div class="form-group">
+                <label for="height">Height:</label>
+                <input placeholder="6-7" type="text" id="height" name="Height" class="right-align" />
+            </div>
+            <div class="form-group">
+                <label for="weight">Weight:</label>
+                <input placeholder="219" type="text" id="weight" name="Weight" class="right-align" />
+            </div>
+            <div class="form-group">
+                <label for="birthdate">Birthdate:</label>
+                <input placeholder="DEC 11, 2003" type="text" id="birthdate" name="Birthdate" class="right-align" />
+            </div>
+            <div class="form-group">
+                <label for="school">School:</label>
+                <input placeholder="Duke" type="text" id="school" name="School" class="right-align" />
+            </div>
+            <div class="form-group">
+                <label for="age">Age:</label>
+                <input placeholder="26" type="number" id="age" name="Age" class="right-align" />
+            </div>
+            <input class="submit add-button" type="submit" value="Add Player">
+        </form>
+
+
+        <br />
+        <br />
+        <div class="flex-row horizontal-align left-border">
+            <div class="vertical-align">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>PlayerID</th>
+                            <th>PlayerName</th>
+                            <th>Position</th>
+                            <th>Height</th>
+                            <th>Weight</th>
+                            <th>BirthDate</th>
+                            <th>School</th>
+                            <th>Age</th>
+                            <th>Verified</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.Players != null)
+                        {
+                            foreach (var row in Model.Players)
+                            {
+                                @if (row.Verified > 0)
+                                {
+                                <tr class="non-verified-row">
+                                    <td>@row.PlayerID</td>
+                                    <td>@row.PlayerName</td>
+                                    <td>@row.Position</td>
+                                    <td>@row.Height</td>
+                                    <td>@row.Weight</td>
+                                    <td>@row.BirthDate</td>
+                                    <td>@row.School</td>
+                                    <td>@row.Age</td>
+                                    <td>No</td>
+                                </tr>
+                                }
+                                @if (row.Verified == 0)
+                                {
+                                    <tr class="verified-row">
+                                        <td>@row.PlayerID</td>
+                                        <td>@row.PlayerName</td>
+                                        <td>@row.Position</td>
+                                        <td>@row.Height</td>
+                                        <td>@row.Weight</td>
+                                        <td>@row.BirthDate</td>
+                                        <td>@row.School</td>
+                                        <td>@row.Age</td>
+                                        <td>Yes</td>
+                                    </tr>
+                                    
+                                }
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

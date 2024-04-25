@@ -10,7 +10,7 @@
         <div class="horizontal-align">
 
             <input type="text" id="teams" name="teams" placeholder="Utah Jazz, Miami Heat">
-            <input class="checkbox" type="checkbox" id="allTeams" name="allTeams" @(Model.AllTeams)><br /><br />
+            <input  class="checkbox" type="checkbox" id="allTeams" name="allTeams" @Model.AllTeams><br /><br />
             <label for="allTeams">Compare All Teams</label><br />
         </div>
         <!--
@@ -41,11 +41,11 @@
             <input type="radio" name="metric" value="steals" /><label for="metric">&ensp;Minutes</label><br />
         </div><br />
         <div class="horizontal-align">
-            <input @Model.Descending class="checkbox" type="checkbox" id="desc" name="descending" checked="checked">
+            <input @Model.Descending class="checkbox" type="checkbox" id="desc" name="descending">
             <label for="descending">Descending</label>
         </div><br />
         <div class="horizontal-align">
-            <input @Model.CustomVals class="checkbox" type="checkbox" id="desc" name="customVals" checked="checked">
+            <input @Model.CustomVals class="checkbox" type="checkbox" id="desc" name="customVals">
             <label for="customVals">Allow User-Entered Teams</label>
         </div>
         <input class="submit" type="submit" value="Submit">
@@ -59,7 +59,6 @@
                     <tr>
                         <th>Team</th>
                         <th>Wins</th>
-                        <th>Losses</th>
                         <th>Points</th>
                         <th>Assists</th>
                         <th>Rebounds</th>
@@ -74,7 +73,6 @@
                             <tr class="non-verified-row">
                                 <td>@col.TeamName</td>
                                 <td>@col.Wins</td>
-                                <td>@col.Losses</td>
                                 <td>@col.Points</td>
                                 <td>@col.Assists</td>
                                 <td>@col.Rebounds</td>
@@ -86,11 +84,10 @@
                             <tr class="verified-row">
                                 <td>@col.TeamName</td>
                                 <td>@col.Wins</td>
-                                <td>@col.Losses</td>
                                 <td>@col.Points</td>
                                 <td>@col.Assists</td>
                                 <td>@col.Rebounds</td>
-                                <td>No</td>
+                                <td>Yes</td>
                             </tr>
                         }
                     }
