@@ -75,22 +75,57 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Name</th>
+                            <th>Year</th>
+                            <th>Home Team</th>
+                            <th>Away Team</th>
+                            <th>Winner</th>
+                            <th>Home Points</th>
+                            <th>Away Points</th>
+                            <th>Home Assists</th>
+                            <th>Away Assists</th>
+                            <th>Home Rebounds</th>
+                            <th>Away Rebounds</th>
                             <th>Verified</th>
                         </tr>
                     </thead>
                     <tbody>
                         @if (Model.Teams != null)
                         {
-                            foreach (var row in Model.Teams)
+                            foreach (var row in Model.Games)
                             {
-                                
+                                @if(row.Verified > 0)
+                                {
                                     <tr class="non-verified-row">
-                                        <td>@row.TeamID</td>
-                                        <td>@row.Name</td>
-                                        <td>@row.Verified</td>
+                                    <td>@row.Year</td>
+                                    <td>@row.HomeTeamName</td>
+                                    <td>@row.AwayTeamName</td>
+                                    <td>@row.WinningTeamName</td>
+                                    <td>@row.HomePoints</td>
+                                    <td>@row.AwayPoints</td>
+                                    <td>@row.HomeAssists</td>
+                                    <td>@row.AwayAssists</td>
+                                    <td>@row.HomeRebounds</td>
+                                    <td>@row.AwayRebounds</td>
+                                    <td>No</td>
                                     </tr>    
+                                    }
+                                @if (row.Verified == 0)
+                                {
+                                    <tr class="verified-row">
+                                        <td>@row.Year</td>
+                                        <td>@row.HomeTeamName</td>
+                                        <td>@row.AwayTeamName</td>
+                                        <td>@row.WinningTeamName</td>
+                                        <td>@row.HomePoints</td>
+                                        <td>@row.AwayPoints</td>
+                                        <td>@row.HomeAssists</td>
+                                        <td>@row.AwayAssists</td>
+                                        <td>@row.HomeRebounds</td>
+                                        <td>@row.AwayRebounds</td>
+                                        <td>Yes</td>
+                                    </tr>
+                                }
+
                             }
                         }
 

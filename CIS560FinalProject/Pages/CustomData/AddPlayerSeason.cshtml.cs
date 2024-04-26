@@ -14,7 +14,7 @@ namespace CIS560FinalProject.Pages.CustomData
         public List<Team> Teams = new();
         public void OnGet()
         {
-            string GamesPlayed = HttpContext.Request.Query["GamesPlayed"].ToString();
+            string GamesPlayed = (HttpContext.Request.Query["GamesPlayed"].ToString() == "") ? "0" : HttpContext.Request.Query["GamesPlayed"].ToString();
             string Minutes = HttpContext.Request.Query["Minutes"].ToString();
             string Points = HttpContext.Request.Query["Points"].ToString();
             string FieldGoalsMade = HttpContext.Request.Query["fieldGoalsMade"].ToString();
@@ -87,44 +87,50 @@ namespace CIS560FinalProject.Pages.CustomData
                     Year = InsertTeamSeason(int.Parse(TeamID), int.Parse(Year));
                     TeamSeasonID = GetInsertedTeamSeason(int.Parse(TeamID), int.Parse(Year));
                 }
-                string values = String.Format("{0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8}, {9}, {10}, {11}, {12}, {13}, {14}", PlayerID, TeamSeasonID, GamesPlayed, Minutes, Points, FieldGoalsMade, FieldGoalAttempts, ThreePointsMade, ThreePointAttempts, Rebounds, Assists, Blocks, Steals, Turnovers, PlusMinus);
-                string insertString = "INSERT INTO [Statistics].PlayerSeason " +
-                    "([PlayerID], [TeamSeasonID], [GamesPlayed], [Minutes], [Points], [FieldGoalMade], [FieldGoalAttempts], [ThreePointMade], [ThreePointAttempts], [Rebounds], [Assists], [Blocks], [Steals], [Turnovers], [PlusMinus])"
-                    + "VALUES (" + values + ")";
+                string insertString = String.Format("MERGE INTO [Statistics].PlayerSeason AS Target " +
+                    "USING (VALUES ('{0}', '{1}')) " +
+                    "   AS Source (PlayerID, TeamSeasonID) " +
+                    "ON Target.PlayerID = Source.PlayerID AND Target.TeamSeasonID = Source.TeamSeasonID " +
+                    "WHEN NOT MATCHED THEN " +
+                    "    INSERT (PlayerID, TeamSeasonID, GamesPlayed, Minutes, Points, FieldGoalMade, FieldGoalAttempts, ThreePointMade, ThreePointAttempts, Rebounds, Assists, Blocks, Steals, Turnovers, PlusMinus) " +
+                    "    VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}', '{10}', '{11}', '{12}', '{13}', '{14}');", PlayerID, TeamSeasonID, GamesPlayed, Minutes, Points, FieldGoalsMade, FieldGoalAttempts, ThreePointsMade, ThreePointAttempts, Rebounds, Assists, Blocks, Steals, Turnovers, PlusMinus);
                 SqlCommand comm = new SqlCommand(insertString, connection);
                 comm.ExecuteNonQuery();
-
-                string summarizeString = "SELECT * FROM [Statistics].TeamSeason";
-                SqlCommand summarize = new SqlCommand(summarizeString, connection);
-                reader = summarize.ExecuteReader();
-                reader.Close();
                 comm.Dispose();
-                reader = summarize.ExecuteReader();
+            }
+                string summarizeString = "SELECT P.PlayerName, T.TeamName, TS.[Year], PS.GamesPlayed, PS.[Minutes], PS.Points, PS.FieldGoalMade, PS.FieldGoalAttempts, PS.ThreePointMade, PS.ThreePointAttempts, PS.Rebounds, PS.Assists, PS.Blocks, PS.Steals, PS.Turnovers, PS.PlusMinus, (PS.Verified + P.Verified) AS Verified " +
+                    "FROM [Statistics].Player P " +
+                    "INNER JOIN [Statistics].PlayerSeason PS ON PS.PlayerID = P.PlayerID " +
+                    "INNER JOIN [Statistics].TeamSeason TS ON TS.TeamSeasonID = PS.TeamSeasonID " +
+                    "INNER JOIN [Statistics].Team T ON T.TeamID = TS.TeamID " +
+                    "ORDER BY P.PlayerName ASC";
+                SqlCommand summarize = new SqlCommand(summarizeString, connection);
+                 reader = summarize.ExecuteReader();
+
                 while (reader.Read())
                 {
-                    PlayerSeason ts = new();
-                    ts.PlayerSeasonID = reader.GetInt32(0);
-                    ts.PlayerID = reader.GetInt32(1);
-                    ts.TeamSeasonID = reader.GetInt32(2);
-                    ts.GamesPlayed = reader.GetInt32(3);
-                    ts.Minutes = reader.GetDecimal(4);
-                    ts.Points = reader.GetDecimal(5);
-                    ts.FieldGoalsMade = reader.GetDecimal(6);
-                    ts.FieldGoalAttempts = reader.GetDecimal(7);
-                    ts.ThreePointsMade = reader.GetDecimal(8);
-                    ts.ThreePointAttempts = reader.GetDecimal(9);
-                    ts.Rebounds = reader.GetDecimal(10);
-                    ts.Assists = reader.GetDecimal(11);
-                    ts.Blocks = reader.GetDecimal(12);
-                    ts.Steals = reader.GetDecimal(13);
-                    ts.Turnovers = reader.GetDecimal(14);
-                    ts.PlusMinus = reader.GetDecimal(15);
-                    ts.Verified = reader.GetInt32(16);
-                    PlayerSeasons.Add(ts);
+                    PlayerSeason p = new();
+                    p.PlayerName = reader.GetString(0);
+                    p.TeamName = reader.GetString(1);
+                    p.Year = reader.GetInt32(2);
+                    p.GamesPlayed = reader.GetInt32(3);
+                    p.Minutes = reader.GetDecimal(4);
+                    p.Points = reader.GetDecimal(5);
+                    p.FieldGoalsMade = reader.GetDecimal(6);
+                    p.FieldGoalAttempts = reader.GetDecimal(7);
+                    p.ThreePointsMade = reader.GetDecimal(8);
+                    p.ThreePointAttempts = reader.GetDecimal(9);
+                    p.Rebounds = reader.GetDecimal(10);
+                    p.Assists = reader.GetDecimal(11);
+                    p.Blocks = reader.GetDecimal(12);
+                    p.Steals = reader.GetDecimal(13);
+                    p.Turnovers = reader.GetDecimal(14);
+                    p.PlusMinus = reader.GetDecimal(15);
+                    p.Verified = reader.GetInt32(16);
+                    PlayerSeasons.Add(p);
                 }
                 reader.Close();
                 connection.Close();
-            }
 
 
         }
@@ -145,9 +151,9 @@ namespace CIS560FinalProject.Pages.CustomData
 
         public class PlayerSeason
         {
-            public int PlayerSeasonID;
-            public int PlayerID;
-            public int TeamSeasonID;
+            public string PlayerName;
+            public string TeamName;
+            public int Year;
             public int GamesPlayed;
             public decimal Minutes;
             public decimal Points;

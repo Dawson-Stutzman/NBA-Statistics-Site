@@ -47,7 +47,7 @@
                             </select>
                         </td>
                         <td>
-                            <input class="small-textbox" type="number" step="2024" placeholder="100" id="year" name="year">
+                            <input class="small-textbox" type="number" placeholder="2024" id="year" name="year">
                         </td>
                         <td>
                             <input class="small-textbox" type="number" step="1" placeholder="4" id="games" name="GamesPlayed">
@@ -90,7 +90,7 @@
                         </td>
 
                         <td>
-                            <input class="submit add-button" type="submit" value="Add Team">
+                            <input class="submit add-button" type="submit" value="Add Season">
                         </td>
                     </tr>
                 </tbody>
@@ -103,11 +103,14 @@
                 <table class="table">
                     <thead>
                         <tr>
+                            <th>Name</th>
+                            <th>Team</th>
+                            <th>Year</th>
                             <th>Games Played</th>
                             <th>Minutes</th>
                             <th>Points</th>
                             <th>Field Goals Made</th>
-                            <th>Field Goal Attempts</th>
+                            <th>Field Goals Attempts</th>
                             <th>Three Points Made</th>
                             <th>Three Point Attempts</th>
                             <th>Rebounds</th>
@@ -116,6 +119,7 @@
                             <th>Steals</th>
                             <th>Turnovers</th>
                             <th>+/-</th>
+                            <th>Verified</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -124,11 +128,12 @@
                         {
                             foreach (var row in Model.PlayerSeasons)
                             {
-
+                                @if(row.Verified > 0)
+                                {
                                 <tr class="non-verified-row">
-                                    <td>@row.PlayerSeasonID</td>
-                                    <td>@row.PlayerID</td>
-                                    <td>@row.TeamSeasonID</td>
+                                    <td>@row.PlayerName</td>
+                                    <td>@row.TeamName</td>
+                                    <td>@row.Year</td>
                                     <td>@row.GamesPlayed</td>
                                     <td>@row.Minutes</td>
                                     <td>@row.Points</td>
@@ -142,8 +147,31 @@
                                     <td>@row.Steals</td>
                                     <td>@row.Turnovers</td>
                                     <td>@row.PlusMinus</td>
-                                    <td>@row.Verified</td>
+                                    <td>No</td>
                                 </tr>
+                                }
+                                @if (row.Verified == 0)
+                                {
+                                    <tr class="verified-row">
+                                        <td>@row.PlayerName</td>
+                                        <td>@row.TeamName</td>
+                                        <td>@row.Year</td>
+                                        <td>@row.GamesPlayed</td>
+                                        <td>@row.Minutes</td>
+                                        <td>@row.Points</td>
+                                        <td>@row.FieldGoalsMade</td>
+                                        <td>@row.FieldGoalAttempts</td>
+                                        <td>@row.ThreePointsMade</td>
+                                        <td>@row.ThreePointAttempts</td>
+                                        <td>@row.Rebounds</td>
+                                        <td>@row.Assists</td>
+                                        <td>@row.Blocks</td>
+                                        <td>@row.Steals</td>
+                                        <td>@row.Turnovers</td>
+                                        <td>@row.PlusMinus</td>
+                                        <td>Yes</td>
+                                    </tr>
+                                }
                             }
                         }
 

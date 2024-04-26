@@ -39,53 +39,45 @@ namespace CIS560FinalProject.Pages.CustomData
             BirthDate = HttpContext.Request.Query["birthdate"].ToString();
             School = HttpContext.Request.Query["school"].ToString();
             Age = HttpContext.Request.Query["Age"].ToString();
-            string name = "'" + PlayerName + "'";
-            string pos = "'" + Position + "'";
-            string height = "'" + Height + "'";
-            string weight = "'" + Weight + "'";
-            string bday = "'" + BirthDate + "'";
-            string school = "'" + School + "'";
-            string age = "'" + Age + "'";
 
+            SqlConnection connection = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=NBA;Integrated Security=True");
+            connection.Open();
 
-            try
+            string insertString = String.Format("MERGE INTO [Statistics].Player AS Target " +
+                "USING (SELECT '{0}' AS PlayerName) AS Source " +
+                "ON Target.PlayerName = Source.PlayerName " +
+                "WHEN NOT MATCHED THEN " +
+                "    INSERT (PlayerName, Position, Height, [Weight], Birthdate, School, Age) " +
+                "VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}');", PlayerName, Position, Height, Weight, BirthDate, School, Age);
+            if (PlayerName != "")
             {
-                SqlConnection connection = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=NBA;Integrated Security=True");
-                connection.Open();
+                SqlCommand comm = new SqlCommand(insertString, connection);
+                comm.ExecuteNonQuery();
 
-                string insertString = "INSERT INTO [Statistics].Player ([PlayerName], [Position], [Height], [Weight], [Birthdate], [School], [Age])" +
-                " VALUES (" + name + ", " + pos + ", " + height + ", " + weight + ", " + bday + ", " + school + ", " + age + ")";
-                if (PlayerName != "")
+                string summarizeString = "SELECT * FROM [Statistics].Player P ORDER BY P.PlayerName ASC";
+                SqlCommand summarize = new SqlCommand(summarizeString, connection);
+                SqlDataReader reader = summarize.ExecuteReader();
+                comm.Dispose();
+
+                while (reader.Read())
                 {
-                    SqlCommand comm = new SqlCommand(insertString, connection);
-                    comm.ExecuteNonQuery();
+                    Player p = new();
+                    p.PlayerID = reader.GetInt32(0);
+                    p.PlayerName = reader.GetString(1);
+                    p.Position = reader.GetString(2);
+                    p.Height = reader.GetString(3);
+                    p.Weight = reader.GetString(4);
+                    p.BirthDate = reader.GetString(5);
+                    p.School = reader.GetString(6);
+                    p.Age = reader.GetDecimal(7);
+                    p.Verified = reader.GetInt32(8);
+                    Players.Add(p);
 
-                    string summarizeString = "SELECT * FROM [Statistics].Player P ORDER BY P.Name DESC";
-                    SqlCommand summarize = new SqlCommand(summarizeString, connection);
-                    SqlDataReader reader = summarize.ExecuteReader();
-                    comm.Dispose();
-
-                    while (reader.Read())
-                    {
-                        Player p = new();
-                        p.PlayerID = reader.GetInt32(0);
-                        p.PlayerName = reader.GetString(1);
-                        p.Position = reader.GetString(2);
-                        p.Height = reader.GetString(3);
-                        p.Weight = reader.GetString(4);
-                        p.BirthDate = reader.GetString(5);
-                        p.School = reader.GetString(6);
-                        p.Age = reader.GetDecimal(7);
-                        p.Verified = reader.GetInt32(8);
-                        Players.Add(p);
-
-                    }
-                    reader.Close();
                 }
-
-                connection.Close();
+                reader.Close();
             }
-            catch { }
+
+            connection.Close();
         }
 
         public class Player
