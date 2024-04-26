@@ -3,16 +3,20 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.VisualBasic;
 using System.Data.SqlClient;
+using System.Runtime.CompilerServices;
 
 namespace CIS560FinalProject.Pages.CustomData
 {
     public class AddGameFormModel : PageModel
     {
 
-        public List<Team> Teams = new();
-        public List<Game> Games = new();
-        public void OnGet()
+        public List<Team> Teams;
+        public List<Game> Games;
+        public async void OnGet()
         {
+            Teams = new();
+            Games = new();
+
 
             //======================================================== Form Data Collection ========================================================
             int year = (string.IsNullOrEmpty(HttpContext.Request.Query["year"].ToString())) ? 0 : int.Parse(HttpContext.Request.Query["year"].ToString());
@@ -31,7 +35,7 @@ namespace CIS560FinalProject.Pages.CustomData
 
             int winningTeamID = homeTeamID;
             if (homePoints < awayPoints) winningTeamID = awayTeamID;
-
+            else winningTeamID = homeTeamID;
             int winningTeamSeasonID;
             int homeTeamSeasonID;
             int awayTeamSeasonID;
@@ -42,6 +46,21 @@ namespace CIS560FinalProject.Pages.CustomData
                 SqlConnection connection = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=NBA;Integrated Security=True");
                 connection.Open();
             SqlDataReader reader;
+
+            string teamListString = "SELECT T.TeamID, T.TeamName, T.Verified FROM [Statistics].Team T ORDER BY T.TeamName DESC";
+            SqlCommand getTeams = new SqlCommand(teamListString, connection);
+            reader = getTeams.ExecuteReader();
+            while (await reader.ReadAsync())
+            {
+                Team t = new();
+                t.TeamID = reader.GetInt32(0);
+                t.Name = reader.GetString(1);
+                t.Verified = reader.GetInt32(2);
+                Teams.Add(t);
+            }
+            reader.Close();
+
+
             if (homeTeamID != 0)
             {
                 string getHomeTeamSeasonIDString = String.Format("   SELECT TS.TeamSeasonID " +
@@ -58,50 +77,52 @@ namespace CIS560FinalProject.Pages.CustomData
                 SqlCommand getHomeTeamSeasonID = new SqlCommand(getHomeTeamSeasonIDString, connection);
                 SqlCommand getAwayTeamSeasonID = new SqlCommand(getAwayTeamSeasonIDString, connection);
                 //If the HomeTeamSeasonID doesn't exist, insert it.
-                reader = getHomeTeamSeasonID.ExecuteReader();
+                reader = await getHomeTeamSeasonID.ExecuteReaderAsync();
                 if (reader.Read())
                 {
                     homeTeamSeasonID = reader.GetInt32(0);
+                    reader.Close();
                 }
                 else
                 {
                     reader.Close();
-                    string insertHomeString = String.Format("INSERT [Statistics].TeamSeason (TeamID, [Year]) " +
-                        "                                   VALUES ({0}, {1});", homeTeamID, year);
-                    SqlCommand insertHomeTeamSeasonID = new SqlCommand(insertHomeString, connection);
-                    insertHomeTeamSeasonID.ExecuteNonQuery();
+                    connection.Close();
+                    connection.Open();
+                    year = InsertTeamSeason(homeTeamID, year);
 
-                    SqlCommand home = new SqlCommand("SELECT TS.TeamSeasonID FROM [Statistics].TeamSeason TS INNER JOIN [Statistics].Team T ON T.TeamID = TS.TeamID WHERE T.[TeamID] = " + homeTeamID + " AND TS.[Year] = " + year, connection);
-                    reader = home.ExecuteReader();
+                    SqlCommand home = new SqlCommand(("SELECT TS.TeamSeasonID " +
+                        "FROM [Statistics].TeamSeason TS " +
+                        "   INNER JOIN [Statistics].Team T ON T.TeamID = TS.TeamID " +
+                        "WHERE T.[TeamID] = " + homeTeamID + " AND TS.[Year] = " + year + ""), connection);
+                    reader = await home.ExecuteReaderAsync();
 
-                    homeTeamSeasonID = reader.GetInt32(0);
 
+                    homeTeamSeasonID = reader.GetInt16(0);
+                    reader.Close();
                 }
 
                 //If the HomeTeamSeasonID doesn't exist, insert it.
-                reader.Close();
+
                 reader = getAwayTeamSeasonID.ExecuteReader();
 
                 if (reader.Read())
                 {
                     awayTeamSeasonID = reader.GetInt32(0);
+                    reader.Close();
                 }
                 else
                 {
                     reader.Close();
-                    string insertAwayString = String.Format("INSERT [Statistics].TeamSeason (TeamID, [Year]) " +
-                        "                                   VALUES ({0}, {1});", awayTeamID, year);
-
-                    SqlCommand insertAwayTeamSeasonID = new SqlCommand(insertAwayString, connection);
-                    insertAwayTeamSeasonID.ExecuteNonQuery();
-
-                    SqlCommand away = new SqlCommand("SELECT TS.TeamSeasonID FROM [Statistics].TeamSeason TS INNER JOIN [Statistics].Team T ON T.TeamID = TS.TeamID WHERE T.[TeamID] = " + awayTeamID + " AND TS.[Year] = " + year, connection);
-                    reader = away.ExecuteReader();
+                    connection.Close();
+                    connection.Open();
+                    InsertTeamSeason(awayTeamID, year);
+                    SqlCommand away = new SqlCommand(("SELECT TS.TeamSeasonID FROM [Statistics].TeamSeason TS INNER JOIN [Statistics].Team T ON T.TeamID = TS.TeamID WHERE T.[TeamID] = " + awayTeamID + " AND TS.[Year] = " + year + ""), connection);
+                    reader = await away.ExecuteReaderAsync();
 
                     awayTeamSeasonID = reader.GetInt32(0);
-
+                    reader.Close();
                 }
-                reader.Close();
+
                 winningTeamSeasonID = (winningTeamID == homeTeamID) ? homeTeamSeasonID : awayTeamSeasonID;
 
                 string insertString = String.Format("INSERT [Statistics].Game(" +
@@ -113,8 +134,8 @@ namespace CIS560FinalProject.Pages.CustomData
                                                     "AwayAssists, " +
                                                     "HomeAssists, " +
                                                     "AwayRebounds, " +
-                                                    "HomeRebounds " +
-                                                    "VALUES((" +
+                                                    "HomeRebounds" +
+                                                    ")VALUES(" +
                                                     "   {0}, " +
                                                     "   {1}, " +
                                                     "   {2}, " +
@@ -128,22 +149,11 @@ namespace CIS560FinalProject.Pages.CustomData
 
                 //======================================================== Inserting Data ========================================================
 
-
+                Console.WriteLine(insertString);
                 SqlCommand insertGame = new SqlCommand(insertString, connection);
-                insertGame.ExecuteNonQuery();
+                await insertGame.ExecuteNonQueryAsync();
             }
-            string teamListString = "SELECT T.TeamID, T.TeamName, T.Verified FROM [Statistics].Team T ORDER BY T.TeamName";
-            SqlCommand getTeams = new SqlCommand(teamListString, connection);
-            reader = getTeams.ExecuteReader();
-            while (reader.Read())
-            {
-                Team t = new();
-                t.TeamID = reader.GetInt32(0);
-                t.Name = reader.GetString(1);
-                t.Verified = reader.GetInt32(2);
-                Teams.Add(t);
-            }
-            reader.Close();
+
 
         }
 
@@ -166,6 +176,20 @@ namespace CIS560FinalProject.Pages.CustomData
             public int HomeRebounds;
             public int AwayRebounds;
             public int Verified;
+        }
+
+        public int InsertTeamSeason(int TeamID, int year)
+        {
+            SqlConnection connection = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=NBA;Integrated Security=True");
+            connection.Open();
+            SqlDataReader reader;
+            string insertHomeString = String.Format("INSERT [Statistics].TeamSeason (TeamID, [Year]) " +
+    "                                   VALUES ({0}, {1});", TeamID, year);
+            SqlCommand insertHomeTeamSeasonID = new SqlCommand(insertHomeString, connection);
+            insertHomeTeamSeasonID.ExecuteNonQuery();
+            insertHomeTeamSeasonID.Dispose();
+            connection.Close();
+            return year;
         }
     }
 }

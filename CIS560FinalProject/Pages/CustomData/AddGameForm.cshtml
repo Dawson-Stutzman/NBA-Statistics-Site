@@ -36,7 +36,7 @@
                             </select>
                         </td>
                         <td>
-                            <select name="awayTeam" id="homeTeam">
+                            <select name="awayTeam" id="awayTeam">
                                 @foreach (var T in Model.Teams)
                                 {
                                     <option class="@(T.Verified == 0 ? "verified-row" : "non-verified-row") " value="@T.TeamID">@T.Name</option>
