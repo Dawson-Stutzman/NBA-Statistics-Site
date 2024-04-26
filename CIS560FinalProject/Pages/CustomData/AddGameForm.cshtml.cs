@@ -61,7 +61,7 @@ namespace CIS560FinalProject.Pages.CustomData
             reader.Close();
 
 
-            if (homeTeamID != 0)
+            if (homeTeamID != 0 && awayTeamID != 0 && (homePoints != 0 || awayPoints != 0))
             {
                 string getHomeTeamSeasonIDString = String.Format("   SELECT TS.TeamSeasonID " +
                                                     "       FROM [Statistics].TeamSeason TS " +

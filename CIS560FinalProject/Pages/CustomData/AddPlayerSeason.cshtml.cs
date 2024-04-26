@@ -1,6 +1,7 @@
 using CIS560FinalProject.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.VisualBasic;
 using System.Data.SqlClient;
 using System.Reflection.PortableExecutable;
 
@@ -27,19 +28,9 @@ namespace CIS560FinalProject.Pages.CustomData
             string Turnovers = HttpContext.Request.Query["Turnovers"].ToString();
             string PlusMinus = HttpContext.Request.Query["PlusMinus"].ToString();
             string PlayerID = HttpContext.Request.Query["player"].ToString();
-            string values = String.Format("'{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}', '{10}', '{11}', '{12}', {13}", PlayerID, GamesPlayed, Minutes, Points, FieldGoalsMade, FieldGoalAttempts, ThreePointsMade, ThreePointAttempts, Rebounds, Assists, Blocks, Steals, Turnovers, PlusMinus);
-            string min = "'" + Minutes + "'";
-            string poi = "'" + Points + "'";
-            string fgm = "'" + FieldGoalsMade + "'";
-            string fga = "'" + FieldGoalAttempts + "'";
-            string tpm = "'" + ThreePointsMade + "'";
-            string tpa = "'" + ThreePointAttempts + "'";
-            string re = "'" + Rebounds + "'";
-            string ass = "'" + Assists + "'";
-            string bl = "'" + Blocks + "'";
-            string ste = "'" + Steals + "'";
-            string tu = "'" + Turnovers + "'";
-            string pm = "'" + PlusMinus + "'";
+            string TeamID = HttpContext.Request.Query["team"].ToString();
+            string Year = HttpContext.Request.Query["year"].ToString();
+
 
             SqlConnection connection = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=NBA;Integrated Security=True");
             connection.Open();
@@ -71,10 +62,34 @@ namespace CIS560FinalProject.Pages.CustomData
             }
             reader.Close();
 
-            if (GamesPlayed != "")
+
+            if (PlayerID != "" && TeamID != "" && Year != "")
             {
+
+                string getTeamSeasonIDString = String.Format("   SELECT TS.TeamSeasonID " +
+                                        "       FROM [Statistics].TeamSeason TS " +
+                                        "           INNER JOIN [Statistics].Team T ON T.TeamID = {0}" +
+                                        "   WHERE T.TeamID = {0} AND TS.[Year] = {1}", TeamID, Year);
+                string TeamSeasonID = "";
+                SqlCommand getTeamSeasonID = new SqlCommand(getTeamSeasonIDString, connection);
+
+                //If the HomeTeamSeasonID doesn't exist, insert it.
+                reader = getTeamSeasonID.ExecuteReader();
+                if (reader.Read())
+                {
+                    TeamSeasonID = reader.GetInt32(0).ToString();
+                    reader.Close();
+                }
+                else
+                {
+                    reader.Close();
+                    connection.Close();
+                    Year = InsertTeamSeason(int.Parse(TeamID), int.Parse(Year));
+                    TeamSeasonID = GetInsertedTeamSeason(int.Parse(TeamID), int.Parse(Year));
+                }
+                string values = String.Format("{0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8}, {9}, {10}, {11}, {12}, {13}, {14}", PlayerID, TeamSeasonID, GamesPlayed, Minutes, Points, FieldGoalsMade, FieldGoalAttempts, ThreePointsMade, ThreePointAttempts, Rebounds, Assists, Blocks, Steals, Turnovers, PlusMinus);
                 string insertString = "INSERT INTO [Statistics].PlayerSeason " +
-                    "([PlayerID], [GamesPlayed], [Minutes], [Points], [FieldGoalMade], [FieldGoalAttempts], [ThreePointMade], [ThreePointAttempts], [Rebounds], [Assists], [Blocks], [Steals], [Turnovers], [PlusMinus])"
+                    "([PlayerID], [TeamSeasonID], [GamesPlayed], [Minutes], [Points], [FieldGoalMade], [FieldGoalAttempts], [ThreePointMade], [ThreePointAttempts], [Rebounds], [Assists], [Blocks], [Steals], [Turnovers], [PlusMinus])"
                     + "VALUES (" + values + ")";
                 SqlCommand comm = new SqlCommand(insertString, connection);
                 comm.ExecuteNonQuery();
@@ -82,8 +97,9 @@ namespace CIS560FinalProject.Pages.CustomData
                 string summarizeString = "SELECT * FROM [Statistics].TeamSeason";
                 SqlCommand summarize = new SqlCommand(summarizeString, connection);
                 reader = summarize.ExecuteReader();
+                reader.Close();
                 comm.Dispose();
-
+                reader = summarize.ExecuteReader();
                 while (reader.Read())
                 {
                     PlayerSeason ts = new();
@@ -146,6 +162,34 @@ namespace CIS560FinalProject.Pages.CustomData
             public decimal Turnovers;
             public decimal PlusMinus;
             public int Verified;
+        }
+
+        public string InsertTeamSeason(int TeamID, int year)
+        {
+            SqlConnection connection = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=NBA;Integrated Security=True");
+            connection.Open();
+            string insertHomeString = String.Format("INSERT [Statistics].TeamSeason (TeamID, [Year]) " +
+    "                                   VALUES ({0}, {1});", TeamID, year);
+            SqlCommand insertHomeTeamSeasonID = new SqlCommand(insertHomeString, connection);
+            insertHomeTeamSeasonID.ExecuteNonQuery();
+            insertHomeTeamSeasonID.Dispose();
+            connection.Close();
+            return year.ToString();
+        }
+
+        public string GetInsertedTeamSeason(int TeamID, int Year)
+        {
+            SqlConnection connection = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=NBA;Integrated Security=True");
+            connection.Open();
+            SqlCommand q = new SqlCommand(("SELECT TS.TeamSeasonID " +
+                "FROM [Statistics].TeamSeason TS " +
+                "   INNER JOIN [Statistics].Team T ON T.TeamID = TS.TeamID " +
+                "WHERE T.[TeamID] = " + TeamID + " AND TS.[Year] = " + Year + ""), connection);
+            connection.Open();
+            SqlDataReader reader = q.ExecuteReader();
+            string TeamSeasonID = reader.GetInt16(0).ToString();
+            reader.Close();
+            return TeamSeasonID;
         }
     }
 }

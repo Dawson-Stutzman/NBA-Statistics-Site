@@ -38,7 +38,7 @@ namespace CIS560FinalProject.Pages.Analytics
                                         "FROM NBA.[Statistics].PlayerSeason PS " +
                                             "INNER JOIN [Statistics].Player P ON P.PlayerID = PS.PlayerID {1}" +
                                         "GROUP BY [{0}] " +
-                                        "ORDER BY [{2}] {3}", ChosenAttribute, (CustomVals == "checked") ? "WHERE PS.Verified + P.Verified >= 0" : "WHERE PS.Verified + P.Verified = 0", rankMetric,  Descending == "checked" ? "DESC" : "ASC");
+                                        "ORDER BY [{2}] {3}", ChosenAttribute, (CustomVals == "checked") ? "WHERE PS.Verified + P.Verified >= 0" : "WHERE PS.Verified + P.Verified = 0", rankMetric,  Descending == "checked" ? "ASC" : "DESC");
                 SqlCommand comm = new SqlCommand(selectString, connection);
             Console.WriteLine(selectString);
                 SqlDataReader reader = comm.ExecuteReader();

@@ -1,0 +1,81 @@
+﻿@page
+@model AddTeamSeasonFormModel
+@{
+    ViewData["Title"] = "Add New Team Season";
+}
+<div class="custom-horizontal-align">
+    <div class="vertical-align">
+        <h1>@ViewData["Title"]</h1>
+        <form>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Team Name</th>
+                        <th>Year</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <select name="team" id="team">
+                                @foreach (var T in Model.Teams)
+                                {
+                                    <option class="@(T.Verified == 0 ? "verified-row" : "non-verified-row") " value="@T.TeamID">@T.Name</option>
+                                }
+                            </select>
+                        </td>
+                        <td>
+                            <input class="small-textbox" type="number" placeholder="2024" id="year" name="year">
+                        </td>
+                        <td>
+                            <input class="submit add-button" type="submit" value="Add Team">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+        <br />
+        <br />
+        <div class="flex-row horizontal-align left-border">
+            <div class="vertical-align">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Team</th>
+                            <th>Year</th>
+                            <th>Verified</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.Teams != null)
+                        {
+                            @foreach (var row in Model.TeamSeasons)
+                            {
+                                @if(row.Verified > 0)
+                                {
+                                    <tr class="non-verified-row">
+                                        <td>@row.Name</td>
+                                        <td>@row.Year</td>
+                                        <td>No</td>
+                                    </tr>
+                                }
+                                @if (row.Verified == 0)
+                                {
+                                    <tr class="verified-row">
+                                        <td>@row.Name</td>
+                                        <td>@row.Year</td>
+                                        <td>Yes</td>
+                                    </tr>
+                                }
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+    </div>
+</div>

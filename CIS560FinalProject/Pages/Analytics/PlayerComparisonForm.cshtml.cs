@@ -12,7 +12,7 @@ public class PlayerComparisonFormModel : PageModel
         AllPlayers = (HttpContext.Request.Query["allPlayers"].ToString() == "on") ? "checked" : "unchecked";
         Descending = (HttpContext.Request.Query["descending"].ToString() == "on") ? "checked" : "unchecked";
         CustomVals = (HttpContext.Request.Query["customVals"].ToString() == "on") ? "checked" : "unchecked";
-        string Desc = (Descending == "checked") ? "DESC" : "ASC";
+        string Desc = (Descending == "checked") ? "ASC" : "DESC";
         SqlConnection connection = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=NBA;Integrated Security=True");
 
         connection.Open();
@@ -20,6 +20,7 @@ public class PlayerComparisonFormModel : PageModel
         #region Format Player Names
         // Original string of names
         string players = (HttpContext.Request.Query["players"].ToString());
+        if (players == "") AllPlayers = "checked";
         // Split the string into individual names
         string[] names = players.Split(',');
         // Format each name with single quotes
@@ -39,7 +40,7 @@ public class PlayerComparisonFormModel : PageModel
             where += "WHERE [Name] IN (" + formattedString + ") ";
             whereCount++;
         }
-        if (CustomVals != "unchecked")
+        if (CustomVals != "checked")
         {
             if (whereCount > 0)
             {

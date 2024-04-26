@@ -19,6 +19,7 @@ namespace CIS560FinalProject.Pages.Analytics
             AllTeams = (HttpContext.Request.Query["allTeams"].ToString() == "on") ? "checked" : "";
             Descending = (HttpContext.Request.Query["descending"].ToString() == "on") ? "checked" : "";
             CustomVals = (HttpContext.Request.Query["customVals"].ToString() == "on") ? "checked" : "";
+            if (teams == "''") AllTeams = "checked";
             string lowerYear = HttpContext.Request.Query["startDate"].ToString();
             string higherYear = HttpContext.Request.Query["endDate"].ToString();
             string rankMetric = HttpContext.Request.Query["metric"].ToString();
@@ -50,7 +51,7 @@ namespace CIS560FinalProject.Pages.Analytics
             {
                 filterString += " AND " + dateString;
             }
-            filterString += String.Format("GROUP BY T.TeamName ORDER BY {0} {1}", rankMetric, (Descending == "checked") ? "DESC" : "ASC");
+            filterString += String.Format("GROUP BY T.TeamName ORDER BY {0} {1}", rankMetric, (Descending == "checked") ? "ASC" : "DESC");
 
 
             string selectString = "SELECT T.TeamName," +

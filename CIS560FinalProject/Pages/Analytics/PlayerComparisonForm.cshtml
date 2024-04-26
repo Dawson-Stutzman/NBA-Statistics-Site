@@ -24,11 +24,11 @@
             <input type="radio" name="metric" value="turnovers" /><label for="metric">&ensp;Turnovers</label>
         </div>
         <div class="horizontal-align">
-            <input @Model.Descending class="checkbox" type="checkbox" id="desc" name="descending">
-            <label class="fw-bold" for="descending">Descending</label><br /><br />
+            <input @Model.Descending class="checkbox" type="checkbox" id="descending" name="descending">
+            <label class="fw-bold" for="descending">Ascending</label><br /><br />
         </div>
         <div class="horizontal-align">
-            <input class="checkbox" type="checkbox" id="desc" name="customVals">
+                <input @Model.CustomVals class="checkbox" type="checkbox" id="customVals" name="customVals">
             <label class="fw-bold" for="customVals">Allow Unverified Players</label>
         </div>
         <input class="submit" type="submit" value="Submit">

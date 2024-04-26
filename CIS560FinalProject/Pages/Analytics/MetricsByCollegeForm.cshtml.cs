@@ -34,7 +34,7 @@ namespace CIS560FinalProject.Pages.Analytics
             CustomVals = (HttpContext.Request.Query["customVals"].ToString() == "on") ? "checked" : "";
             string rankMetric = HttpContext.Request.Query["metric"].ToString();
             if (rankMetric == "") rankMetric = "School";
-
+            if (colleges == "''") AllColleges = "checked"; 
             //================================Parse Data into Appropriate SQL filters================================
             string filterString = "";
             int filters = 0;
@@ -57,7 +57,7 @@ namespace CIS560FinalProject.Pages.Analytics
                 filterString += "PS.[Verified] = 0";
                 filters++;
             }
-            filterString += String.Format("GROUP BY P.SCHOOL ORDER BY [{0}] {1}", rankMetric, (Descending == "checked") ? "DESC" : "ASC");
+            filterString += String.Format("GROUP BY P.SCHOOL ORDER BY [{0}] {1}", rankMetric, (Descending == "checked") ? "ASC" : "DESC");
             
 
             string selectString = String.Format("SELECT P.School AS School, " +
