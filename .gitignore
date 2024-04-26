@@ -1,0 +1,12 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/CIS560FinalProject/obj/Debug/net7.0/CIS560FinalProject.AssemblyInfo.cs
+/CIS560FinalProject/obj/Debug/net7.0/CIS560FinalProject.AssemblyInfoInputs.cache
+/CIS560FinalProject/obj/Debug/net7.0/CIS560FinalProject.csproj.AssemblyReference.cache
+/CIS560FinalProject/obj/Debug/net7.0/CIS560FinalProject.GeneratedMSBuildEditorConfig.editorconfig
+/CIS560FinalProject/obj/Debug/net7.0/CIS560FinalProject.RazorAssemblyInfo.cache
+/CIS560FinalProject/obj/Debug/net7.0/CIS560FinalProject.RazorAssemblyInfo.cs
+/CIS560FinalProject/obj/Debug/net7.0/CIS560FinalProject.AssemblyInfo.cs
+/CIS560FinalProject/obj/Debug/net7.0/CIS560FinalProject.AssemblyInfoInputs.cache
