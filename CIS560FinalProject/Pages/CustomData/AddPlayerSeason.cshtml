@@ -1,0 +1,158 @@
+﻿@page
+@model AddPlayerSeasonModel
+@{
+    ViewData["Title"] = "Add New Player Season Stats";
+}
+<div class="custom-horizontal-align">
+    <div class="vertical-align">
+        <h1>@ViewData["Title"]</h1>
+        <form>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Player</th>
+                        <th>Team</th>
+                        <th>Year</th>
+                        <th>Games Played</th>
+                        <th>Minutes</th>
+                        <th>Points</th>
+                        <th>Field Goals Made</th>
+                        <th>Field Goal Attempts</th>
+                        <th>Three Points Made</th>
+                        <th>Three Point Attempts</th>
+                        <th>Rebounds</th>
+                        <th>Assists</th>
+                        <th>Blocks</th>
+                        <th>Steals</th>
+                        <th>Turnovers</th>
+                        <th>+/-</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <select name="player" id="player">
+                                @foreach (var P in Model.Players)
+                                {
+                                    <option class="@(P.Verified == 0 ? "verified-row" : "non-verified-row") " value="@P.PlayerID">@P.Name</option>
+                                }
+                            </select>
+                        </td>
+                        <td>
+                            <select name="team" id="team">
+                                @foreach (var T in Model.Teams)
+                                {
+                                    <option class="@(T.Verified == 0 ? "verified-row" : "non-verified-row") " value="@T.TeamID">@T.Name</option>
+                                }
+                            </select>
+                        </td>
+                        <td>
+                            <input class="small-textbox" type="number" step="1" placeholder="100" id="year" name="year">
+                        </td>
+                        <td>
+                            <input class="small-textbox" type="number" step="1" placeholder="4" id="games" name="GamesPlayed">
+                        </td>
+                        <td>
+                            <input class="small-textbox" type="number" step=".1" placeholder="70.6" id="minutes" name="Minutes">
+                        </td>
+                        <td>
+                            <input class="small-textbox" type="number" step="1" placeholder="80" id="points" name="Points">
+                        </td>
+                        <td>
+                            <input class="small-textbox" type="number" step="1" placeholder="100" id="fieldGoalsMade" name="FieldGoalMade">
+                        </td>
+                        <td>
+                            <input class="small-textbox" type="number" step="1" placeholder="100" id="fieldGoalAttempts" name="FieldGoalAttempts">
+                        </td>
+                        <td>
+                            <input class="small-textbox" type="number" step="1" placeholder="5" id="threePointsMade" name="ThreePointsMade">
+                        </td>
+                        <td>
+                            <input class="small-textbox" type="number" step="1" placeholder="4" id="threePointAttempts" name="ThreePointAttempts">
+                        </td>
+                        <td>
+                            <input class="small-textbox" type="number" step="1" placeholder="10" id="rebounds" name="Rebounds">
+                        </td>
+                        <td>
+                            <input class="small-textbox" type="number" step="1" placeholder="9" id="assists" name="Assists">
+                        </td>
+                        <td>
+                            <input class="small-textbox" type="number" step="1" placeholder="9" id="blocks" name="Blocks">
+                        </td>
+                        <td>
+                            <input class="small-textbox" type="number" step="1" placeholder="9" id="steals" name="Steals">
+                        </td>
+                        <td>
+                            <input class="small-textbox" type="number" step="1" placeholder="9" id="turnovers" name="Turnovers">
+                        </td>
+                        <td>
+                            <input class="small-textbox" type="number" step="1" placeholder="9" id="plusminus" name="PlusMinus">
+                        </td>
+
+                        <td>
+                            <input class="submit add-button" type="submit" value="Add Team">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+        <br />
+        <br />
+        <div class="flex-row horizontal-align left-border">
+            <div class="vertical-align">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Games Played</th>
+                            <th>Minutes</th>
+                            <th>Points</th>
+                            <th>Field Goals Made</th>
+                            <th>Field Goal Attempts</th>
+                            <th>Three Points Made</th>
+                            <th>Three Point Attempts</th>
+                            <th>Rebounds</th>
+                            <th>Assists</th>
+                            <th>Blocks</th>
+                            <th>Steals</th>
+                            <th>Turnovers</th>
+                            <th>+/-</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @if (Model.PlayerSeasons != null)
+                        {
+                            foreach (var row in Model.PlayerSeasons)
+                            {
+
+                                <tr class="non-verified-row">
+                                    <td>@row.PlayerSeasonID</td>
+                                    <td>@row.PlayerID</td>
+                                    <td>@row.TeamSeasonID</td>
+                                    <td>@row.GamesPlayed</td>
+                                    <td>@row.Minutes</td>
+                                    <td>@row.Points</td>
+                                    <td>@row.FieldGoalsMade</td>
+                                    <td>@row.FieldGoalAttempts</td>
+                                    <td>@row.ThreePointsMade</td>
+                                    <td>@row.ThreePointAttempts</td>
+                                    <td>@row.Rebounds</td>
+                                    <td>@row.Assists</td>
+                                    <td>@row.Blocks</td>
+                                    <td>@row.Steals</td>
+                                    <td>@row.Turnovers</td>
+                                    <td>@row.PlusMinus</td>
+                                    <td>@row.Verified</td>
+                                </tr>
+                            }
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+</div>

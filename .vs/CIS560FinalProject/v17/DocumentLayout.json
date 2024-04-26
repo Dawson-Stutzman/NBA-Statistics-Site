@@ -3,15 +3,23 @@
   "WorkspaceRootPath": "C:\\Users\\dawso\\source\\repos\\NBA-Statistics-Site\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{ED843BB2-3B32-4E31-9564-748558CDEF05}|CIS560FinalProject\\CIS560FinalProject.csproj|c:\\users\\dawso\\source\\repos\\nba-statistics-site\\cis560finalproject\\pages\\customdata\\addplayerseason.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{ED843BB2-3B32-4E31-9564-748558CDEF05}|CIS560FinalProject\\CIS560FinalProject.csproj|solutionrelative:cis560finalproject\\pages\\customdata\\addplayerseason.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED843BB2-3B32-4E31-9564-748558CDEF05}|CIS560FinalProject\\CIS560FinalProject.csproj|c:\\users\\dawso\\source\\repos\\nba-statistics-site\\cis560finalproject\\pages\\customdata\\addplayerseason.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED843BB2-3B32-4E31-9564-748558CDEF05}|CIS560FinalProject\\CIS560FinalProject.csproj|solutionrelative:cis560finalproject\\pages\\customdata\\addplayerseason.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED843BB2-3B32-4E31-9564-748558CDEF05}|CIS560FinalProject\\CIS560FinalProject.csproj|c:\\users\\dawso\\source\\repos\\nba-statistics-site\\cis560finalproject\\pages\\customdata\\addgameform.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{ED843BB2-3B32-4E31-9564-748558CDEF05}|CIS560FinalProject\\CIS560FinalProject.csproj|solutionrelative:cis560finalproject\\pages\\customdata\\addgameform.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{ED843BB2-3B32-4E31-9564-748558CDEF05}|CIS560FinalProject\\CIS560FinalProject.csproj|c:\\users\\dawso\\source\\repos\\nba-statistics-site\\cis560finalproject\\pages\\customdata\\addgameform.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{ED843BB2-3B32-4E31-9564-748558CDEF05}|CIS560FinalProject\\CIS560FinalProject.csproj|solutionrelative:cis560finalproject\\pages\\customdata\\addgameform.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\dawso\\AppData\\Local\\Temp\\.vsdbgsrc\\b75b477ffc08226322d827b2b2826eec8e4fde542d607a321156bf8fedc93a19\\SqlConnection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{ED843BB2-3B32-4E31-9564-748558CDEF05}|CIS560FinalProject\\CIS560FinalProject.csproj|c:\\users\\dawso\\source\\repos\\nba-statistics-site\\cis560finalproject\\pages\\customdata\\addgameform.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{ED843BB2-3B32-4E31-9564-748558CDEF05}|CIS560FinalProject\\CIS560FinalProject.csproj|solutionrelative:cis560finalproject\\pages\\customdata\\addgameform.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -21,7 +29,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -30,15 +38,28 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "SqlConnection.cs",
-              "DocumentMoniker": "C:\\Users\\dawso\\AppData\\Local\\Temp\\.vsdbgsrc\\b75b477ffc08226322d827b2b2826eec8e4fde542d607a321156bf8fedc93a19\\SqlConnection.cs",
-              "RelativeDocumentMoniker": "..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\b75b477ffc08226322d827b2b2826eec8e4fde542d607a321156bf8fedc93a19\\SqlConnection.cs",
-              "ToolTip": "C:\\Users\\dawso\\AppData\\Local\\Temp\\.vsdbgsrc\\b75b477ffc08226322d827b2b2826eec8e4fde542d607a321156bf8fedc93a19\\SqlConnection.cs [Read Only]",
-              "RelativeToolTip": "..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\b75b477ffc08226322d827b2b2826eec8e4fde542d607a321156bf8fedc93a19\\SqlConnection.cs [Read Only]",
-              "ViewState": "AQIAABIEAAAAAAAAAAAqwCkEAAACAAAA",
+              "Title": "AddPlayerSeason.cshtml.cs",
+              "DocumentMoniker": "C:\\Users\\dawso\\source\\repos\\NBA-Statistics-Site\\CIS560FinalProject\\Pages\\CustomData\\AddPlayerSeason.cshtml.cs",
+              "RelativeDocumentMoniker": "CIS560FinalProject\\Pages\\CustomData\\AddPlayerSeason.cshtml.cs",
+              "ToolTip": "C:\\Users\\dawso\\source\\repos\\NBA-Statistics-Site\\CIS560FinalProject\\Pages\\CustomData\\AddPlayerSeason.cshtml.cs",
+              "RelativeToolTip": "CIS560FinalProject\\Pages\\CustomData\\AddPlayerSeason.cshtml.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAEgAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-26T03:09:02.663Z",
-              "EditorCaption": " [Read Only]"
+              "WhenOpened": "2024-04-26T13:39:52.321Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AddPlayerSeason.cshtml",
+              "DocumentMoniker": "C:\\Users\\dawso\\source\\repos\\NBA-Statistics-Site\\CIS560FinalProject\\Pages\\CustomData\\AddPlayerSeason.cshtml",
+              "RelativeDocumentMoniker": "CIS560FinalProject\\Pages\\CustomData\\AddPlayerSeason.cshtml",
+              "ToolTip": "C:\\Users\\dawso\\source\\repos\\NBA-Statistics-Site\\CIS560FinalProject\\Pages\\CustomData\\AddPlayerSeason.cshtml*",
+              "RelativeToolTip": "CIS560FinalProject\\Pages\\CustomData\\AddPlayerSeason.cshtml*",
+              "ViewState": "AQIAADAAAAAAAAAAAAAAAFgAAAB4AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-04-26T13:38:48.657Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -48,23 +69,36 @@
               "RelativeDocumentMoniker": "CIS560FinalProject\\Pages\\CustomData\\AddGameForm.cshtml",
               "ToolTip": "C:\\Users\\dawso\\source\\repos\\NBA-Statistics-Site\\CIS560FinalProject\\Pages\\CustomData\\AddGameForm.cshtml",
               "RelativeToolTip": "CIS560FinalProject\\Pages\\CustomData\\AddGameForm.cshtml",
-              "ViewState": "AQIAABUAAAAAAAAAAAAAACYAAAA8AAAA",
+              "ViewState": "AQIAABUAAAAAAAAAAAAAAC0AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-04-26T03:06:57.765Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "AddGameForm.cshtml.cs",
               "DocumentMoniker": "C:\\Users\\dawso\\source\\repos\\NBA-Statistics-Site\\CIS560FinalProject\\Pages\\CustomData\\AddGameForm.cshtml.cs",
               "RelativeDocumentMoniker": "CIS560FinalProject\\Pages\\CustomData\\AddGameForm.cshtml.cs",
-              "ToolTip": "C:\\Users\\dawso\\source\\repos\\NBA-Statistics-Site\\CIS560FinalProject\\Pages\\CustomData\\AddGameForm.cshtml.cs*",
-              "RelativeToolTip": "CIS560FinalProject\\Pages\\CustomData\\AddGameForm.cshtml.cs*",
-              "ViewState": "AQIAAGcAAAAAAAAAAAAqwIAAAAA7AAAA",
+              "ToolTip": "C:\\Users\\dawso\\source\\repos\\NBA-Statistics-Site\\CIS560FinalProject\\Pages\\CustomData\\AddGameForm.cshtml.cs",
+              "RelativeToolTip": "CIS560FinalProject\\Pages\\CustomData\\AddGameForm.cshtml.cs",
+              "ViewState": "AQIAABYAAAAAAAAAAAAQwDEAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-26T03:02:36.204Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "SqlConnection.cs",
+              "DocumentMoniker": "C:\\Users\\dawso\\AppData\\Local\\Temp\\.vsdbgsrc\\b75b477ffc08226322d827b2b2826eec8e4fde542d607a321156bf8fedc93a19\\SqlConnection.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\b75b477ffc08226322d827b2b2826eec8e4fde542d607a321156bf8fedc93a19\\SqlConnection.cs",
+              "ToolTip": "C:\\Users\\dawso\\AppData\\Local\\Temp\\.vsdbgsrc\\b75b477ffc08226322d827b2b2826eec8e4fde542d607a321156bf8fedc93a19\\SqlConnection.cs [Read Only]",
+              "RelativeToolTip": "..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\b75b477ffc08226322d827b2b2826eec8e4fde542d607a321156bf8fedc93a19\\SqlConnection.cs [Read Only]",
+              "ViewState": "AQIAABIEAAAAAAAAAAAqwCkEAAACAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-26T03:09:02.663Z",
+              "EditorCaption": " [Read Only]"
             }
           ]
         }
