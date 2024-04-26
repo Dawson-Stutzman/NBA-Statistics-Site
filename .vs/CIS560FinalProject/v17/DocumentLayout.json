@@ -3,12 +3,52 @@
   "WorkspaceRootPath": "C:\\Users\\dawso\\source\\repos\\NBA-Statistics-Site\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{ED843BB2-3B32-4E31-9564-748558CDEF05}|CIS560FinalProject\\CIS560FinalProject.csproj|c:\\users\\dawso\\source\\repos\\nba-statistics-site\\cis560finalproject\\pages\\customdata\\addgameform.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED843BB2-3B32-4E31-9564-748558CDEF05}|CIS560FinalProject\\CIS560FinalProject.csproj|solutionrelative:cis560finalproject\\pages\\customdata\\addgameform.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED843BB2-3B32-4E31-9564-748558CDEF05}|CIS560FinalProject\\CIS560FinalProject.csproj|c:\\users\\dawso\\source\\repos\\nba-statistics-site\\cis560finalproject\\pages\\customdata\\addteamform.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED843BB2-3B32-4E31-9564-748558CDEF05}|CIS560FinalProject\\CIS560FinalProject.csproj|solutionrelative:cis560finalproject\\pages\\customdata\\addteamform.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED843BB2-3B32-4E31-9564-748558CDEF05}|CIS560FinalProject\\CIS560FinalProject.csproj|c:\\users\\dawso\\source\\repos\\nba-statistics-site\\cis560finalproject\\pages\\customdata\\addteamform.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{ED843BB2-3B32-4E31-9564-748558CDEF05}|CIS560FinalProject\\CIS560FinalProject.csproj|solutionrelative:cis560finalproject\\pages\\customdata\\addteamform.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED843BB2-3B32-4E31-9564-748558CDEF05}|CIS560FinalProject\\CIS560FinalProject.csproj|c:\\users\\dawso\\source\\repos\\nba-statistics-site\\cis560finalproject\\sql\\create_db_2.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}",
+      "RelativeMoniker": "D:0:0:{ED843BB2-3B32-4E31-9564-748558CDEF05}|CIS560FinalProject\\CIS560FinalProject.csproj|solutionrelative:cis560finalproject\\sql\\create_db_2.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED843BB2-3B32-4E31-9564-748558CDEF05}|CIS560FinalProject\\CIS560FinalProject.csproj|c:\\users\\dawso\\source\\repos\\nba-statistics-site\\cis560finalproject\\pages\\analytics\\playercomparisonform.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED843BB2-3B32-4E31-9564-748558CDEF05}|CIS560FinalProject\\CIS560FinalProject.csproj|solutionrelative:cis560finalproject\\pages\\analytics\\playercomparisonform.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{ED843BB2-3B32-4E31-9564-748558CDEF05}|CIS560FinalProject\\CIS560FinalProject.csproj|c:\\users\\dawso\\source\\repos\\nba-statistics-site\\cis560finalproject\\pages\\analytics\\teambyyearform.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{ED843BB2-3B32-4E31-9564-748558CDEF05}|CIS560FinalProject\\CIS560FinalProject.csproj|solutionrelative:cis560finalproject\\pages\\analytics\\teambyyearform.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{ED843BB2-3B32-4E31-9564-748558CDEF05}|CIS560FinalProject\\CIS560FinalProject.csproj|c:\\users\\dawso\\source\\repos\\nba-statistics-site\\cis560finalproject\\pages\\analytics\\teambyyearform.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{ED843BB2-3B32-4E31-9564-748558CDEF05}|CIS560FinalProject\\CIS560FinalProject.csproj|solutionrelative:cis560finalproject\\pages\\analytics\\teambyyearform.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED843BB2-3B32-4E31-9564-748558CDEF05}|CIS560FinalProject\\CIS560FinalProject.csproj|c:\\users\\dawso\\source\\repos\\nba-statistics-site\\cis560finalproject\\pages\\analytics\\playerbyattributeform.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED843BB2-3B32-4E31-9564-748558CDEF05}|CIS560FinalProject\\CIS560FinalProject.csproj|solutionrelative:cis560finalproject\\pages\\analytics\\playerbyattributeform.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED843BB2-3B32-4E31-9564-748558CDEF05}|CIS560FinalProject\\CIS560FinalProject.csproj|c:\\users\\dawso\\source\\repos\\nba-statistics-site\\cis560finalproject\\pages\\analytics\\metricsbycollegeform.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{ED843BB2-3B32-4E31-9564-748558CDEF05}|CIS560FinalProject\\CIS560FinalProject.csproj|solutionrelative:cis560finalproject\\pages\\analytics\\metricsbycollegeform.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED843BB2-3B32-4E31-9564-748558CDEF05}|CIS560FinalProject\\CIS560FinalProject.csproj|c:\\users\\dawso\\source\\repos\\nba-statistics-site\\cis560finalproject\\pages\\customdata\\addplayerform.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED843BB2-3B32-4E31-9564-748558CDEF05}|CIS560FinalProject\\CIS560FinalProject.csproj|solutionrelative:cis560finalproject\\pages\\customdata\\addplayerform.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED843BB2-3B32-4E31-9564-748558CDEF05}|CIS560FinalProject\\CIS560FinalProject.csproj|c:\\users\\dawso\\source\\repos\\nba-statistics-site\\cis560finalproject\\pages\\customdata\\addgameform.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{ED843BB2-3B32-4E31-9564-748558CDEF05}|CIS560FinalProject\\CIS560FinalProject.csproj|solutionrelative:cis560finalproject\\pages\\customdata\\addgameform.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED843BB2-3B32-4E31-9564-748558CDEF05}|CIS560FinalProject\\CIS560FinalProject.csproj|c:\\users\\dawso\\source\\repos\\nba-statistics-site\\cis560finalproject\\sql\\create_db_2.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame",
+      "RelativeMoniker": "D:0:0:{ED843BB2-3B32-4E31-9564-748558CDEF05}|CIS560FinalProject\\CIS560FinalProject.csproj|solutionrelative:cis560finalproject\\sql\\create_db_2.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +58,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -26,28 +66,144 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "TeamByYearForm.cshtml.cs",
-              "DocumentMoniker": "C:\\Users\\dawso\\source\\repos\\NBA-Statistics-Site\\CIS560FinalProject\\Pages\\Analytics\\TeamByYearForm.cshtml.cs",
-              "RelativeDocumentMoniker": "CIS560FinalProject\\Pages\\Analytics\\TeamByYearForm.cshtml.cs",
-              "ToolTip": "C:\\Users\\dawso\\source\\repos\\NBA-Statistics-Site\\CIS560FinalProject\\Pages\\Analytics\\TeamByYearForm.cshtml.cs",
-              "RelativeToolTip": "CIS560FinalProject\\Pages\\Analytics\\TeamByYearForm.cshtml.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAhAAAA",
+              "DocumentIndex": 1,
+              "Title": "AddTeamForm.cshtml.cs",
+              "DocumentMoniker": "C:\\Users\\dawso\\source\\repos\\NBA-Statistics-Site\\CIS560FinalProject\\Pages\\CustomData\\AddTeamForm.cshtml.cs",
+              "RelativeDocumentMoniker": "CIS560FinalProject\\Pages\\CustomData\\AddTeamForm.cshtml.cs",
+              "ToolTip": "C:\\Users\\dawso\\source\\repos\\NBA-Statistics-Site\\CIS560FinalProject\\Pages\\CustomData\\AddTeamForm.cshtml.cs",
+              "RelativeToolTip": "CIS560FinalProject\\Pages\\CustomData\\AddTeamForm.cshtml.cs",
+              "ViewState": "AQIAAA0AAAAAAAAAAAAQwCsAAAApAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-25T22:50:02.751Z",
+              "WhenOpened": "2024-04-26T01:23:58.152Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 7,
+              "Title": "PlayerByAttributeForm.cshtml.cs",
+              "DocumentMoniker": "C:\\Users\\dawso\\source\\repos\\NBA-Statistics-Site\\CIS560FinalProject\\Pages\\Analytics\\PlayerByAttributeForm.cshtml.cs",
+              "RelativeDocumentMoniker": "CIS560FinalProject\\Pages\\Analytics\\PlayerByAttributeForm.cshtml.cs",
+              "ToolTip": "C:\\Users\\dawso\\source\\repos\\NBA-Statistics-Site\\CIS560FinalProject\\Pages\\Analytics\\PlayerByAttributeForm.cshtml.cs",
+              "RelativeToolTip": "CIS560FinalProject\\Pages\\Analytics\\PlayerByAttributeForm.cshtml.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAmAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-26T01:04:37.37Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "MetricsByCollegeForm.cshtml",
+              "DocumentMoniker": "C:\\Users\\dawso\\source\\repos\\NBA-Statistics-Site\\CIS560FinalProject\\Pages\\Analytics\\MetricsByCollegeForm.cshtml",
+              "RelativeDocumentMoniker": "CIS560FinalProject\\Pages\\Analytics\\MetricsByCollegeForm.cshtml",
+              "ToolTip": "C:\\Users\\dawso\\source\\repos\\NBA-Statistics-Site\\CIS560FinalProject\\Pages\\Analytics\\MetricsByCollegeForm.cshtml",
+              "RelativeToolTip": "CIS560FinalProject\\Pages\\Analytics\\MetricsByCollegeForm.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-04-26T01:04:31.812Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "AddPlayerForm.cshtml.cs",
+              "DocumentMoniker": "C:\\Users\\dawso\\source\\repos\\NBA-Statistics-Site\\CIS560FinalProject\\Pages\\CustomData\\AddPlayerForm.cshtml.cs",
+              "RelativeDocumentMoniker": "CIS560FinalProject\\Pages\\CustomData\\AddPlayerForm.cshtml.cs",
+              "ToolTip": "C:\\Users\\dawso\\source\\repos\\NBA-Statistics-Site\\CIS560FinalProject\\Pages\\CustomData\\AddPlayerForm.cshtml.cs",
+              "RelativeToolTip": "CIS560FinalProject\\Pages\\CustomData\\AddPlayerForm.cshtml.cs",
+              "ViewState": "AQIAACsAAAAAAAAAAAAQwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-25T23:14:33.986Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Create_DB_2.sql ",
+              "DocumentMoniker": "C:\\Users\\dawso\\source\\repos\\NBA-Statistics-Site\\CIS560FinalProject\\SQL\\Create_DB_2.sql",
+              "RelativeDocumentMoniker": "CIS560FinalProject\\SQL\\Create_DB_2.sql",
+              "ToolTip": "C:\\Users\\dawso\\source\\repos\\NBA-Statistics-Site\\CIS560FinalProject\\SQL\\Create_DB_2.sql",
+              "RelativeToolTip": "CIS560FinalProject\\SQL\\Create_DB_2.sql",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2024-04-26T00:22:36.532Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AddGameForm.cshtml.cs",
+              "DocumentMoniker": "C:\\Users\\dawso\\source\\repos\\NBA-Statistics-Site\\CIS560FinalProject\\Pages\\CustomData\\AddGameForm.cshtml.cs",
+              "RelativeDocumentMoniker": "CIS560FinalProject\\Pages\\CustomData\\AddGameForm.cshtml.cs",
+              "ToolTip": "C:\\Users\\dawso\\source\\repos\\NBA-Statistics-Site\\CIS560FinalProject\\Pages\\CustomData\\AddGameForm.cshtml.cs*",
+              "RelativeToolTip": "CIS560FinalProject\\Pages\\CustomData\\AddGameForm.cshtml.cs*",
+              "ViewState": "AQIAAEYAAAAAAAAAAAAQwGEAAADBAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-25T23:13:43.941Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "TeamByYearForm.cshtml",
               "DocumentMoniker": "C:\\Users\\dawso\\source\\repos\\NBA-Statistics-Site\\CIS560FinalProject\\Pages\\Analytics\\TeamByYearForm.cshtml",
               "RelativeDocumentMoniker": "CIS560FinalProject\\Pages\\Analytics\\TeamByYearForm.cshtml",
               "ToolTip": "C:\\Users\\dawso\\source\\repos\\NBA-Statistics-Site\\CIS560FinalProject\\Pages\\Analytics\\TeamByYearForm.cshtml",
               "RelativeToolTip": "CIS560FinalProject\\Pages\\Analytics\\TeamByYearForm.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAGAAAAAGAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-04-25T22:50:02.054Z",
+              "WhenOpened": "2024-04-26T01:04:51.636Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AddTeamForm.cshtml",
+              "DocumentMoniker": "C:\\Users\\dawso\\source\\repos\\NBA-Statistics-Site\\CIS560FinalProject\\Pages\\CustomData\\AddTeamForm.cshtml",
+              "RelativeDocumentMoniker": "CIS560FinalProject\\Pages\\CustomData\\AddTeamForm.cshtml",
+              "ToolTip": "C:\\Users\\dawso\\source\\repos\\NBA-Statistics-Site\\CIS560FinalProject\\Pages\\CustomData\\AddTeamForm.cshtml",
+              "RelativeToolTip": "CIS560FinalProject\\Pages\\CustomData\\AddTeamForm.cshtml",
+              "ViewState": "AQIAABUAAAAAAAAAAAAAACoAAAAcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-04-26T01:22:38.403Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "TeamByYearForm.cshtml.cs",
+              "DocumentMoniker": "C:\\Users\\dawso\\source\\repos\\NBA-Statistics-Site\\CIS560FinalProject\\Pages\\Analytics\\TeamByYearForm.cshtml.cs",
+              "RelativeDocumentMoniker": "CIS560FinalProject\\Pages\\Analytics\\TeamByYearForm.cshtml.cs",
+              "ToolTip": "C:\\Users\\dawso\\source\\repos\\NBA-Statistics-Site\\CIS560FinalProject\\Pages\\Analytics\\TeamByYearForm.cshtml.cs",
+              "RelativeToolTip": "CIS560FinalProject\\Pages\\Analytics\\TeamByYearForm.cshtml.cs",
+              "ViewState": "AQIAACwAAAAAAAAAAAAgwGIAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-26T01:05:15.379Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "PlayerComparisonForm.cshtml.cs",
+              "DocumentMoniker": "C:\\Users\\dawso\\source\\repos\\NBA-Statistics-Site\\CIS560FinalProject\\Pages\\Analytics\\PlayerComparisonForm.cshtml.cs",
+              "RelativeDocumentMoniker": "CIS560FinalProject\\Pages\\Analytics\\PlayerComparisonForm.cshtml.cs",
+              "ToolTip": "C:\\Users\\dawso\\source\\repos\\NBA-Statistics-Site\\CIS560FinalProject\\Pages\\Analytics\\PlayerComparisonForm.cshtml.cs",
+              "RelativeToolTip": "CIS560FinalProject\\Pages\\Analytics\\PlayerComparisonForm.cshtml.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAQwCEAAAA+AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-26T01:05:41.692Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "AddGameForm.cshtml",
+              "DocumentMoniker": "C:\\Users\\dawso\\source\\repos\\NBA-Statistics-Site\\CIS560FinalProject\\Pages\\CustomData\\AddGameForm.cshtml",
+              "RelativeDocumentMoniker": "CIS560FinalProject\\Pages\\CustomData\\AddGameForm.cshtml",
+              "ToolTip": "C:\\Users\\dawso\\source\\repos\\NBA-Statistics-Site\\CIS560FinalProject\\Pages\\CustomData\\AddGameForm.cshtml",
+              "RelativeToolTip": "CIS560FinalProject\\Pages\\CustomData\\AddGameForm.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAC4AAAA4AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-04-25T23:13:27.04Z",
               "EditorCaption": ""
             }
           ]

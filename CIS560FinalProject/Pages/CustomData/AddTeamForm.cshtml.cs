@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Data.SqlClient;
 
@@ -17,30 +16,34 @@ namespace CIS560FinalProject.Pages.CustomData
             connection.Open();
             TeamName = HttpContext.Request.Query["teamName"].ToString();
             ConferenceName = HttpContext.Request.Query["conference"].ToString();
-            if(TeamName != "")
+            if (TeamName != "")
             {
-                string insertString = "INSERT INTO [Statistics].Team ([TeamName], ConferenceName) VALUES ('" + TeamName + "', '" + ConferenceName + "')";
-                SqlCommand comm = new SqlCommand(insertString, connection);
-                comm.ExecuteNonQuery();
-
-                string summarizeString = "SELECT * FROM [Statistics].Team";
-                SqlCommand summarize = new SqlCommand(summarizeString, connection);
-                SqlDataReader reader = summarize.ExecuteReader();
-                comm.Dispose();
-                
-                while (reader.Read())
+                try
                 {
-                    Team t = new();
-                    t.TeamID = reader.GetInt32(0);
-                    t.Name = reader.GetString(1);
-                    t.ConferenceName = reader.GetString(2);
-                    t.Verified = 1;
-                    Teams.Add(t);
+                    string insertString = "INSERT INTO [Statistics].Team ([TeamName], ConferenceName) VALUES ('" + TeamName + "', '" + ConferenceName + "')";
+                    SqlCommand comm = new SqlCommand(insertString, connection);
+                    comm.ExecuteNonQuery();
+                    string summarizeString = "SELECT * FROM [Statistics].Team";
+                    SqlCommand summarize = new SqlCommand(summarizeString, connection);
+                    SqlDataReader reader = summarize.ExecuteReader();
+                    comm.Dispose();
+                    while (reader.Read())
+                    {
+                        Team t = new();
+                        t.TeamID = reader.GetInt32(0);
+                        t.Name = reader.GetString(1);
+                        t.ConferenceName = reader.GetString(2);
+                        t.Verified = 1;
+                        Teams.Add(t);
+                    }
+                    reader.Close();
+                    connection.Close();
                 }
-                reader.Close();
-                connection.Close();
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                }
             }
-            
         }
 
         public class Team
@@ -50,6 +53,5 @@ namespace CIS560FinalProject.Pages.CustomData
             public string ConferenceName;
             public int Verified;
         }
-
     }
 }

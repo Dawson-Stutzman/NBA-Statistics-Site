@@ -10,7 +10,7 @@
         <div class="horizontal-align">
 
             <input type="text" id="teams" name="teams" placeholder="Utah Jazz, Miami Heat">
-            <input  class="checkbox" type="checkbox" id="allTeams" name="allTeams" @Model.AllTeams><br /><br />
+            <input class="checkbox" type="checkbox" id="allTeams" name="allTeams" @Model.AllTeams><br /><br />
             <label for="allTeams">Compare All Teams</label><br />
         </div>
         <!--
@@ -33,12 +33,10 @@
         <br />
         <label for="colleges">Metric to rank teams by:</label>
         <div>
-            <input checked type="radio" name="metric" value="points" /><label for="metric">&ensp;Points</label><br />
-            <input type="radio" name="metric" value="assists" /><label for="metric">&ensp;Assists</label><br />
-            <input type="radio" name="metric" value="rebounds" /><label for="metric">&ensp;Rebounds</label><br />
-            <input type="radio" name="metric" value="blocks" /><label for="metric">&ensp;Blocks</label><br />
-            <input type="radio" name="metric" value="minutes" /><label for="metric">&ensp;Steals</label><br />
-            <input type="radio" name="metric" value="steals" /><label for="metric">&ensp;Minutes</label><br />
+            <input checked type="radio" name="metric" value="Points" /><label for="metric">&ensp;Points</label><br />
+            <input type="radio" name="metric" value="Assists" /><label for="metric">&ensp;Assists</label><br />
+            <input type="radio" name="metric" value="Rebounds" /><label for="metric">&ensp;Rebounds</label><br />
+            <input type="radio" name="metric" value="Wins" /><label for="metric">&ensp;Wins</label><br />
         </div><br />
         <div class="horizontal-align">
             <input @Model.Descending class="checkbox" type="checkbox" id="desc" name="descending">

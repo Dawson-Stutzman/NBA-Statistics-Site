@@ -254,9 +254,6 @@ BEGIN
 	INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Washington Wizards' = T.[TeamName]), 2017, 0);
 	INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Washington Wizards' = T.[TeamName]), 2015, 0);
 	INSERT [Statistics].TeamSeason (TeamID, [Year], Verified) VALUES ((SELECT T.TeamID FROM [Statistics].Team T WHERE N'Washington Wizards' = T.[TeamName]), 2014, 0);
-	
-	UPDATE NBA.[Statistics].TeamSeason
-	SET Verified=0
 
 END
 
@@ -1317,9 +1314,6 @@ BEGIN
 	INSERT [Statistics].Player ([PlayerName], [Position], [Height], [Weight], [Birthdate], [School], [Age], [Verified]) VALUES (N'Glen Rice', N'G-F', N'6-6', N'206 lbs', N'JAN 01, 1991', N'Georgia Tech', 23.0, 0);
 	INSERT [Statistics].Player ([PlayerName], [Position], [Height], [Weight], [Birthdate], [School], [Age], [Verified]) VALUES (N'Chris Singleton', N'F', N'6-9', N'228 lbs', N'NOV 21, 1989', N'Florida State', 24.0, 0);
 	INSERT [Statistics].Player ([PlayerName], [Position], [Height], [Weight], [Birthdate], [School], [Age], [Verified]) VALUES (N'Drew Gooden', N'F', N'6-10', N'250 lbs', N'SEP 24, 1981', N'Kansas', 32.0, 0);
-
-	UPDATE NBA.[Statistics].Player
-	SET [Verified]=0
 
 END
 
