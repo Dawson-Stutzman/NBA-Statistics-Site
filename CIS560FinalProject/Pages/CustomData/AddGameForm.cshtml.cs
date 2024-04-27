@@ -13,7 +13,9 @@ namespace CIS560FinalProject.Pages.CustomData
             Teams = new();
             Games = new();
 
-
+            int homeTeamSeasonID = 0;
+            int awayTeamSeasonID = 0;
+            int winnerTeamSeasonID = 0;
             //======================================================== Form Data Collection ========================================================
             int year = (string.IsNullOrEmpty(HttpContext.Request.Query["year"].ToString())) ? 0 : int.Parse(HttpContext.Request.Query["year"].ToString());
 
@@ -32,9 +34,7 @@ namespace CIS560FinalProject.Pages.CustomData
             int winningTeamID = homeTeamID;
             if (homePoints < awayPoints) winningTeamID = awayTeamID;
             else winningTeamID = homeTeamID;
-            int winningTeamSeasonID;
-            int homeTeamSeasonID;
-            int awayTeamSeasonID;
+
             //======================================================== Creating Insert Statement ========================================================
 
             // Check to see if the home and away team TeamSeasonID exist prior to calling on them in the following Query
@@ -124,31 +124,42 @@ namespace CIS560FinalProject.Pages.CustomData
                 {
                     string getHomeTeamSeasonIDString = String.Format("   SELECT TS.TeamSeasonID " +
                                         "       FROM [Statistics].TeamSeason TS " +
-                                        "           INNER JOIN [Statistics].Team T ON T.TeamID = {0}" +
+                                        "           INNER JOIN [Statistics].Team T ON T.TeamID = TS.TeamID" +
                                         "   WHERE T.TeamID = {0} AND TS.[Year] = {1}", homeTeamID, year);
 
-                    string getAwayTeamSeasonIDString = String.Format("   SELECT TS.TeamSeasonID " +
-                                            "       FROM [Statistics].TeamSeason TS " +
-                                            "           INNER JOIN [Statistics].Team T ON T.TeamID = {0}" +
-                                            "   WHERE T.TeamID = {0} AND TS.[Year] = {1}", homeTeamID, year);
 
                     SqlCommand getHomeTeamSeasonID = new SqlCommand(getHomeTeamSeasonIDString, connection);
-                    SqlCommand getAwayTeamSeasonID = new SqlCommand(getAwayTeamSeasonIDString, connection);
-                    reader = await getHomeTeamSeasonID.ExecuteReaderAsync();
+
+                    reader = getHomeTeamSeasonID.ExecuteReader();
                     reader.Read();
 
                     homeTeamSeasonID = reader.GetInt32(0);
+                    connection.Close();
+                }
+                catch { }
 
-                    reader.Close();
+                try
+                {
+                    string getAwayTeamSeasonIDString = String.Format("   SELECT TS.TeamSeasonID " +
+                    "       FROM [Statistics].TeamSeason TS " +
+                    "           INNER JOIN [Statistics].Team T ON T.TeamID = TS.TeamID" +
+                    "   WHERE T.TeamID = {0} AND TS.[Year] = {1}", awayTeamID, year);
+
+                    if (connection.State == System.Data.ConnectionState.Closed)
+                        connection.Open();
+
+                    SqlCommand getAwayTeamSeasonID = new SqlCommand(getAwayTeamSeasonIDString, connection);
 
                     reader = getAwayTeamSeasonID.ExecuteReader();
 
                     awayTeamSeasonID = reader.GetInt32(0);
 
-                    reader.Close();
 
-                    winningTeamSeasonID = (winningTeamID == homeTeamID) ? homeTeamSeasonID : awayTeamSeasonID;
-
+                }
+                catch { }
+                winnerTeamSeasonID = (winningTeamID == homeTeamID) ? homeTeamSeasonID : awayTeamSeasonID;
+                try
+                {
                     string insertString = String.Format("INSERT [Statistics].Game(" +
                                                         "HomeTeamSeasonID, " +
                                                         "AwayTeamSeasonID, " +
@@ -168,16 +179,15 @@ namespace CIS560FinalProject.Pages.CustomData
                                                         "   {5}, " +
                                                         "   {6}, " +
                                                         "   {7}, " +
-                                                        "   {8});", homeTeamSeasonID, awayTeamSeasonID, winningTeamSeasonID, homePoints, awayPoints, homeAssists, awayAssists, homeRebounds, awayRebounds);
+                                                        "   {8});", homeTeamSeasonID, awayTeamSeasonID, winnerTeamSeasonID, homePoints, awayPoints, homeAssists, awayAssists, homeRebounds, awayRebounds);
 
 
                     //======================================================== Inserting Data ========================================================
 
                     Console.WriteLine(insertString);
                     SqlCommand insertGame = new SqlCommand(insertString, connection);
-                    await insertGame.ExecuteNonQueryAsync();
+                    insertGame.ExecuteNonQuery();
                 }
-
                 catch { }
             }
 
@@ -192,6 +202,10 @@ namespace CIS560FinalProject.Pages.CustomData
 
             string selectString = "SELECT\r\n    ht.TeamName AS HomeTeam,\r\n    at.TeamName AS AwayTeam,\r\n    CASE\r\n        WHEN g.WinnerTeamSeasonID = hts.TeamSeasonID THEN ht.TeamName\r\n        ELSE at.TeamName\r\n    END AS WinningTeam,\r\n    hts.Year AS GameYear,\r\n    g.HomePoints,\r\n    g.AwayPoints,\r\n    g.HomeAssists,\r\n    g.AwayAssists,\r\n    g.HomeRebounds,\r\n    g.AwayRebounds,\r\n    g.Verified\r\nFROM\r\n    [Statistics].Game g\r\n    INNER JOIN [Statistics].TeamSeason hts ON g.HomeTeamSeasonID = hts.TeamSeasonID\r\n    INNER JOIN [Statistics].Team ht ON hts.TeamID = ht.TeamID\r\n    INNER JOIN [Statistics].TeamSeason ats ON g.AwayTeamSeasonID = ats.TeamSeasonID\r\n    INNER JOIN [Statistics].Team at ON ats.TeamID = at.TeamID;";
             SqlCommand selectGames = new SqlCommand(selectString, connection);
+            reader.Close();
+            if (connection.State == System.Data.ConnectionState.Closed)
+                connection.Open();
+
             reader = selectGames.ExecuteReader();
             while (reader.Read())
             {

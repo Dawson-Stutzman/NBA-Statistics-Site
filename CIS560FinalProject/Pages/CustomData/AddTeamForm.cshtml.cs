@@ -16,12 +16,7 @@ namespace CIS560FinalProject.Pages.CustomData
             connection.Open();
             TeamName = HttpContext.Request.Query["teamName"].ToString();
             ConferenceName = HttpContext.Request.Query["conference"].ToString();
-            string insertString = "MERGE INTO [Statistics].Team AS Target" +
-                "USING (SELECT '" + TeamName + "' AS TeamName, '" + ConferenceName + "' AS ConferenceName) AS Source" +
-                "ON Target.TeamName = Source.TeamName AND Target.ConferenceName = Source.ConferenceName" +
-                "WHEN NOT MATCHED THEN" +
-                "    INSERT ([TeamName], ConferenceName)" +
-                "    VALUES (Source.TeamName, Source.ConferenceName);";
+            string insertString = "INSERT INTO [Statistics].Team(TeamName, ConferenceName) VALUES('" + TeamName + "', " + "' " + ConferenceName + "')";
             SqlCommand comm = new SqlCommand(insertString, connection);
             if (TeamName != "")
             {

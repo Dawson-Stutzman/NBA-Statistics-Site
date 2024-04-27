@@ -475,11 +475,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\dawso\\source\\repos\\NBA-Statistics-Site\\CIS560FinalProject\\CIS560FinalProject.csproj",
+      "projectUniqueName": "C:\\Users\\dawso\\Source\\Repos\\NBA-Statistics-Site2\\CIS560FinalProject\\CIS560FinalProject.csproj",
       "projectName": "CIS560FinalProject",
-      "projectPath": "C:\\Users\\dawso\\source\\repos\\NBA-Statistics-Site\\CIS560FinalProject\\CIS560FinalProject.csproj",
+      "projectPath": "C:\\Users\\dawso\\Source\\Repos\\NBA-Statistics-Site2\\CIS560FinalProject\\CIS560FinalProject.csproj",
       "packagesPath": "C:\\Users\\dawso\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\dawso\\source\\repos\\NBA-Statistics-Site\\CIS560FinalProject\\obj\\",
+      "outputPath": "C:\\Users\\dawso\\Source\\Repos\\NBA-Statistics-Site2\\CIS560FinalProject\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\dawso\\AppData\\Roaming\\NuGet\\NuGet.Config",

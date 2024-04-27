@@ -87,13 +87,8 @@ namespace CIS560FinalProject.Pages.CustomData
                     Year = InsertTeamSeason(int.Parse(TeamID), int.Parse(Year));
                     TeamSeasonID = GetInsertedTeamSeason(int.Parse(TeamID), int.Parse(Year));
                 }
-                string insertString = String.Format("MERGE INTO [Statistics].PlayerSeason AS Target " +
-                    "USING (VALUES ('{0}', '{1}')) " +
-                    "   AS Source (PlayerID, TeamSeasonID) " +
-                    "ON Target.PlayerID = Source.PlayerID AND Target.TeamSeasonID = Source.TeamSeasonID " +
-                    "WHEN NOT MATCHED THEN " +
-                    "    INSERT (PlayerID, TeamSeasonID, GamesPlayed, Minutes, Points, FieldGoalMade, FieldGoalAttempts, ThreePointMade, ThreePointAttempts, Rebounds, Assists, Blocks, Steals, Turnovers, PlusMinus) " +
-                    "    VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}', '{10}', '{11}', '{12}', '{13}', '{14}');", PlayerID, TeamSeasonID, GamesPlayed, Minutes, Points, FieldGoalsMade, FieldGoalAttempts, ThreePointsMade, ThreePointAttempts, Rebounds, Assists, Blocks, Steals, Turnovers, PlusMinus);
+                string insertString = String.Format("INSERT [Statistics].PlayerSeason(PlayerID, TeamSeasonID, GamesPlayed, Minutes, Points, FieldGoalMade, FieldGoalAttempts, ThreePointMade, ThreePointAttempts, Rebounds, Assists, Blocks, Steals, Turnovers, PlusMinus) "
+     + "VALUES('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}', '{10}', '{11}', '{12}', '{13}', '{14}'); ", PlayerID, TeamSeasonID, GamesPlayed, Minutes, Points, FieldGoalsMade, FieldGoalAttempts, ThreePointsMade, ThreePointAttempts, Rebounds, Assists, Blocks, Steals, Turnovers, PlusMinus);
                 SqlCommand comm = new SqlCommand(insertString, connection);
                 comm.ExecuteNonQuery();
                 comm.Dispose();
